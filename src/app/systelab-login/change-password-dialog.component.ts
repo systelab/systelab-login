@@ -6,11 +6,13 @@ import { MessagePopupService } from 'systelab-components/widgets/modal/message-p
 import { DialogService } from 'systelab-components/widgets/modal/dialog/dialog.service';
 import { I18nService } from 'systelab-translate/lib/i18n.service';
 
+
 export class ChangePasswordDialogParameters extends ModulabModalContext {
 	public width = 650;
 	public height = 330;
 	public userName: string;
 	public minPasswordStrengthValue: number;
+	public action: (oldPassword: string, newPassword: string) => boolean;
 }
 
 @Component({
@@ -63,6 +65,9 @@ export class ChangePasswordDialog extends DefaultModalActions implements ModalCo
 	}
 
 	public changePassword(): void {
+		if (this.parameters.action(this.oldPassword, this.newPassword)) {
+			this.close();
+		}
 	}
 
 	public checkPasswordStrength(event: any) {
