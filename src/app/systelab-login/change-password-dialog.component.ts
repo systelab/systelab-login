@@ -1,0 +1,144 @@
+import { Component } from '@angular/core';
+import { ModalComponent, DialogRef } from 'angular2-modal';
+import { ModulabModalContext } from 'systelab-components/widgets/modal/plugin/modulab';
+import { DefaultModalActions } from 'systelab-components/widgets/modal/message-popup/message-popup-view.component';
+import { MessagePopupService } from 'systelab-components/widgets/modal/message-popup/message-popup.service';
+import { DialogService } from 'systelab-components/widgets/modal/dialog/dialog.service';
+import { I18nService } from 'systelab-translate/lib/i18n.service';
+
+export class ChangePasswordDialogParameters extends ModulabModalContext {
+	public width = 650;
+	public height = 330;
+	public userName: string;
+	public minPasswordStrengthValue: number;
+}
+
+@Component({
+	selector:    'change-password-dialog',
+	templateUrl: 'change-password-dialog.component.html',
+	styleUrls:   ['change-password-dialog.component.scss'],
+
+})
+export class ChangePasswordDialog extends DefaultModalActions implements ModalComponent<ChangePasswordDialogParameters> {
+
+	public parameters: ChangePasswordDialogParameters;
+
+	public strongPatternRegex = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^a-zA-Z0-9])(?=.{8,})');
+	public veryStrongPatternRegex = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^a-zA-Z0-9])(?=.{14,})');
+	public goodPatternRegex = new RegExp('^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})');
+	public moderatePatternRegex = new RegExp('^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{4,})');
+
+	public isLoading = false;
+
+	public newPassword: string;
+	public repeatedPassword: string;
+	public oldPassword: string;
+
+	public currentPasswordStrengthValue = 'very-weak';
+	public currentPasswordStrenghtValueNumber = 0;
+
+	public passwordComplexityLabel = '';
+	public complexityValue = '';
+	public passwordCriteriaLabel = '';
+	public minPasswordLength: number;
+
+	constructor(public dialog: DialogRef<ChangePasswordDialogParameters>, protected dialogService: DialogService, protected messagePopupService: MessagePopupService, protected i18nService: I18nService) {
+		super(dialog);
+		this.parameters = dialog.context;
+		this.setupPasswordComplexityTooltip();
+	}
+
+	public close(): void {
+		this.dialog.close();
+	}
+
+	public static getParameters(): ChangePasswordDialogParameters {
+		return new ChangePasswordDialogParameters();
+	}
+
+	public isOK() {
+		return this.oldPassword &&
+			this.newPassword === this.repeatedPassword &&
+			this.currentPasswordStrenghtValueNumber >= this.parameters.minPasswordStrengthValue;
+	}
+
+	public changePassword(): void {
+	}
+
+	public checkPasswordStrength(event: any) {
+		this.currentPasswordStrengthValue = 'very-weak';
+
+		if (!event.target.value) {
+			this.currentPasswordStrengthValue = 'very-weak';
+			this.passwordComplexityLabel = '';
+			this.currentPasswordStrenghtValueNumber = 0;
+		} else if (this.veryStrongPatternRegex.test(event.target.value)) {
+			this.currentPasswordStrengthValue = 'very-strong';
+			this.passwordComplexityLabel = 'PASSWORD_STRENGTH_VERY_STRONG';
+			this.currentPasswordStrenghtValueNumber = 5;
+		} else if (this.strongPatternRegex.test(event.target.value)) {
+			this.currentPasswordStrengthValue = 'strong';
+			this.passwordComplexityLabel = 'PASSWORD_STRENGTH_STRONG';
+			this.currentPasswordStrenghtValueNumber = 4;
+		} else if (this.goodPatternRegex.test(event.target.value)) {
+			this.currentPasswordStrengthValue = 'good';
+			this.passwordComplexityLabel = 'PASSWORD_STRENGTH_GOOD';
+			this.currentPasswordStrenghtValueNumber = 3;
+		} else if (this.moderatePatternRegex.test(event.target.value)) {
+			this.currentPasswordStrengthValue = 'moderate';
+			this.passwordComplexityLabel = 'PASSWORD_STRENGTH_MODERATE';
+			this.currentPasswordStrenghtValueNumber = 2;
+		} else {
+			this.currentPasswordStrengthValue = 'weak';
+			this.passwordComplexityLabel = 'PASSWORD_STRENGTH_WEAK';
+			this.currentPasswordStrenghtValueNumber = 1;
+		}
+	}
+
+	public setupPasswordComplexityTooltip() {
+		switch (this.parameters.minPasswordStrengthValue) {
+			case 0:
+			case 1:
+				this.complexityValue = this.i18nService.instant('PASSWORD_STRENGTH_WEAK');
+				this.passwordCriteriaLabel = 'PASSWORD_CRITERIA_WEAK';
+				this.minPasswordLength = 2;
+				break;
+			case 2:
+				this.complexityValue = this.i18nService.instant('PASSWORD_STRENGTH_MODERATE');
+				this.passwordCriteriaLabel = 'PASSWORD_CRITERIA_LOW';
+				this.minPasswordLength = 4;
+				break;
+			case 3:
+				this.complexityValue = this.i18nService.instant('PASSWORD_STRENGTH_GOOD');
+				this.passwordCriteriaLabel = 'PASSWORD_CRITERIA_LOW';
+				this.minPasswordLength = 6;
+				break;
+			case 4:
+				this.complexityValue = this.i18nService.instant('PASSWORD_STRENGTH_STRONG');
+				this.passwordCriteriaLabel = 'PASSWORD_CRITERIA';
+				this.minPasswordLength = 8;
+				break;
+			case 5:
+				this.complexityValue = this.i18nService.instant('PASSWORD_STRENGTH_VERY_STRONG');
+				this.passwordCriteriaLabel = 'PASSWORD_CRITERIA';
+				this.minPasswordLength = 14;
+				break;
+		}
+	}
+
+	public getPasswordComplexityAsLabel() {
+		if (this.passwordComplexityLabel !== '') {
+			return this.i18nService.instant(this.passwordComplexityLabel);
+		}
+	}
+
+	public getPasswordComplexityTooltip() {
+		if (this.passwordCriteriaLabel !== '') {
+
+			return this.i18nService.instant(this.passwordCriteriaLabel, {
+				complexity:  this.complexityValue,
+				char_number: this.minPasswordLength
+			});
+		}
+	}
+}
