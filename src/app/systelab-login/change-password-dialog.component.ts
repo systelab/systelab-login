@@ -1,25 +1,23 @@
 import { Component } from '@angular/core';
-import { ModalComponent, DialogRef } from 'angular2-modal';
+import { DialogRef, ModalComponent } from 'angular2-modal';
 import { ModulabModalContext } from 'systelab-components/widgets/modal/plugin/modulab';
 import { DefaultModalActions } from 'systelab-components/widgets/modal/message-popup/message-popup-view.component';
 import { MessagePopupService } from 'systelab-components/widgets/modal/message-popup/message-popup.service';
 import { DialogService } from 'systelab-components/widgets/modal/dialog/dialog.service';
 import { I18nService } from 'systelab-translate/lib/i18n.service';
-
+import { Observable } from 'rxjs/Observable';
 
 export class ChangePasswordDialogParameters extends ModulabModalContext {
 	public width = 650;
 	public height = 330;
 	public userName: string;
 	public minPasswordStrengthValue: number;
-	public action: (oldPassword: string, newPassword: string) => boolean;
+	public action: (oldPassword: string, newPassword: string) => Observable<boolean>;
 }
 
 @Component({
-	selector:    'change-password-dialog',
 	templateUrl: 'change-password-dialog.component.html',
 	styleUrls:   ['change-password-dialog.component.scss'],
-
 })
 export class ChangePasswordDialog extends DefaultModalActions implements ModalComponent<ChangePasswordDialogParameters> {
 
@@ -44,6 +42,10 @@ export class ChangePasswordDialog extends DefaultModalActions implements ModalCo
 	public passwordCriteriaLabel = '';
 	public minPasswordLength: number;
 
+	public static getParameters(): ChangePasswordDialogParameters {
+		return new ChangePasswordDialogParameters();
+	}
+
 	constructor(public dialog: DialogRef<ChangePasswordDialogParameters>, protected dialogService: DialogService, protected messagePopupService: MessagePopupService, protected i18nService: I18nService) {
 		super(dialog);
 		this.parameters = dialog.context;
@@ -54,10 +56,6 @@ export class ChangePasswordDialog extends DefaultModalActions implements ModalCo
 		this.dialog.close();
 	}
 
-	public static getParameters(): ChangePasswordDialogParameters {
-		return new ChangePasswordDialogParameters();
-	}
-
 	public isOK() {
 		return this.oldPassword &&
 			this.newPassword === this.repeatedPassword &&
@@ -65,9 +63,14 @@ export class ChangePasswordDialog extends DefaultModalActions implements ModalCo
 	}
 
 	public changePassword(): void {
-		if (this.parameters.action(this.oldPassword, this.newPassword)) {
-			this.close();
-		}
+		this.parameters.action(this.oldPassword, this.newPassword)
+			.subscribe(
+				(response) => {
+					if (response) {
+						this.close();
+					}
+				}
+			);
 	}
 
 	public checkPasswordStrength(event: any) {
@@ -102,12 +105,6 @@ export class ChangePasswordDialog extends DefaultModalActions implements ModalCo
 
 	public setupPasswordComplexityTooltip() {
 		switch (this.parameters.minPasswordStrengthValue) {
-			case 0:
-			case 1:
-				this.complexityValue = this.i18nService.instant('PASSWORD_STRENGTH_WEAK');
-				this.passwordCriteriaLabel = 'PASSWORD_CRITERIA_WEAK';
-				this.minPasswordLength = 2;
-				break;
 			case 2:
 				this.complexityValue = this.i18nService.instant('PASSWORD_STRENGTH_MODERATE');
 				this.passwordCriteriaLabel = 'PASSWORD_CRITERIA_LOW';
@@ -128,6 +125,10 @@ export class ChangePasswordDialog extends DefaultModalActions implements ModalCo
 				this.passwordCriteriaLabel = 'PASSWORD_CRITERIA';
 				this.minPasswordLength = 14;
 				break;
+			default:
+				this.complexityValue = this.i18nService.instant('PASSWORD_STRENGTH_WEAK');
+				this.passwordCriteriaLabel = 'PASSWORD_CRITERIA_WEAK';
+				this.minPasswordLength = 2;
 		}
 	}
 

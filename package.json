@@ -1,6 +1,6 @@
 {
   "name": "systelab-login",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "license": "MIT",
   "keywords": [
     "Angular",
@@ -51,9 +51,9 @@
     "ng2-dnd": "^2.2.2",
     "ag-grid": "^13.1.0",
     "ag-grid-angular": "^13.1.0",
-    "systelab-components": "^1.2.2",
-    "systelab-translate": "^0.1.2",
-    "systelab-preferences": "^0.0.3"
+    "systelab-components": "^1.2.26",
+    "systelab-translate": "^0.1.6",
+    "systelab-preferences": "^0.0.5"
   },
   "peerDependencies": {
     "@angular/core": "^2.3.1 || >=4.0.0"
