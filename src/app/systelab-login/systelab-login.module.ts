@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { SystelabTranslateModule } from 'systelab-translate';
 import { LoginComponent } from './login.component';
 import { ChangePasswordDialog } from './change-password-dialog.component';
+import { DialogService } from 'systelab-components/widgets/modal/dialog/dialog.service';
 
 
 
@@ -24,6 +25,9 @@ import { ChangePasswordDialog } from './change-password-dialog.component';
 	entryComponents: [
 		ChangePasswordDialog
 	],
+	providers: [
+		DialogService
+	]
 
 })
 export class SystelabLoginModule {
