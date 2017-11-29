@@ -1,13 +1,10 @@
-import { ANALYZE_FOR_ENTRY_COMPONENTS, ModuleWithProviders, NgModule, Type } from '@angular/core';
+import { ModuleWithProviders, NgModule, Type } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { SystelabTranslateModule } from 'systelab-translate';
 import { LoginComponent } from './login.component';
 import { ChangePasswordDialog } from './change-password-dialog.component';
-import { DialogService } from 'systelab-components/widgets/modal/dialog/dialog.service';
-
-
 
 @NgModule({
 	imports:         [
@@ -24,9 +21,6 @@ import { DialogService } from 'systelab-components/widgets/modal/dialog/dialog.s
 	],
 	entryComponents: [
 		ChangePasswordDialog
-	],
-	providers: [
-		DialogService
 	]
 
 })
