@@ -1,2 +1,10 @@
 <p>Login</p>
+<form>
+    Username:<br>
+    <input type="text" name="userName" [(ngModel)]="userName">
+    <br>
+    Password:<br>
+    <input type="password" name="password" [(ngModel)]="password">
+    <br><br>
+</form>
 <button (click)="doLogin()">Login</button>

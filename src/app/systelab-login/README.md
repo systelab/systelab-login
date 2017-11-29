@@ -5,8 +5,10 @@ Component to show a fancy screen in order to let the user to enter a username an
 ## Using the template
 
 ```
-<systelab-login (login)="doLogin()"></systelab-login>
+<systelab-login (login)="doLogin($event)"></systelab-login>
 ```
+
+In the $event parameter you will receive a UserCredentials object, with a UserName and password.
 
 # systelab-change-password
 
@@ -34,7 +36,7 @@ The minimum password strength values are:
 
 Otherwise is considered as Weak.
 
-And the arrow function must be a function that recieve two string and returns an Observable of a boolean.
+And the arrow function must be a function that receive two string and returns an Observable of a boolean.
 
 A full example could be:
 
