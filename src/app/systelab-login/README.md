@@ -8,6 +8,8 @@ Component to show a fancy screen in order to let the user to enter a username an
 <systelab-login (login)="doLogin()"></systelab-login>
 ```
 
+# systelab-change-password
+
 In order to show the change password dialog you should do:
 
 ```javascript
@@ -15,7 +17,7 @@ const parameters: ChangePasswordDialogParameters = ChangePasswordDialog.getParam
 this.dialogService.showDialog(ChangePasswordDialog, parameters);
 ```
 
-In the parameter you must specify a username, a minimum password strength and an arrow function to run when the user press submit:
+As a parameter you must specify a username, a minimum password strength and an arrow function to run when the user press submit:
 
 ```javascript
 public userName: string;
@@ -25,14 +27,14 @@ public action: (oldPassword: string, newPassword: string) => Observable<boolean>
 
 The minimum password strength values are:
 
-2: Moderate
-3: Good
-4: Strong
-5: Very Strong
+- 2: Moderate
+- 3: Good
+- 4: Strong
+- 5: Very Strong
 
-Otherwise is considered as Week is enought.
+Otherwise is considered as Weak.
 
-And the arrow function must be a function that recieve to string ans returns an Observable of a boolean.
+And the arrow function must be a function that recieve two string and returns an Observable of a boolean.
 
 A full example could be:
 
