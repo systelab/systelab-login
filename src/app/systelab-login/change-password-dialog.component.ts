@@ -34,7 +34,7 @@ export class ChangePasswordDialog extends DefaultModalActions implements ModalCo
 	public repeatedPassword: string;
 	public oldPassword: string;
 
-	public currentPasswordStrengthValue = 'very-weak';
+	public currentPasswordStrengthValue = 'slab-very-weak';
 	public currentPasswordStrenghtValueNumber = 0;
 
 	public passwordComplexityLabel = '';
@@ -74,30 +74,30 @@ export class ChangePasswordDialog extends DefaultModalActions implements ModalCo
 	}
 
 	public checkPasswordStrength(event: any) {
-		this.currentPasswordStrengthValue = 'very-weak';
+		this.currentPasswordStrengthValue = 'slab-very-weak';
 
 		if (!event.target.value) {
-			this.currentPasswordStrengthValue = 'very-weak';
+			this.currentPasswordStrengthValue = 'slab-very-weak';
 			this.passwordComplexityLabel = '';
 			this.currentPasswordStrenghtValueNumber = 0;
 		} else if (this.veryStrongPatternRegex.test(event.target.value)) {
-			this.currentPasswordStrengthValue = 'very-strong';
+			this.currentPasswordStrengthValue = 'slab-very-strong';
 			this.passwordComplexityLabel = 'PASSWORD_STRENGTH_VERY_STRONG';
 			this.currentPasswordStrenghtValueNumber = 5;
 		} else if (this.strongPatternRegex.test(event.target.value)) {
-			this.currentPasswordStrengthValue = 'strong';
+			this.currentPasswordStrengthValue = 'slab-strong';
 			this.passwordComplexityLabel = 'PASSWORD_STRENGTH_STRONG';
 			this.currentPasswordStrenghtValueNumber = 4;
 		} else if (this.goodPatternRegex.test(event.target.value)) {
-			this.currentPasswordStrengthValue = 'good';
+			this.currentPasswordStrengthValue = 'slab-good';
 			this.passwordComplexityLabel = 'PASSWORD_STRENGTH_GOOD';
 			this.currentPasswordStrenghtValueNumber = 3;
 		} else if (this.moderatePatternRegex.test(event.target.value)) {
-			this.currentPasswordStrengthValue = 'moderate';
+			this.currentPasswordStrengthValue = 'slab-moderate';
 			this.passwordComplexityLabel = 'PASSWORD_STRENGTH_MODERATE';
 			this.currentPasswordStrenghtValueNumber = 2;
 		} else {
-			this.currentPasswordStrengthValue = 'weak';
+			this.currentPasswordStrengthValue = 'slab-weak';
 			this.passwordComplexityLabel = 'PASSWORD_STRENGTH_WEAK';
 			this.currentPasswordStrenghtValueNumber = 1;
 		}
