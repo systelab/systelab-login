@@ -47,9 +47,9 @@ this.dialogService.showDialog(ChangePasswordDialog, parameters).subscribe();
 
 public changePassword(oldPassword: string, newPassword: string): Observable<boolean> {
   if (...) {
-      // is OK
-			return Observable.of(false);
-	}
-	return Observable.of(true);
+    // is OK
+    return Observable.of(false);
+  }
+  return Observable.of(true);
 }
 ```
