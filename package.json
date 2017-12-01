@@ -1,6 +1,6 @@
 {
   "name": "systelab-login",
-  "version": "1.0.2",
+  "version": "1.1.2",
   "license": "MIT",
   "keywords": [
     "Angular",
@@ -43,8 +43,8 @@
     "core-js": "^2.4.1",
     "rxjs": "^5.4.1",
     "zone.js": "^0.8.14",
-    "systelab-components": "^2.0.0",
-    "systelab-translate": "^0.1.10",
+    "systelab-components": "^2.2.0",
+    "systelab-translate": "^1.0.0",
     "systelab-preferences": "^1.1.0"
   },
   "devDependencies": {
