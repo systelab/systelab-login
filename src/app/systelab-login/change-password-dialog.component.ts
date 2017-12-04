@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { DialogRef, ModalComponent } from 'ngx-modialog';
 import { ModulabModalContext } from 'systelab-components/widgets/modal/plugin/modulab';
 import { DefaultModalActions } from 'systelab-components/widgets/modal/message-popup/message-popup-view.component';
@@ -19,7 +19,7 @@ export class ChangePasswordDialogParameters extends ModulabModalContext {
 	templateUrl: 'change-password-dialog.component.html',
 	styleUrls:   ['change-password-dialog.component.scss'],
 })
-export class ChangePasswordDialog extends DefaultModalActions implements ModalComponent<ChangePasswordDialogParameters> {
+export class ChangePasswordDialog extends DefaultModalActions implements ModalComponent<ChangePasswordDialogParameters>, AfterViewInit {
 
 	public parameters: ChangePasswordDialogParameters;
 
@@ -50,6 +50,14 @@ export class ChangePasswordDialog extends DefaultModalActions implements ModalCo
 		super(dialog);
 		this.parameters = dialog.context;
 		this.setupPasswordComplexityTooltip();
+	}
+
+	public ngAfterViewInit() {
+		setTimeout(() => {
+			document.getElementById('form-h-it')
+				.focus();
+			this.oldPassword = '';
+		}, 500);
 	}
 
 	public close(): void {
@@ -146,5 +154,14 @@ export class ChangePasswordDialog extends DefaultModalActions implements ModalCo
 				char_number: this.minPasswordLength
 			});
 		}
+	}
+
+	public checkNewRepeatedPassword(): boolean {
+		if (this.newPassword !== this.repeatedPassword) {
+			this.parameters.height = 345;
+		} else {
+			this.parameters.height = 330;
+		}
+		return this.newPassword !== this.repeatedPassword;
 	}
 }
