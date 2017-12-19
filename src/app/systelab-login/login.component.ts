@@ -27,6 +27,10 @@ export class LoginComponent {
 	@Input() background = undefined;
 	@Input() copyright = undefined;
 
+	@Input() errorUserPwd = true;
+	@Input() errorMessage = 'Error';
+	@Input() isLoading = true;
+
 	@Output() login = new EventEmitter<UserCredendials>();
 
 	constructor(protected dialogService: DialogService, protected i18nService: I18nService) {
