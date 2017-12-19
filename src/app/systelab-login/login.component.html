@@ -1,8 +1,6 @@
 <div class="d-flex h-100 slab-login">
-    <div class="slab-login__background slab-login__background--configuration"
-         style="background-image: url('{{background}}');"></div>
+    <div class="slab-login__background slab-login__background--configuration" [style.background-image]="'url(' + background + ')'"></div>
     <div class="slab-login__content d-flex flex-column">
-
         <div class="d-flex slab-header align-content-center">
             <img class="slab-header__logo mr-4" src="{{applicationLogo}}">
             <div>
@@ -11,7 +9,6 @@
                 <div class="slab-text slab-text--small slab-text--muted">{{version}}</div>
             </div>
         </div>
-
         <div class="d-flex slab-form align-content-center flex-wrap mt-4">
             <div class="mb-4 slab-text slab-text--large slab-text--muted">Inicio de sesión</div>
             <form>
@@ -20,16 +17,12 @@
                 <button class="w-100 btn slab-form__submit mt-5">ENTRA</button>
             </form>
         </div>
-
         <div class="d-flex slab-footer flex-column">
             <img width="132" src="{{ companyLogo }}" class="mt-4 align-self-center">
-            <div class="slab-text slab-text--small align-self-center mt-4 ">@ 2005 · 2020 Werfen</div>
+            <div class="slab-text slab-text--small align-self-center mt-4 ">{{copyright}}</div>
             <div class="mt-4 align-self-center">
                 <a class="slab-text slab-text--link slab-text--small mr-2 " href="">Términos de uso</a> · <a class="ml-2 slab-text slab-text--link slab-text--small" href="">Privacidad</a>
             </div>
         </div>
-
-
     </div>
-
 </div>

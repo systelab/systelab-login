@@ -25,6 +25,7 @@ export class LoginComponent {
 	@Input() applicationLogo = undefined;
 	@Input() companyLogo = undefined;
 	@Input() background = undefined;
+	@Input() copyright = undefined;
 
 	@Output() login = new EventEmitter<UserCredendials>();
 

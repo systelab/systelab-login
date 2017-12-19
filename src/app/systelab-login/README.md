@@ -10,6 +10,7 @@ Component to show a fancy screen in order to let the user to enter a username an
   [applicationName]="'Modulab'"
   [moduleName]="'Collection'"
   [background]="'assets/img/background/background.jpg'"
+  [copyright]="'Copyright 2000-2018 Werfen'"
   [version]="'Version 1.4. (build 2012)'"></systelab-login>
 ```
 
