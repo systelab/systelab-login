@@ -5,7 +5,12 @@ Component to show a fancy screen in order to let the user to enter a username an
 ## Using the template
 
 ```
-<systelab-login (login)="doLogin($event)"></systelab-login>
+<systelab-login (login)="doLogin($event)" [companyLogo]="'assets/img/brand/werfen.png'"
+  [applicationLogo]="'assets/img/brand/modulab.svg'"
+  [applicationName]="'Modulab'"
+  [moduleName]="'Collection'"
+  [background]="'assets/img/background/background.jpg'"
+  [version]="'Version 1.4. (build 2012)'"></systelab-login>
 ```
 
 In the $event parameter you will receive a UserCredentials object, with a UserName and password.
