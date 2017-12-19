@@ -44,9 +44,9 @@ export class LoginComponent {
 	@Input() background = undefined;
 	@Input() copyright = undefined;
 
-	@Input() errorUserPwd = true;
-	@Input() errorMessage = 'Error';
-	@Input() isLoading = true;
+	@Input() errorUserPwd = false;
+	@Input() errorMessage = '';
+	@Input() isLoading = false;
 
 	@Output() login = new EventEmitter();
 

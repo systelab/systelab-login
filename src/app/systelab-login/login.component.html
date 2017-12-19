@@ -18,9 +18,15 @@
                 <div *ngIf="errorUserPwd" class="text-center text-danger">
                     {{ errorMessage | translate | async}}
                 </div>
+                <div *ngIf="!errorUserPwd" class="text-center text-danger">
+                    &nbsp;
+                </div>
                 <div *ngIf="isLoading" class="text-center" >
                     {{ 'COMMON_LOADING' | translate | async }}...
                     <i class="icon-spinner spin"></i>
+                </div>
+                <div *ngIf="!isLoading" class="text-center" >
+                    &nbsp;
                 </div>
             </form>
         </div>

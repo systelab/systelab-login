@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { UserCredendials } from './systelab-login/login.component';
 
 @Component({
 	selector:    'app-root',
@@ -7,8 +6,8 @@ import { UserCredendials } from './systelab-login/login.component';
 })
 export class AppComponent {
 
-	public doLogin(credentials: UserCredendials) {
-		console.log(credentials);
+	public doLogin() {
+		console.log('doLogin');
 	}
 
 }
