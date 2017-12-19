@@ -5,16 +5,19 @@ Component to show a fancy screen in order to let the user to enter a username an
 ## Using the template
 
 ```
-<systelab-login (login)="doLogin($event)" [companyLogo]="'assets/img/brand/werfen.png'"
-  [applicationLogo]="'assets/img/brand/modulab.svg'"
-  [applicationName]="'Modulab'"
-  [moduleName]="'Collection'"
+<systelab-login (login)="doLogin()" [companyLogo]="'assets/img/brand/werfen.png'"
+  [applicationLogo]="'assets/img/brand/logo.png'"
+  [applicationName]="'Application Name'"
+  [moduleName]="'Module'"
   [background]="'assets/img/background/background.jpg'"
   [copyright]="'Copyright 2000-2018 Werfen'"
+  [(userName)]="userName"
+  [(password)]="password"
   [version]="'Version 1.4. (build 2012)'"></systelab-login>
 ```
 
-In the $event parameter you will receive a UserCredentials object, with a UserName and password.
+Be careful and make sure that the images are loaded by Webpack.
+
 
 # systelab-change-password
 
