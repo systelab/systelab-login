@@ -1,0 +1,134 @@
+
+
+.slab-login {
+  min-height: 620px;
+}
+
+.slab-login__content {
+  flex: 1;
+  padding: 44px;
+}
+
+.slab-login__background {
+  display: none;
+  flex: 1 1 auto;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: -200px center;
+  -webkit-animation: fadein 3s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 3s; /* Firefox < 16 */
+  -ms-animation: fadein 3s; /* Internet Explorer */
+  animation: fadein 3s;
+}
+
+.slab-login__background--laboratory {
+  background-position: center;
+}
+
+@media screen and (min-width: 550px) {
+  .slab-login__content {
+    flex: 0 0 414px;
+  }
+
+  .slab-login__background {
+    display: block;
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+
+
+
+/* Text modifiers
+========================================================================== */
+
+
+.slab-text {
+  font-size: 0.9em;
+  line-height: 0.8;
+}
+
+.slab-text--large {
+  font-size: 1.6em;
+  line-height: 1.5;
+}
+
+.slab-text--small {
+  font-size: 0.8em;
+  line-height: 1.5;
+}
+
+.slab-text--muted {
+  color: #bebebe;
+}
+
+.slab-text--link {
+  color: #0074f2;
+}
+
+
+
+
+
+/* Form content
+========================================================================== */
+
+
+.slab-header__logo {
+  height: 68px;
+}
+
+.slab-form {
+  flex: 1;
+}
+
+.slab-form__input {
+  height: 41px;
+  border: 0;
+  box-shadow: 0 0 4px #d0d0d0;
+  font-size: 14px;
+  padding: 0 15px;
+  border-left: 3px solid #fff;
+  outline: none;
+}
+
+.slab-form__input:focus {
+  border-left: 3px solid #0074f2;
+  transition: border-color .6s ease-out;
+}
+
+.slab-form__input--topradius {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-bottom: none;
+}
+
+.slab-form__input--bottomradius {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.slab-form__submit {
+  background-color: rgba(0, 116, 242, 1);
+  color: white;
+  height: 45px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.slab-form__submit:hover {
+  background-color: rgba(0, 116, 242, .8);
+  border: 2px solid rgba(0, 0, 0, .1);
+  transition: all .3s ease-out;
+}

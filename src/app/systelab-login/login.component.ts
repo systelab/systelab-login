@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { I18nService } from 'systelab-translate/lib/i18n.service';
 import { DialogService } from 'systelab-components/widgets/modal/dialog/dialog.service';
 
@@ -11,11 +11,16 @@ export class UserCredendials {
 @Component({
 	selector:    'systelab-login',
 	templateUrl: 'login.component.html',
+	styleUrls:   ['login.component.scss']
 })
 export class LoginComponent {
 
 	public userName = '';
 	public password = '';
+
+	@Input() applicationLogo = undefined;
+	@Input() companyLogo = undefined;
+	@Input() background = undefined;
 
 	@Output() login = new EventEmitter<UserCredendials>();
 
