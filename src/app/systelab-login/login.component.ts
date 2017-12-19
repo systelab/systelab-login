@@ -18,6 +18,10 @@ export class LoginComponent {
 	public userName = '';
 	public password = '';
 
+	@Input() applicationName = undefined;
+	@Input() moduleName = undefined;
+	@Input() version = undefined;
+
 	@Input() applicationLogo = undefined;
 	@Input() companyLogo = undefined;
 	@Input() background = undefined;

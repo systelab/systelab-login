@@ -6,9 +6,9 @@
         <div class="d-flex slab-header align-content-center">
             <img class="slab-header__logo mr-4" src="{{applicationLogo}}">
             <div>
-                <div class="slab-text">Modulab</div>
-                <div class="slab-text slab-text--large">Extracciones</div>
-                <div class="slab-text slab-text--small slab-text--muted">Versión 3.0 (build 123)</div>
+                <div class="slab-text">{{applicationName}}</div>
+                <div class="slab-text slab-text--large">{{moduleName}}</div>
+                <div class="slab-text slab-text--small slab-text--muted">{{version}}</div>
             </div>
         </div>
 
@@ -17,7 +17,6 @@
             <form>
                 <input class="w-100 slab-form__input slab-form__input--topradius" [(ngModel)]="userName" placeholder="Nombre de usuario" name="login" type="text" required autocomplete="off">
                 <input class="w-100 slab-form__input slab-form__input--bottomradius" [(ngModel)]="password" placeholder="Contraseña" name="pwd" type="password" required autocomplete="off">
-                <label class="w-100 mt-3 slab-text slab-text--small"><input class="mr-1" type="checkbox"> Mantener sesión iniciada</label>
                 <button class="w-100 btn slab-form__submit mt-5">ENTRA</button>
             </form>
         </div>
