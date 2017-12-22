@@ -1,4 +1,7 @@
-<systelab-login (login)="doLogin($event)" [companyLogo]="'assets/img/brand/werfen.png'"
+<systelab-login (login)="doLogin($event)"
+                [(userName)]="userName"
+                [(password)]="password"
+                [companyLogo]="'assets/img/brand/werfen.png'"
                 [applicationLogo]="'assets/img/brand/modulab.svg'"
                 [background]="'assets/img/background/background.jpg'"
                 [copyright]="'Copyright 2000-2018 Werfen'"

@@ -8,7 +8,7 @@ import { I18nService } from 'systelab-translate/lib/i18n.service';
 import { Observable } from 'rxjs/Observable';
 
 export class ChangePasswordDialogParameters extends ModulabModalContext {
-	public width = 650;
+	public width = 550;
 	public height = 330;
 	public userName: string;
 	public minPasswordStrengthValue: number;
@@ -148,7 +148,6 @@ export class ChangePasswordDialog extends DefaultModalActions implements ModalCo
 
 	public getPasswordComplexityTooltip() {
 		if (this.passwordCriteriaLabel !== '') {
-
 			return this.i18nService.instant(this.passwordCriteriaLabel, {
 				complexity:  this.complexityValue,
 				char_number: this.minPasswordLength
@@ -157,11 +156,6 @@ export class ChangePasswordDialog extends DefaultModalActions implements ModalCo
 	}
 
 	public checkNewRepeatedPassword(): boolean {
-		if (this.newPassword !== this.repeatedPassword) {
-			this.parameters.height = 345;
-		} else {
-			this.parameters.height = 330;
-		}
 		return this.newPassword !== this.repeatedPassword;
 	}
 }
