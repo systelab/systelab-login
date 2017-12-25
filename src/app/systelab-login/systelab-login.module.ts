@@ -5,12 +5,14 @@ import { FormsModule } from '@angular/forms';
 import { SystelabTranslateModule } from 'systelab-translate';
 import { LoginComponent } from './login.component';
 import { ChangePasswordDialog } from './change-password-dialog.component';
+import { SystelabComponentsModule } from 'systelab-components';
 
 @NgModule({
 	imports:         [
 		CommonModule,
 		FormsModule,
 		SystelabTranslateModule,
+		SystelabComponentsModule
 	],
 	declarations:    [
 		LoginComponent,

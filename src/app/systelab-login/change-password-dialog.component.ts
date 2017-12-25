@@ -11,7 +11,7 @@ export class ChangePasswordDialogParameters extends ModulabModalContext {
 	public width = 550;
 	public height = 330;
 	public userName: string;
-	public minPasswordStrengthValue: number;
+	public minPasswordStrengthValue=1;
 	public action: (oldPassword: string, newPassword: string) => Observable<boolean>;
 }
 
@@ -62,6 +62,10 @@ export class ChangePasswordDialog extends DefaultModalActions implements ModalCo
 
 	public close(): void {
 		this.dialog.close();
+	}
+
+	public getTitle() {
+		this.i18nService.instant('COMMON_CHANGE_PASSWORD');
 	}
 
 	public isOK() {
