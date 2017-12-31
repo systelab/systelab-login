@@ -12,8 +12,8 @@
         <div class="d-flex slab-form align-content-center flex-wrap mt-4">
             <div class="mb-4 slab-text slab-text--large slab-text--muted">{{ 'COMMON_SESSION_LOGIN' | translate | async }}</div>
             <form>
-                <input class="w-100 slab-form__input slab-form__input--topradius" [(ngModel)]="userName" id="inputUserName" placeholder="Nombre de usuario" name="login" type="text" required autocomplete="off">
-                <input class="w-100 slab-form__input slab-form__input--bottomradius" [(ngModel)]="password" id="inputPassword" placeholder="Contraseña" name="pwd" type="password" required autocomplete="off">
+                <input class="w-100 slab-form__input slab-form__input--topradius" [(ngModel)]="userName" id="inputUserName" placeholder="{{ 'COMMON_USERNAME' | translate | async }}" name="login" type="text" required autocomplete="off">
+                <input class="w-100 slab-form__input slab-form__input--bottomradius" [(ngModel)]="password" id="inputPassword" placeholder="{{ 'COMMON_PASSWORD' | translate | async }}" name="pwd" type="password" required autocomplete="off">
                 <button class="w-100 btn slab-form__submit mt-4" (click)="doLogin()">{{ 'COMMON_ENTER' | translate | async }}</button>
                 <div *ngIf="errorUserPwd" class="text-center text-danger pt-2">
                     {{ errorMessage | translate | async}}

@@ -64,10 +64,6 @@ export class ChangePasswordDialog extends DefaultModalActions implements ModalCo
 		this.dialog.close();
 	}
 
-	public getTitle() {
-		this.i18nService.instant('COMMON_CHANGE_PASSWORD');
-	}
-
 	public isOK() {
 		return this.oldPassword &&
 			this.newPassword === this.repeatedPassword &&
