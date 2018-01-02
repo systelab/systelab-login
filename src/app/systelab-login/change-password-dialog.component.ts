@@ -1,16 +1,14 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { DialogRef, ModalComponent } from 'ngx-modialog';
-import { ModulabModalContext } from 'systelab-components/widgets/modal/plugin/modulab';
-import { MessagePopupService } from 'systelab-components/widgets/modal/message-popup/message-popup.service';
-import { DialogService } from 'systelab-components/widgets/modal/dialog/dialog.service';
 import { I18nService } from 'systelab-translate/lib/i18n.service';
 import { Observable } from 'rxjs/Observable';
+import { DialogService, MessagePopupService, SystelabModalContext } from 'systelab-components/widgets/modal';
 
-export class ChangePasswordDialogParameters extends ModulabModalContext {
+export class ChangePasswordDialogParameters extends SystelabModalContext {
 	public width = 550;
 	public height = 330;
 	public userName: string;
-	public minPasswordStrengthValue=1;
+	public minPasswordStrengthValue = 1;
 	public action: (oldPassword: string, newPassword: string) => Observable<boolean>;
 }
 
