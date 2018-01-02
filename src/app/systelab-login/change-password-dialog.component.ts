@@ -1,7 +1,6 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { DialogRef, ModalComponent } from 'ngx-modialog';
 import { ModulabModalContext } from 'systelab-components/widgets/modal/plugin/modulab';
-import { DefaultModalActions } from 'systelab-components/widgets/modal/message-popup/message-popup-view.component';
 import { MessagePopupService } from 'systelab-components/widgets/modal/message-popup/message-popup.service';
 import { DialogService } from 'systelab-components/widgets/modal/dialog/dialog.service';
 import { I18nService } from 'systelab-translate/lib/i18n.service';
@@ -19,7 +18,7 @@ export class ChangePasswordDialogParameters extends ModulabModalContext {
 	templateUrl: 'change-password-dialog.component.html',
 	styleUrls:   ['change-password-dialog.component.scss'],
 })
-export class ChangePasswordDialog extends DefaultModalActions implements ModalComponent<ChangePasswordDialogParameters>, AfterViewInit {
+export class ChangePasswordDialog implements ModalComponent<ChangePasswordDialogParameters>, AfterViewInit {
 
 	public parameters: ChangePasswordDialogParameters;
 
@@ -47,7 +46,6 @@ export class ChangePasswordDialog extends DefaultModalActions implements ModalCo
 	}
 
 	constructor(public dialog: DialogRef<ChangePasswordDialogParameters>, protected dialogService: DialogService, protected messagePopupService: MessagePopupService, protected i18nService: I18nService) {
-		super(dialog);
 		this.parameters = dialog.context;
 		this.setupPasswordComplexityTooltip();
 	}
