@@ -9,8 +9,19 @@
       "outDir": "dist",
       "assets": [
         "assets/img/brand/werfen.png",
-        "assets/img/brand/modulab.svg",
+        "assets/img/brand/logo.png",
         "assets/img/background/background.jpg",
+        {
+          "glob": "**/*",
+          "input": "./i18n/error",
+          "output": "./i18n/error"
+        },
+        {
+          "glob": "**/*",
+          "input": "./i18n/language",
+          "output": "./i18n/language"
+        },
+
         "favicon.ico"
       ],
       "index": "index.html",
