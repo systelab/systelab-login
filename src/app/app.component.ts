@@ -38,7 +38,6 @@ export class AppComponent {
 	public doSignUp() {
 		this.dialogService.showDialog(ChangePasswordDialog, ChangePasswordDialog.getParameters());
 		console.log('doLogin');
-		this.errorUserExist =true;
 	}
 
 	public doRecovery() {
