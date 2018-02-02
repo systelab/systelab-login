@@ -11,7 +11,7 @@
         </div>
         <div class="d-flex slab-form align-content-center flex-wrap mt-4" *ngIf="typeForm === 'login'">
             <div class="mb-4 slab-text slab-text--large slab-text--muted">{{ 'COMMON_SESSION_LOGIN' | translate | async }}</div>
-            <form novalidate>
+            <form novalidate class="w-100">
                 <input class="w-100 slab-form__input slab-form__input--topradius" [(ngModel)]="userName" [ngClass]="{'slab-form_input--error':  inputUserName.invalid && inputUserName.touched }"
                     id="inputUserName" placeholder="{{txtUsername}}" #inputUserName="ngModel" name="inputUserName"
                     ng-enter="doLogin()" type="text" required autocomplete="off" maxlength="20" minlength="6">
@@ -34,7 +34,7 @@
                     <a>{{ 'ERROR_INCORRECT_USERNAME_OR_PASSWORD' | translate | async }}</a>
                 </div>
 
-
+                <i class="icon-spinner spin"></i>
                 <div *ngIf="isLoading" class="text-center pt-2">
                     {{ 'COMMON_LOADING' | translate | async }}...
                     <i class="icon-spinner spin"></i>
@@ -46,7 +46,7 @@
         </div>
         <div class="d-flex slab-form align-content-center flex-wrap mt-4" *ngIf="typeForm === 'signup'">
             <div class="mb-4 slab-text slab-text--large slab-text--muted">{{ 'COMMON_SESSION_SIGNUP' | translate | async }}</div>
-            <form novalidate>
+            <form novalidate class="w-100">
 
                 <input class="w-100 slab-form__input slab-form__input--topradius" [ngClass]="{'slab-form_input--error':  inputUserName.invalid && inputUserName.touched }"
                     id="inputUserName" [(ngModel)]="userName" placeholder="{{ 'COMMON_USERNAME' | translate | async }}" #inputUserName="ngModel"
@@ -94,7 +94,7 @@
         </div>
         <div class="d-flex slab-form align-content-center flex-wrap mt-4" *ngIf="typeForm === 'recovery'">
                 <div class="mb-4 slab-text slab-text--large slab-text--muted">{{ 'COMMON_SESSION_RECOVERY' | translate | async }}</div>
-                <form novalidate>
+                <form novalidate class="w-100">
     
                     <input class="w-100 slab-form__input slab-form__input--topradius" [ngClass]="{'slab-form_input--error':  inputUserName.invalid && inputUserName.touched }"
                         id="inputUserName" [(ngModel)]="userName" placeholder="{{txtUsername}}" #inputUserName="ngModel"

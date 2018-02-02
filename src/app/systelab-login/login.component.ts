@@ -119,6 +119,7 @@ export class LoginComponent {
 		this.recovery.emit();
 	}
 	public goSignUp(){
+		this.isLoading=true;
 		this.typeForm = 'signup';
 	}
 	public goRecovery(){

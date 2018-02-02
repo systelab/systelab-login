@@ -162,3 +162,13 @@ small.badge-warning{
 .slab-form_input--error{
   border-left: 3px solid #f45642 !important;
 }
+.slab-form_input:disabled,.btn:disabled{
+  cursor:no-drop;
+}
+
+
+
+
+
+
+
