@@ -32,7 +32,8 @@ This is an example of a combiantion of the three available components.
                 [errorUserDoesNotExist]="errorUserDoesNotExist"
                 [txtUsername]="txtUsername"
                 [txtRecoverProcessStarted]="txtRecoverProcessStarted"
-                [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'"></systelab-login>
+                [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'">
+                </systelab-login>
 ```
 
 ### Only Login
@@ -51,7 +52,8 @@ This is an example of a combiantion of the three available components.
                 [pathTerms]="pathTerms"
                 [pathPrivacy]="pathPrivacy"
                 [txtUsername]="txtUsername"
-                [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'"></systelab-login>
+                [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'">
+                </systelab-login>
 ```
 
 ### Only Registration
@@ -72,7 +74,8 @@ This is an example of a combiantion of the three available components.
                 [errorUserExist]="errorUserExist"
                 [pathTerms]="pathTerms"
                 [pathPrivacy]="pathPrivacy"
-                [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'"></systelab-login>
+                [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'">
+                </systelab-login>
 ```
 
 ### Only Password Recovery
@@ -90,7 +93,8 @@ This is an example of a combiantion of the three available components.
                 [txtUsername]="txtUsername"
                 [errorUserDoesNotExist]="errorUserDoesNotExist"
                 [txtRecoverProcessStarted]="txtRecoverProcessStarted"
-                [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'"></systelab-login>
+                [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'">
+                </systelab-login>
 ```
 
 ### Login and Registration
@@ -115,7 +119,8 @@ This is an example of a combiantion of the three available components.
                 [pathTerms]="pathTerms"
                 [pathPrivacy]="pathPrivacy"
                 [txtUsername]="txtUsername"
-                [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'"></systelab-login>
+                [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'">
+                </systelab-login>
 ```
 
 ### Login and Recovery Password
@@ -138,7 +143,8 @@ This is an example of a combiantion of the three available components.
                 [pathPrivacy]="pathPrivacy"
                 [txtUsername]="txtUsername"
                 [txtRecoverProcessStarted]="txtRecoverProcessStarted"
-                [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'"></systelab-login>
+                [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'">
+                </systelab-login>
 ```
 
 
@@ -147,17 +153,18 @@ Be careful and make sure that the images are loaded by Webpack.
 ### Properties
 
 #### Methods: Login, Sign Up and Password Recovery
-**(login)="doLogin($event)"**
 
-Is the method that you will implement to do the login.
+- (login)="doLogin($event)"
 
-**(signUp)="doSignUp($event)"**
+  Is the method that you will implement to do the login.
 
-Is the method that you will implement to do the sign up.
+- (signUp)="doSignUp($event)"
 
-**(recovery)="doRecovery($event)"**
+  Is the method that you will implement to do the sign up.
 
-Is the method that you will implement to start the process of password recovery.
+- (recovery)="doRecovery($event)"
+
+  Is the method that you will implement to start the process of password recovery.
 
 
 #### Principal Form: typeForm
@@ -182,16 +189,16 @@ If you set activeLogin = 1 you will have in the Sign Up and Password Recovery pa
 
 #### Errors messages: errorUserPwd, errorUserExist and errorUserDoesNotExist
 
-**errorUserPwd**
+- errorUserPwd
 
-After do the login if the username and password are incorrect, you can set errorUserPwd = true to display a error message.
+  After do the login if the username and password are incorrect, you can set errorUserPwd = true to display a error message.
 
-**errorUserExist**
+- errorUserExist
 
-After do the sign up if the username already exist, you can set errorUserExist = true to display a error message.
+  After do the sign up if the username already exist, you can set errorUserExist = true to display a error message.
 
-**errorUserDoesNotExist**
-After check if the user exist in the password recovery form, if the user doesn't exist you can set errorUserDoesNotExist=true to display a error message.
+- errorUserDoesNotExist
+  After check if the user exist in the password recovery form, if the user doesn't exist you can set errorUserDoesNotExist=true to display a error message.
 
 #### External links: pathTerms and pathPrivacy
 
@@ -204,24 +211,24 @@ You can configure the images of the component, set your path for each of images.
 
 #### Labels:  txtUsername, txtRecoverProcessStarted, applicationName, moduleName, version
 
-**txtUsername**
-Text for the placeholder of the username in the login form and in the password recovery form.
+- txtUsername
+  Text for the placeholder of the username in the login form and in the password recovery form.
 
-Depend if in you app allow perform the login using the email or the username, or only the username or with the email, you can configure the text in the form.
+  Depend if in you app allow perform the login using the email or the username, or only the username or with the email, you can configure the text in the form.
 
-**txtRecoverProcessStarted**
+- txtRecoverProcessStarted
 
-After perform the recovery you can configure the message you need to display, depend of the next steps in your password recovery process.
+  After perform the recovery you can configure the message you need to display, depend of the next steps in your password recovery process.
 
-**applicationName**
+- applicationName
 
-The name of the application
+  The name of the application
 
-**moduleName**
-If you have a specific name for the module, you can set and display.
+- moduleName
+  If you have a specific name for the module, you can set and display.
 
-**version**
-If you have a versioned application you can display the current version.
+- version
+  If you have a versioned application you can display the current version.
 
 
 # systelab-change-password
