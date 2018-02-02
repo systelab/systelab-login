@@ -88,7 +88,16 @@
   color: #0074f2;
 }
 
-
+.slab-text--xsmall{
+  font-size: 0.7em;
+  line-height: 1.5;
+}
+small.badge{
+  font-weight: normal;
+}
+small.badge-warning{
+  color:#ffffff;
+}
 
 
 
@@ -142,4 +151,14 @@
   background-color: rgba(0, 116, 242, .8);
   border: 2px solid rgba(0, 0, 0, .1);
   transition: all .3s ease-out;
+}
+
+.slab-form_input--marginTop25{
+  margin-top:25px;
+}
+.slab-form_input--marginTop15{
+  margin-top:15px;
+}
+.slab-form_input--error{
+  border-left: 3px solid #f45642 !important;
 }

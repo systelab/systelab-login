@@ -12,14 +12,40 @@ export class AppComponent {
 
 	public userName = '';
 	public password = '';
+	public name='';
+	public lang='';
+	public lastName='';
+	public typeForm='';
+	public email='';
+	public errorUserPwd=false;
+	public errorUserDoesNotExist=false;
+	public errorUserExist=false;
+	public txtUsername='';
+	public txtRecoverProcessStarted='';
+	public pathTerms='http://www.werfen.com/en/terms-and-conditions';
+	public pathPrivacy='http://www.werfen.com/en/privacy-policy';
 
 	public constructor(protected dialogService: DialogService) {
-
+		this.typeForm='login';
+		this.txtUsername='Username';
 	}
 
 	public doLogin() {
 		this.dialogService.showDialog(ChangePasswordDialog, ChangePasswordDialog.getParameters());
 		console.log('doLogin');
 	}
+
+	public doSignUp() {
+		this.dialogService.showDialog(ChangePasswordDialog, ChangePasswordDialog.getParameters());
+		console.log('doLogin');
+		this.errorUserExist =true;
+	}
+
+	public doRecovery() {
+		this.dialogService.showDialog(ChangePasswordDialog, ChangePasswordDialog.getParameters());
+		console.log('doLogin');
+	}
+
+	
 
 }
