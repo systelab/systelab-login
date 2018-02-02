@@ -105,7 +105,14 @@ export class LoginComponent {
 
 
 	constructor(protected dialogService: DialogService, protected i18nService: I18nService) {
-		
+		if(!this.typeForm){
+			this.typeForm = 'login'
+		}
+		if(!this.txtUsername){
+			this.i18nService.get(['COMMON_USERNAME']).subscribe((translation: string) => {
+				this.txtUsername = translation["COMMON_USERNAME"];
+			});
+		}
 	}
 
 	public doLogin() {
