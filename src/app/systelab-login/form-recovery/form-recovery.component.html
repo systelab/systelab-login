@@ -2,7 +2,7 @@
        id="inputUserName" [(ngModel)]="userName" placeholder="{{txtUsername}}"
        name="inputUserName" (keyup.enter)="doSignUp()" required autocomplete="off" maxlength="20" minlength="6">
 
-<button class="w-100 btn btn-primary slab-form__submit mt-4" (click)="doRecovery()" [disabled]="inputUserName.invalid ">{{ 'COMMON_SEND' | translate | async }}</button>
+<button type="button" class="w-100 btn btn-primary slab-form__submit mt-4" (click)="doRecovery()" [disabled]="inputUserName.invalid ">{{ 'COMMON_SEND' | translate | async }}</button>
 
 <div class="slab-form_input--marginTop25 text-center" *ngIf="isLoginActive">
     <a href="#" class="slab-text slab-text--link  " (click)="goLogin()">{{ 'COMMON_I_HAVE_ACCOUNT' | translate | async }}</a>

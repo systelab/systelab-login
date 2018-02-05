@@ -10,7 +10,7 @@
     <a href="#" class="slab-text slab-text--link" (click)="goRecovery()">{{ 'COMMON_FORGOT_PASSWORD' | translate | async }}</a>
 </div>
 
-<button class="w-100 btn btn-primary slab-form__submit mt-4" [disabled]="inputUserName.invalid ||  inputPassword.invalid"
+<button type="button" class="w-100 btn btn-primary slab-form__submit mt-4" [disabled]="inputUserName.invalid ||  inputPassword.invalid"
         (click)="doLogin()">{{ 'COMMON_ENTER' | translate | async }}
 </button>
 

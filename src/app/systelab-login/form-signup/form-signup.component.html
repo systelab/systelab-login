@@ -24,7 +24,7 @@
        class="w-100  slab-form__input " (keyup.enter)="doSignUp()" id="inputLastName" name="inputLastName" [(ngModel)]="lastName"
        required maxlength="80" minlength="2"/>
 
-<button class="w-100 btn btn-primary slab-form__submit mt-4" (click)="doSignUp()"
+<button type="button" class="w-100 btn btn-primary slab-form__submit mt-4" (click)="doSignUp()"
         [disabled]="inputUserName.invalid || inputEmail.invalid || inputPassword.invalid || inputName.invalid ||  inputLastName.invalid ">{{ 'COMMON_SEND' | translate | async }}
 </button>
 
