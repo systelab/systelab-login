@@ -2,15 +2,15 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { I18nService } from 'systelab-translate/lib/i18n.service';
 
 @Component({
-  selector: 'slt-form-recovery',
-  templateUrl: './form-recovery.component.html',
-  styleUrls:   ['../login.component.scss']
+	selector:    'slt-form-recovery',
+	templateUrl: './form-recovery.component.html',
+	styleUrls:   ['../login.component.scss']
 })
-export class FormRecoveryComponent  {
-  private _userName = '';
-  private _typeForm='';
+export class FormRecoveryComponent {
+	private _userName = '';
+	private _currentForm = '';
 
-  @Input()
+	@Input()
 	get userName(): string {
 		return this._userName;
 	}
@@ -20,43 +20,39 @@ export class FormRecoveryComponent  {
 	set userName(value: string) {
 		this._userName = value;
 		this.userNameChange.emit(this._userName);
-  }
-  
-  @Input()
-	get typeForm(): string {
-		return this._typeForm;
 	}
 
-	@Output() typeFormChange = new EventEmitter();
-
-	set typeForm(value: string) {
-		this._typeForm = value;
-		this.typeFormChange.emit(this._typeForm);
+	@Input()
+	get currentForm(): string {
+		return this._currentForm;
 	}
 
-  @Input() activeLogin = false;
-  @Input() txtRecoverProcessStarted=undefined;
-  @Input() errorUserDoesNotExist=false;
-  @Input() errorUserPwd = false;
-  @Input() txtUsername='';
-  @Output() recovery = new EventEmitter();
-	@Input() isLoading:boolean=false;
+	@Output() currentFormChange = new EventEmitter();
 
+	set currentForm(value: string) {
+		this._currentForm = value;
+		this.currentFormChange.emit(this._currentForm);
+	}
 
-  constructor(protected i18nService: I18nService) { 
+	@Input() isLoginActive = false;
+	@Input() txtRecoverProcessStarted = undefined;
+	@Input() errorUserDoesNotExist = false;
+	@Input() errorUserPwd = false;
+	@Input() txtUsername = '';
+	@Output() recovery = new EventEmitter();
+	@Input() isLoading = false;
 
-    if(!this.txtUsername){
-			this.i18nService.get(['COMMON_USERNAME']).subscribe((translation: string) => {
-				this.txtUsername = translation["COMMON_USERNAME"];
-			});
+	constructor(protected i18nService: I18nService) {
+		if (!this.txtUsername) {
+			this.txtUsername = i18nService.instant('COMMON_USERNAME');
 		}
+	}
 
-  }
-
-	public doRecovery(){
+	public doRecovery() {
 		this.recovery.emit();
-  }
-  public goLogin(){
-		this.typeForm = 'login';
+	}
+
+	public goLogin() {
+		this.currentForm = 'login';
 	}
 }

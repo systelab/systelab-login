@@ -1,18 +1,17 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { I18nService } from 'systelab-translate/lib/i18n.service';
 
 @Component({
-  selector: 'slt-form-signup',
-  templateUrl: './form-signup.component.html',
-  styleUrls:   ['../login.component.scss']
+	selector:    'slt-form-signup',
+	templateUrl: './form-signup.component.html',
+	styleUrls:   ['../login.component.scss']
 })
-export class FormSignupComponent  {
-  private _userName = '';
+export class FormSignupComponent {
+	private _userName = '';
 	private _password = '';
 	private _lastName = '';
 	private _name = '';
 	private _email = '';
-  private _typeForm='';
+	private _currentForm = '';
 
 	@Input()
 	get userName(): string {
@@ -72,31 +71,33 @@ export class FormSignupComponent  {
 	set email(value: string) {
 		this._email = value;
 		this.emailChange.emit(this._email);
-  }
-  
-  @Input()
-	get typeForm(): string {
-		return this._typeForm;
 	}
 
-	@Output() typeFormChange = new EventEmitter();
+	@Input()
+	get currentForm(): string {
+		return this._currentForm;
+	}
 
-	set typeForm(value: string) {
-		this._typeForm = value;
-		this.typeFormChange.emit(this._typeForm);
-  }
-  
-  @Input() activeLogin = false;
-  @Input() errorUserExist = false;
-  @Output() signUp = new EventEmitter();
-  @Input() isLoading:boolean=false;
-  
-  constructor() { }
+	@Output() currentFormChange = new EventEmitter();
 
-  public goLogin(){
-		this.typeForm = 'login';
-  }
-  public doSignUp() {
+	set currentForm(value: string) {
+		this._currentForm = value;
+		this.currentFormChange.emit(this._currentForm);
+	}
+
+	@Input() isLoginActive = false;
+	@Input() errorUserExist = false;
+	@Output() signUp = new EventEmitter();
+	@Input() isLoading: boolean = false;
+
+	constructor() {
+	}
+
+	public goLogin() {
+		this.currentForm = 'login';
+	}
+
+	public doSignUp() {
 		this.signUp.emit();
 	}
 

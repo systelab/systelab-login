@@ -1,16 +1,18 @@
-import {  Component, EventEmitter, Input, Output  } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { I18nService } from 'systelab-translate/lib/i18n.service';
-@Component({
-  selector: 'slt-form-login',
-  templateUrl: './form-login.component.html',
-  styleUrls:   ['../login.component.scss']
-})
-export class FormLoginComponent  {
 
-  private _typeForm='';
-  private _userName = '';
+@Component({
+	selector:    'slt-form-login',
+	templateUrl: './form-login.component.html',
+	styleUrls:   ['../login.component.scss']
+})
+export class FormLoginComponent {
+
+	private _currentForm = '';
+	private _userName = '';
 	private _password = '';
-  @Input()
+
+	@Input()
 	get userName(): string {
 		return this._userName;
 	}
@@ -32,47 +34,45 @@ export class FormLoginComponent  {
 	set password(value: string) {
 		this._password = value;
 		this.passwordChange.emit(this._password);
-  }
-  
+	}
+
 	@Input()
-	get typeForm(): string {
-		return this._typeForm;
+	get currentForm(): string {
+		return this._currentForm;
 	}
 
-	@Output() typeFormChange = new EventEmitter();
+	@Output() currentFormChange = new EventEmitter();
 
-	set typeForm(value: string) {
-		this._typeForm = value;
-		this.typeFormChange.emit(this._typeForm);
+	set currentForm(value: string) {
+		this._currentForm = value;
+		this.currentFormChange.emit(this._currentForm);
 	}
 
-	@Input() activeRecovery = false;
-	@Input() activeSignUp = false;
-  @Input() errorUserPwd = false;
-  @Input() txtUsername='';
-  @Input() isLoading:boolean=false;
-  
-  @Output() login = new EventEmitter();
+	@Input() isRecoveryActive = false;
+	@Input() isSignUpActive = false;
+	@Input() errorUserPwd = false;
+	@Input() txtUsername = '';
+	@Input() isLoading = false;
 
-  constructor(protected i18nService: I18nService) { 
+	@Output() login = new EventEmitter();
 
-    if(!this.txtUsername){
-			this.i18nService.get(['COMMON_USERNAME']).subscribe((translation: string) => {
-				this.txtUsername = translation["COMMON_USERNAME"];
-			});
+	constructor(protected i18nService: I18nService) {
+
+		if (!this.txtUsername) {
+			this.txtUsername = this.i18nService.instant('COMMON_USERNAME');
 		}
 
-  }
-
-  ngOnInit() {
-  }
-  public doLogin() {
-		this.login.emit();
-  }
-  public goSignUp(){
-		this.typeForm = 'signup';
 	}
-	public goRecovery(){
-		this.typeForm = 'recovery';
+
+	public doLogin() {
+		this.login.emit();
+	}
+
+	public goSignUp() {
+		this.currentForm = 'signup';
+	}
+
+	public goRecovery() {
+		this.currentForm = 'recovery';
 	}
 }

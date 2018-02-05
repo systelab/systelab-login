@@ -74,10 +74,10 @@ export class LoginComponent {
 		this.emailChange.emit(this._email);
 	}
 
-	@Input() typeForm = undefined;
-	@Input() activeRecovery = false;
-	@Input() activeLogin = false;
-	@Input() activeSignUp = false;
+	@Input() currentForm = undefined;
+	@Input() isRecoveryActive = false;
+	@Input() isLoginActive = false;
+	@Input() isSignUpActive = false;
 
 	@Input() applicationName = undefined;
 	@Input() moduleName = undefined;
@@ -88,30 +88,27 @@ export class LoginComponent {
 	@Input() background = undefined;
 	@Input() copyright = undefined;
 
-	@Input() errorUserExist=false;
-	@Input() errorUserDoesNotExist=false;
+	@Input() errorUserExist = false;
+	@Input() errorUserDoesNotExist = false;
 	@Input() errorUserPwd = false;
 	@Input() errorMessage = '';
 	@Input() isLoading = false;
-	@Input() txtUsername='';
-	@Input() txtRecoverProcessStarted=undefined;
+	@Input() txtUsername = '';
+	@Input() txtRecoverProcessStarted = undefined;
 
-	@Input() pathTerms=undefined;
-	@Input() pathPrivacy=undefined;
+	@Input() pathTerms = undefined;
+	@Input() pathPrivacy = undefined;
 
 	@Output() login = new EventEmitter();
 	@Output() signUp = new EventEmitter();
 	@Output() recovery = new EventEmitter();
 
-
 	constructor(protected dialogService: DialogService, protected i18nService: I18nService) {
-		if(!this.typeForm){
-			this.typeForm = 'login'
+		if (!this.currentForm) {
+			this.currentForm = 'login'
 		}
-		if(!this.txtUsername){
-			this.i18nService.get(['COMMON_USERNAME']).subscribe((translation: string) => {
-				this.txtUsername = translation["COMMON_USERNAME"];
-			});
+		if (!this.txtUsername) {
+			this.txtUsername = this.i18nService.instant('COMMON_USERNAME');
 		}
 	}
 
@@ -122,16 +119,20 @@ export class LoginComponent {
 	public doSignUp() {
 		this.signUp.emit();
 	}
-	public doRecovery(){
+
+	public doRecovery() {
 		this.recovery.emit();
 	}
-	public goSignUp(){
-		this.typeForm = 'signup';
+
+	public goSignUp() {
+		this.currentForm = 'signup';
 	}
-	public goRecovery(){
-		this.typeForm = 'recovery';
+
+	public goRecovery() {
+		this.currentForm = 'recovery';
 	}
-	public goLogin(){
-		this.typeForm = 'login';
+
+	public goLogin() {
+		this.currentForm = 'login';
 	}
 }

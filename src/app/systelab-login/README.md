@@ -1,14 +1,14 @@
 # systelab-login
 
-Component to show a fancy screen which offer different components login, Sign Up and Password Recovery.
+Component to show a fancy screen which offer different components such as login, sign up and password recovery.
 
-You can configure individual components or a combination of each.
+You can setup and use the individual components or a combination of them.
 
 ## Using the template
 
 ### All components
 
-This is an example of a combiantion of the three available components.
+This is an example with the three components enabled.
 
 ```
 <systelab-login (login)="doLogin($event)" (signUp)="doSignUp($event)" (recovery)="doRecovery($event)"  
@@ -17,10 +17,10 @@ This is an example of a combiantion of the three available components.
                 [(name)]="name"
                 [(lastName)]="lastName"
                 [(email)]="email"
-                [activeRecovery]="activeRecovery"
-                [activeSignUp]="activeSignUp"
-                [activeLogin]="activeLogin"
-                [typeForm]="typeForm"
+                [isRecoveryActive]="true"
+                [isSignUpActive]="true"
+                [isLoginActive]="true"
+                [currentForm]="currentForm"
                 [companyLogo]="'assets/img/brand/werfen.png'"
                 [applicationLogo]="'assets/img/brand/logo.png'"
                 [background]="'assets/img/background/background.jpg'"
@@ -43,8 +43,8 @@ This is an example of a combiantion of the three available components.
 <systelab-login (login)="doLogin($event)"
                 [(userName)]="userName"
                 [(password)]="password"
-                [activeLogin]="1"
-                [typeForm]="typeForm"
+                [isLoginActive]="true"
+                [currentForm]="currentForm"
                 [companyLogo]="'assets/img/brand/werfen.png'"
                 [applicationLogo]="'assets/img/brand/logo.png'"
                 [background]="'assets/img/background/background.jpg'"
@@ -66,8 +66,8 @@ This is an example of a combiantion of the three available components.
                 [(name)]="name"
                 [(lastName)]="lastName"
                 [(email)]="email"
-                [activeSignUp]="1"
-                [typeForm]="typeForm"
+                [isSignUpActive]="true"
+                [currentForm]="currentForm"
                 [companyLogo]="'assets/img/brand/werfen.png'"
                 [applicationLogo]="'assets/img/brand/logo.png'"
                 [background]="'assets/img/background/background.jpg'"
@@ -83,8 +83,8 @@ This is an example of a combiantion of the three available components.
 ```
 <systelab-login  (recovery)="doRecovery($event)"  
                 [(userName)]="userName"
-                [activeRecovery]="1"
-                [typeForm]="typeForm"
+                [isRecoveryActive]="true"
+                [currentForm]="currentForm"
                 [companyLogo]="'assets/img/brand/werfen.png'"
                 [applicationLogo]="'assets/img/brand/logo.png'"
                 [background]="'assets/img/background/background.jpg'"
@@ -93,56 +93,6 @@ This is an example of a combiantion of the three available components.
                 [pathPrivacy]="pathPrivacy"
                 [txtUsername]="txtUsername"
                 [errorUserDoesNotExist]="errorUserDoesNotExist"
-                [txtRecoverProcessStarted]="txtRecoverProcessStarted"
-                [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'" [isLoading]="isLoading">
-                </systelab-login>
-```
-
-### Login and Registration
-
-```
-<systelab-login (login)="doLogin($event)" (signUp)="doSignUp($event)"  
-                [(userName)]="userName"
-                [(password)]="password"
-                [(name)]="name"
-                [(lastName)]="lastName"
-                [(email)]="email"
-                [activeRecovery]="0"
-                [activeSignUp]="1"
-                [activeLogin]="1"
-                [typeForm]="typeForm"
-                [companyLogo]="'assets/img/brand/werfen.png'"
-                [applicationLogo]="'assets/img/brand/logo.png'"
-                [background]="'assets/img/background/background.jpg'"
-                [copyright]="'Copyright 2000-2018 Werfen'"
-                [errorUserPwd]="errorUserPwd"
-                [errorUserExist]="errorUserExist"
-                [pathTerms]="pathTerms"
-                [pathPrivacy]="pathPrivacy"
-                [txtUsername]="txtUsername"
-                [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'" [isLoading]="isLoading">
-                </systelab-login>
-```
-
-### Login and Recovery Password
-
-```
-<systelab-login (login)="doLogin($event)" (recovery)="doRecovery($event)"  
-                [(userName)]="userName"
-                [(password)]="password"
-                [activeRecovery]="1"
-                [activeSignUp]="0"
-                [activeLogin]="1"
-                [typeForm]="typeForm"
-                [companyLogo]="'assets/img/brand/werfen.png'"
-                [applicationLogo]="'assets/img/brand/logo.png'"
-                [background]="'assets/img/background/background.jpg'"
-                [copyright]="'Copyright 2000-2018 Werfen'"
-                [errorUserPwd]="errorUserPwd"
-                [errorUserDoesNotExist]="errorUserDoesNotExist"
-                [pathTerms]="pathTerms"
-                [pathPrivacy]="pathPrivacy"
-                [txtUsername]="txtUsername"
                 [txtRecoverProcessStarted]="txtRecoverProcessStarted"
                 [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'" [isLoading]="isLoading">
                 </systelab-login>
@@ -155,20 +105,14 @@ Be careful and make sure that the images are loaded by Webpack.
 
 #### Methods: Login, Sign Up and Password Recovery
 
+There are three Outputs for the different actions.
+
 - (login)="doLogin($event)"
-
-  Is the method that you will implement to do the login.
-
 - (signUp)="doSignUp($event)"
-
-  Is the method that you will implement to do the sign up.
-
 - (recovery)="doRecovery($event)"
 
-  Is the method that you will implement to start the process of password recovery.
 
-
-#### Principal Form: typeForm
+#### Principal Form: currentForm
 
 You can select which principal form to display.
 
@@ -182,58 +126,45 @@ The possible values are:
 
 To display a simple loading you have to set to true the variable isLoading.
 
-#### activeRecovery, activeSignUp and activeLogin
+#### isRecoveryActive, isSignUpActive and isLoginActive
 
-The possible values are True or False.
 
-If you set activeRecovery = True you will have in the Login page the link to the password recovery form.
+If you set isRecoveryActive to true, you will see a link to the password recovery form.
 
-If you set activeSignUp = True you will have in the Login page the link to the sign up form.
+If you set isSignUpActive to true, you will see a link to the sign up form.
 
-If you set activeLogin = True you will have in the Sign Up and Password Recovery pages the link to the login form.
+If you set isLoginActive to true you will see in the Sign Up and Password Recovery pages the link to the login form.
 
 #### Errors messages: errorUserPwd, errorUserExist and errorUserDoesNotExist
 
-- errorUserPwd
+- errorUserPwd: After login if the username and password are incorrect, you can set errorUserPwd to true to display a error message.
 
-  After do the login if the username and password are incorrect, you can set errorUserPwd = true to display a error message.
+- errorUserExist: After sign up if the username already exist, you can set errorUserExist to true to display a error message.
 
-- errorUserExist
-
-  After do the sign up if the username already exist, you can set errorUserExist = true to display a error message.
-
-- errorUserDoesNotExist
-  After check if the user exist in the password recovery form, if the user doesn't exist you can set errorUserDoesNotExist=true to display a error message.
+- errorUserDoesNotExist: After check if the user exist in the password recovery form, if the user doesn't exist you can set errorUserDoesNotExist to true to display a error message.
 
 #### External links: pathTerms and pathPrivacy
 
-If you have a links about terms of conditions or Privay policy you can inform pathTerms or pathPrivacy to offer to the user the option to navigate to consult.
+If you have a links about terms of conditions or Privacy policy you can set pathTerms and pathPrivacy.
 
 #### Images: companyLogo, applicationLogo and background
 
-You can configure the images of the component, set your path for each of images.
+You can set up the images of the component, set your path for each of images.
 
 
 #### Labels:  txtUsername, txtRecoverProcessStarted, applicationName, moduleName, version
 
-- txtUsername
-  Text for the placeholder of the username in the login form and in the password recovery form.
+- **txtUsername**: Text for the placeholder of the username in the login form and in the password recovery form.
 
   Depend if in you app allow perform the login using the email or the username, or only the username or with the email, you can configure the text in the form.
 
-- txtRecoverProcessStarted
+- **txtRecoverProcessStarted**: After perform the recovery you can configure the message you need to display, depend of the next steps in your password recovery process.
 
-  After perform the recovery you can configure the message you need to display, depend of the next steps in your password recovery process.
+- **applicationName**: The name of the application
 
-- applicationName
+- **moduleName**: If you have a specific name for the module, you can set and display.
 
-  The name of the application
-
-- moduleName
-  If you have a specific name for the module, you can set and display.
-
-- version
-  If you have a versioned application you can display the current version.
+- **version**: If you have a versioned application you can display the current version.
 
 
 # systelab-change-password

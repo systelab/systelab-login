@@ -1,15 +1,15 @@
-<input class="w-100 slab-form__input slab-form__input--topradius" [ngClass]="{'slab-form_input--error':  inputUserName.invalid && inputUserName.touched }"
-id="inputUserName" [(ngModel)]="userName" placeholder="{{txtUsername}}" #inputUserName="ngModel"
-name="inputUserName" ng-enter="doSignUp()" type="text" required autocomplete="off" maxlength="20" minlength="6">
+<input #inputUserName type="text" class="w-100 slab-form__input slab-form__input--topradius" [ngClass]="{'slab-form_input--error':  inputUserName.invalid && inputUserName.touched }"
+       id="inputUserName" [(ngModel)]="userName" placeholder="{{txtUsername}}"
+       name="inputUserName" (keyup.enter)="doSignUp()" required autocomplete="off" maxlength="20" minlength="6">
 
 <button class="w-100 btn btn-primary slab-form__submit mt-4" (click)="doRecovery()" [disabled]="inputUserName.invalid ">{{ 'COMMON_SEND' | translate | async }}</button>
 
-<div class="slab-form_input--marginTop25 text-center" *ngIf="activeLogin">
-<a href="#" class="slab-text slab-text--link  " (click)="goLogin()">{{ 'COMMON_I_HAVE_ACCOUNT' | translate | async }}</a>
+<div class="slab-form_input--marginTop25 text-center" *ngIf="isLoginActive">
+    <a href="#" class="slab-text slab-text--link  " (click)="goLogin()">{{ 'COMMON_I_HAVE_ACCOUNT' | translate | async }}</a>
 </div>
 
 <div *ngIf="errorUserDoesNotExist" class="alert alert-danger text-center slab-form_input--marginTop25">
-<a>{{ 'ERROR_DOES_NOT_EXIST' | translate | async }}</a>
+    <a>{{ 'ERROR_DOES_NOT_EXIST' | translate | async }}</a>
 </div>
 
 <div *ngIf="txtRecoverProcessStarted" class="alert alert-success text-center slab-form_input--marginTop25">
@@ -17,7 +17,7 @@ name="inputUserName" ng-enter="doSignUp()" type="text" required autocomplete="of
 </div>
 
 <div *ngIf="isLoading" class="text-center pt-2">
-{{ 'COMMON_LOADING' | translate | async }}...
-<i class="icon-spinner spin"></i>
+    {{ 'COMMON_LOADING' | translate | async }}...
+    <i class="icon-spinner spin"></i>
 </div>
 
