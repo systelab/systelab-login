@@ -75,9 +75,9 @@ export class LoginComponent {
 	}
 
 	@Input() typeForm = undefined;
-	@Input() activeRecovery = 0;
-	@Input() activeLogin = 0;
-	@Input() activeSignUp = 0;
+	@Input() activeRecovery = false;
+	@Input() activeLogin = false;
+	@Input() activeSignUp = false;
 
 	@Input() applicationName = undefined;
 	@Input() moduleName = undefined;

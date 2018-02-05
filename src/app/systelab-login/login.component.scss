@@ -1,16 +1,16 @@
 
 
-.slab-login {
+::ng-deep .slab-login {
   min-height: 620px;
 }
 
-.slab-login__content {
+::ng-deep .slab-login__content {
   flex: 1;
   padding: 44px;
   background-color: white;
 }
 
-.slab-login__background {
+::ng-deep .slab-login__background {
   display: none;
   flex: 1 1 auto;
   background-repeat: no-repeat;
@@ -23,26 +23,50 @@
   animation: fadein 3s;
 }
 
-.slab-login__background--laboratory {
+::ng-deep .slab-login__background--laboratory {
   background-position: center;
 }
 
-.spin{
-  -webkit-transform-origin: 50% 58%;
-  transform-origin:50% 58%;
-  -ms-transform-origin:50% 58%; /* IE 9 */
-  -webkit-animation: spin .2s infinite linear;
-  -moz-animation: spin .2s infinite linear;
-  -o-animation: spin .2s infinite linear;
-  animation: spin .2s infinite linear;
+::ng-deep .spin{
+   -webkit-transform-origin: 50% 58%;
+   transform-origin:50% 58%;
+   -ms-transform-origin:50% 58%; /* IE 9 */
+  -webkit-animation: spin 1.5s infinite linear;
+  -moz-animation: spin 1.5s infinite linear;
+  -o-animation: spin 1.5s infinite linear;
+  animation: spin 1.5s infinite linear;
 }
 
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+  }
+}
+
+
 @media screen and (min-width: 550px) {
-  .slab-login__content {
+::ng-deep .slab-login__content {
     flex: 0 0 414px;
   }
 
-  .slab-login__background {
+::ng-deep .slab-login__background {
     display: block;
   }
 }
@@ -65,37 +89,37 @@
 ========================================================================== */
 
 
-.slab-text {
+::ng-deep .slab-text {
   font-size: 0.9em;
   line-height: 0.8;
 }
 
-.slab-text--large {
+::ng-deep .slab-text--large {
   font-size: 1.6em;
   line-height: 1.5;
 }
 
-.slab-text--small {
+::ng-deep .slab-text--small {
   font-size: 0.8em;
   line-height: 1.5;
 }
 
-.slab-text--muted {
+::ng-deep .slab-text--muted {
   color: #bebebe;
 }
 
-.slab-text--link {
+::ng-deep .slab-text--link {
   color: #0074f2;
 }
 
-.slab-text--xsmall{
+::ng-deep .slab-text--xsmall{
   font-size: 0.7em;
   line-height: 1.5;
 }
-small.badge{
+::ng-deep small.badge{
   font-weight: normal;
 }
-small.badge-warning{
+::ng-deep small.badge-warning{
   color:#ffffff;
 }
 
@@ -109,11 +133,11 @@ small.badge-warning{
   height: 68px;
 }
 
-.slab-form {
+::ng-deep .slab-form {
   flex: 1;
 }
 
-.slab-form__input {
+::ng-deep .slab-form__input {
   height: 41px;
   border: 0;
   box-shadow: 0 0 4px #d0d0d0;
@@ -123,23 +147,23 @@ small.badge-warning{
   outline: none;
 }
 
-.slab-form__input:focus {
+::ng-deep .slab-form__input:focus {
   border-left: 3px solid #0074f2;
   transition: border-color .6s ease-out;
 }
 
-.slab-form__input--topradius {
+::ng-deep .slab-form__input--topradius {
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   border-bottom: none;
 }
 
-.slab-form__input--bottomradius {
+::ng-deep .slab-form__input--bottomradius {
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
 }
 
-.slab-form__submit {
+::ng-deep .slab-form__submit {
   background-color: rgba(0, 116, 242, 1);
   color: white;
   height: 45px;
@@ -147,22 +171,22 @@ small.badge-warning{
   cursor: pointer;
 }
 
-.slab-form__submit:hover {
+::ng-deep .slab-form__submit:hover {
   background-color: rgba(0, 116, 242, .8);
   border: 2px solid rgba(0, 0, 0, .1);
   transition: all .3s ease-out;
 }
 
-.slab-form_input--marginTop25{
+::ng-deep .slab-form_input--marginTop25{
   margin-top:25px;
 }
-.slab-form_input--marginTop15{
+::ng-deep .slab-form_input--marginTop15{
   margin-top:15px;
 }
-.slab-form_input--error{
+::ng-deep .slab-form_input--error{
   border-left: 3px solid #f45642 !important;
 }
-.slab-form_input:disabled,.btn:disabled{
+::ng-deep .slab-form_input:disabled,.btn:disabled{
   cursor:no-drop;
 }
 

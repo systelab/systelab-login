@@ -13,7 +13,6 @@ export class AppComponent {
 	public userName = '';
 	public password = '';
 	public name='';
-	public lang='';
 	public lastName='';
 	public typeForm='';
 	public email='';
@@ -24,6 +23,10 @@ export class AppComponent {
 	public txtRecoverProcessStarted='';
 	public pathTerms='http://www.werfen.com/en/terms-and-conditions';
 	public pathPrivacy='http://www.werfen.com/en/privacy-policy';
+	public activeRecovery:boolean= true;
+	public activeSignUp:boolean= true;
+	public activeLogin:boolean= true;
+	public isLoading:boolean=false;
 
 	public constructor(protected dialogService: DialogService) {
 		this.typeForm='login';
@@ -31,18 +34,24 @@ export class AppComponent {
 	}
 
 	public doLogin() {
+		console.log(this.userName + ' ' + this.password);
 		this.dialogService.showDialog(ChangePasswordDialog, ChangePasswordDialog.getParameters());
 		console.log('doLogin');
+		this.isLoading=true;
 	}
 
 	public doSignUp() {
+		console.log(this.userName + ' ' + this.password + ' ' + this.name  + ' ' + this.lastName  + ' ' + this.email );
 		this.dialogService.showDialog(ChangePasswordDialog, ChangePasswordDialog.getParameters());
-		console.log('doLogin');
+		console.log('doSignUp');
+		this.isLoading=true;
 	}
 
 	public doRecovery() {
+		console.log(this.userName);
 		this.dialogService.showDialog(ChangePasswordDialog, ChangePasswordDialog.getParameters());
-		console.log('doLogin');
+		console.log('doRecovery');
+		this.isLoading=true;
 	}
 
 	

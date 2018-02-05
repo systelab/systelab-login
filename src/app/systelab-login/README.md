@@ -17,9 +17,9 @@ This is an example of a combiantion of the three available components.
                 [(name)]="name"
                 [(lastName)]="lastName"
                 [(email)]="email"
-                [activeRecovery]="1"
-                [activeSignUp]="1"
-                [activeLogin]="1"
+                [activeRecovery]="activeRecovery"
+                [activeSignUp]="activeSignUp"
+                [activeLogin]="activeLogin"
                 [typeForm]="typeForm"
                 [companyLogo]="'assets/img/brand/werfen.png'"
                 [applicationLogo]="'assets/img/brand/logo.png'"
@@ -32,7 +32,8 @@ This is an example of a combiantion of the three available components.
                 [errorUserDoesNotExist]="errorUserDoesNotExist"
                 [txtUsername]="txtUsername"
                 [txtRecoverProcessStarted]="txtRecoverProcessStarted"
-                [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'">
+                [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'"
+                [isLoading]="isLoading">
                 </systelab-login>
 ```
 
@@ -177,15 +178,19 @@ The possible values are:
 - signup
 - recovery
 
+#### Loading
+
+To display a simple loading you have to set to true the variable isLoading.
+
 #### activeRecovery, activeSignUp and activeLogin
 
-The possible values are 1 or 0.
+The possible values are True or False.
 
-If you set activeRecovery = 1 you will have in the Login page the link to the password recovery form.
+If you set activeRecovery = True you will have in the Login page the link to the password recovery form.
 
-If you set activeSignUp = 1 you will have in the Login page the link to the sign up form.
+If you set activeSignUp = True you will have in the Login page the link to the sign up form.
 
-If you set activeLogin = 1 you will have in the Sign Up and Password Recovery pages the link to the login form.
+If you set activeLogin = True you will have in the Sign Up and Password Recovery pages the link to the login form.
 
 #### Errors messages: errorUserPwd, errorUserExist and errorUserDoesNotExist
 

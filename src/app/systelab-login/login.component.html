@@ -9,120 +9,30 @@
                 <div class="slab-text slab-text--small slab-text--muted" *ngIf="version">{{ 'COMMON_VERSION' | translate | async }}: {{version}}</div>
             </div>
         </div>
-        <div class="d-flex slab-form align-content-center flex-wrap mt-4" *ngIf="typeForm === 'login'">
+        <div class="d-flex slab-form align-content-center flex-wrap mt-4"  *ngIf="typeForm === 'login'">
             <div class="mb-4 slab-text slab-text--large slab-text--muted">{{ 'COMMON_SESSION_LOGIN' | translate | async }}</div>
-            <form novalidate class="w-100">
-                <input class="w-100 slab-form__input slab-form__input--topradius" [(ngModel)]="userName" [ngClass]="{'slab-form_input--error':  inputUserName.invalid && inputUserName.touched }"
-                    id="inputUserName" placeholder="{{txtUsername}}" #inputUserName="ngModel" name="inputUserName"
-                    ng-enter="doLogin()" type="text" required autocomplete="off" maxlength="20" minlength="6">
-                <input class="w-100 slab-form__input slab-form__input--bottomradius" [(ngModel)]="password" [ngClass]="{'slab-form_input--error':  inputPassword.invalid && inputPassword.touched }"
-                    id="inputPassword" placeholder="{{ 'COMMON_PASSWORD' | translate | async }}" #inputPassword="ngModel" name="inputPassword"
-                    ng-enter="doLogin()" type="password" required autocomplete="off">
-                <div class="slab-form_input--marginTop15 text-right" *ngIf="activeRecovery === 1">
-                    <a href="#" class="slab-text slab-text--link  " (click)="goRecovery()">{{ 'COMMON_FORGOT_PASSWORD' | translate | async }}</a>
-                </div>
-                <button class="w-100 btn btn-primary slab-form__submit mt-4" [disabled]="inputUserName.invalid ||  inputPassword.invalid"
-                    (click)="doLogin()">{{ 'COMMON_ENTER' | translate | async }}</button>
-
-
-                <div class="slab-form_input--marginTop25 text-center" *ngIf="activeSignUp === 1">
-                    <a href="#" class="slab-text slab-text--link  " (click)="goSignUp()">{{ 'COMMON_CREATE_NEW_ACCOUNT' | translate | async }}</a>
-                </div>
-
-
-                <div *ngIf="errorUserPwd" class="alert alert-danger text-center slab-form_input--marginTop25">
-                    <a>{{ 'ERROR_INCORRECT_USERNAME_OR_PASSWORD' | translate | async }}</a>
-                </div>
-
-            
-                <div *ngIf="isLoading" class="text-center pt-2">
-                    {{ 'COMMON_LOADING' | translate | async }}...
-                    <i class="icon-spinner spin"></i>
-                </div>
-                <div *ngIf="!isLoading" class="text-center pt-2">
-                    &nbsp;
-                </div>
-            </form>
+                <form novalidate class="w-100">
+                        <slt-form-login (login)="doLogin($event)"  
+                            [(userName)]="userName"
+                            [(password)]="password" [activeRecovery]="activeRecovery"
+                            [activeSignUp]="activeSignUp"  [errorUserPwd]="errorUserPwd" [txtUsername]="txtUsername"  [(typeForm)]="typeForm" [isLoading] ="isLoading">
+                    </slt-form-login>
+                </form>
         </div>
         <div class="d-flex slab-form align-content-center flex-wrap mt-4" *ngIf="typeForm === 'signup'">
             <div class="mb-4 slab-text slab-text--large slab-text--muted">{{ 'COMMON_SESSION_SIGNUP' | translate | async }}</div>
             <form novalidate class="w-100">
-
-                <input class="w-100 slab-form__input slab-form__input--topradius" [ngClass]="{'slab-form_input--error':  inputUserName.invalid && inputUserName.touched }"
-                    id="inputUserName" [(ngModel)]="userName" placeholder="{{ 'COMMON_USERNAME' | translate | async }}" #inputUserName="ngModel"
-                    name="inputUserName" ng-enter="doSignUp()" type="text" required autocomplete="off" maxlength="20" minlength="6">
-                <input type="password" [ngClass]="{'slab-form_input--error':  inputPassword.invalid && inputPassword.touched }" placeholder="{{ 'COMMON_PASSWORD' | translate | async }}"
-                    autocomplete="off" class="w-100 slab-form__input slab-form__input--bottomradius" id="inputPassword" #inputPassword="ngModel"
-                    name="inputPassword" ng-enter="doSignUp()" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,20})"
-                    required maxlength="20" minlength="6" />
-
-                <div class="slab-form_input--marginTop15 text-center">
-                    <small class="slab-text slab-text--xsmall badge badge-warning">{{ 'COMMON_PASSWORD_STR' | translate | async }}</small>
-                </div>
-
-                <input type="email" [ngClass]="{'slab-form_input--error':  inputEmail.invalid && inputEmail.touched  }" autocomplete="off"
-                    placeholder=" {{ 'COMMON_EMAIL' | translate | async }}" class="w-100 slab-form_input--marginTop15 slab-form__input slab-form__input--topradius"
-                    ng-enter="doSignUp()" id="inputEmail" #inputEmail="ngModel" name="inputEmail" [(ngModel)]="email" [ngModelOptions]="{standalone: true}"
-                    required email/>
-                <input type="text" [ngClass]="{'slab-form_input--error':  inputName.invalid && inputName.touched  }" placeholder=" {{ 'COMMON_NAME' | translate | async }}"
-                    class="w-100  slab-form__input " ng-enter="doSignUp()" id="inputName" name="inputName" #inputName="ngModel"
-                    [(ngModel)]="name" [ngModelOptions]="{standalone: true}" required maxlength="50" minlength="2" />
-                <input type="text" [ngClass]="{'slab-form_input--error':  inputLastName.invalid && inputLastName.touched  }" placeholder=" {{ 'COMMON_LASTNAME' | translate | async }}"
-                    class="w-100  slab-form__input " ng-enter="doSignUp()" id="inputLastName" #inputLastName="ngModel" name="inputLastName"
-                    [(ngModel)]="lastName" [ngModelOptions]="{standalone: true}" required maxlength="80" minlength="2" />
-
-                <button class="w-100 btn btn-primary slab-form__submit mt-4" (click)="doSignUp()" [disabled]="inputUserName.invalid || inputEmail.invalid || inputPassword.invalid || inputName.invalid ||  inputLastName.invalid ">{{ 'COMMON_SEND' | translate | async }}</button>
-
-
-                <div class="slab-form_input--marginTop25 text-center" *ngIf="activeLogin === 1">
-                    <a href="#" class="slab-text slab-text--link  " (click)="goLogin()">{{ 'COMMON_I_HAVE_ACCOUNT' | translate | async }}</a>
-                </div>
-
-                <div *ngIf="errorUserExist" class="alert alert-danger text-center slab-form_input--marginTop25">
-                    <a>{{ 'ERROR_USER_ALREADY_EXIST' | translate | async }}</a>
-                </div>
-
-
-                <div *ngIf="isLoading" class="text-center pt-2">
-                    {{ 'COMMON_LOADING' | translate | async }}...
-                    <i class="icon-spinner spin"></i>
-                </div>
-                <div *ngIf="!isLoading" class="text-center pt-2">
-                    &nbsp;
-                </div>
+               <slt-form-signup (signUp)="doSignUp($event)"  [(userName)]="userName" [(password)]="password" [(name)]="name" [(lastName)]="lastName"
+               [(email)]="email" [activeLogin]="activeLogin" [(typeForm)]="typeForm" [errorUserExist]="errorUserExist"  [isLoading] ="isLoading">
+               </slt-form-signup>
             </form>
         </div>
         <div class="d-flex slab-form align-content-center flex-wrap mt-4" *ngIf="typeForm === 'recovery'">
                 <div class="mb-4 slab-text slab-text--large slab-text--muted">{{ 'COMMON_SESSION_RECOVERY' | translate | async }}</div>
                 <form novalidate class="w-100">
-    
-                    <input class="w-100 slab-form__input slab-form__input--topradius" [ngClass]="{'slab-form_input--error':  inputUserName.invalid && inputUserName.touched }"
-                        id="inputUserName" [(ngModel)]="userName" placeholder="{{txtUsername}}" #inputUserName="ngModel"
-                        name="inputUserName" ng-enter="doSignUp()" type="text" required autocomplete="off" maxlength="20" minlength="6">
-
-                    <button class="w-100 btn btn-primary slab-form__submit mt-4" (click)="doRecovery()" [disabled]="inputUserName.invalid ">{{ 'COMMON_SEND' | translate | async }}</button>
-    
-    
-                    <div class="slab-form_input--marginTop25 text-center" *ngIf="activeLogin === 1">
-                        <a href="#" class="slab-text slab-text--link  " (click)="goLogin()">{{ 'COMMON_I_HAVE_ACCOUNT' | translate | async }}</a>
-                    </div>
-    
-                    <div *ngIf="errorUserDoesNotExist" class="alert alert-danger text-center slab-form_input--marginTop25">
-                        <a>{{ 'ERROR_DOES_NOT_EXIST' | translate | async }}</a>
-                    </div>
-
-                    <div *ngIf="txtRecoverProcessStarted" class="alert alert-success text-center slab-form_input--marginTop25">
-                            <a>{{txtRecoverProcessStarted}}</a>
-                    </div>
-    
-    
-                    <div *ngIf="isLoading" class="text-center pt-2">
-                        {{ 'COMMON_LOADING' | translate | async }}...
-                        <i class="icon-spinner spin"></i>
-                    </div>
-                    <div *ngIf="!isLoading" class="text-center pt-2">
-                        &nbsp;
-                    </div>
+                    <slt-form-recovery (recovery)="doRecovery($event)"  [(userName)]="userName" [txtUsername]="txtUsername"  [(typeForm)]="typeForm"
+                    [errorUserDoesNotExist]="errorUserDoesNotExist" [activeLogin]="activeLogin" [txtRecoverProcessStarted]="txtRecoverProcessStarted"  [isLoading] ="isLoading">
+                    </slt-form-recovery>
                 </form>
             </div>
 

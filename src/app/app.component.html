@@ -4,9 +4,9 @@
                 [(name)]="name"
                 [(lastName)]="lastName"
                 [(email)]="email"
-                [activeRecovery]="1"
-                [activeSignUp]="1"
-                [activeLogin]="1"
+                [activeRecovery]="activeRecovery"
+                [activeSignUp]="activeSignUp"
+                [activeLogin]="activeLogin"
                 [typeForm]="typeForm"
                 [companyLogo]="'assets/img/brand/werfen.png'"
                 [applicationLogo]="'assets/img/brand/logo.png'"
@@ -19,4 +19,6 @@
                 [pathPrivacy]="pathPrivacy"
                 [txtUsername]="txtUsername"
                 [txtRecoverProcessStarted]="txtRecoverProcessStarted"
-                [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'"></systelab-login>
+                [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'"
+                [isLoading]="isLoading"
+                ></systelab-login>
