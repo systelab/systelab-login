@@ -23,7 +23,8 @@
             <div class="mb-4 slab-text slab-text--large slab-text--muted">{{ 'COMMON_SESSION_SIGNUP' | translate | async }}</div>
             <form novalidate class="w-100">
                 <slt-form-signup (signUp)="doSignUp($event)" [(userName)]="userName" [(password)]="password" [(name)]="name" [(lastName)]="lastName"
-                                 [(email)]="email" [isLoginActive]="isLoginActive" [(currentForm)]="currentForm" [errorUserExist]="errorUserExist" [isLoading]="isLoading">
+                                 [(email)]="email" [isLoginActive]="isLoginActive" [(currentForm)]="currentForm" [errorUserExist]="errorUserExist" [isLoading]="isLoading"
+                                 [minPasswordStrengthValue]="minPasswordStrengthValue">
                 </slt-form-signup>
             </form>
         </div>
@@ -39,7 +40,7 @@
 
         <div class="d-flex slab-footer flex-column">
             <img width="132" src="{{ companyLogo }}" class="mt-4 align-self-center">
-            <div class="slab-text slab-text--small align-self-center mt-4 ">{{copyright}}</div>
+            <div class="d-none d-sm-block slab-text slab-text--small align-self-center mt-4 ">{{copyright}}</div>
             <div class="mt-4 align-self-center">
                 <a class="slab-text slab-text--link slab-text--small mr-2 " target="_blank" *ngIf="pathTerms" href="pathTerms">{{ 'COMMON_TERMS_OF_USE' | translate | async }}</a>
                 <span *ngIf="pathTerms && pathPrivacy">·</span>

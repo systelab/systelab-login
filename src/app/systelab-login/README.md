@@ -20,6 +20,7 @@ This is an example with the three components enabled.
                 [isRecoveryActive]="true"
                 [isSignUpActive]="true"
                 [isLoginActive]="true"
+                [minPasswordStrengthValue]="'1'"
                 [currentForm]="currentForm"
                 [companyLogo]="'assets/img/brand/werfen.png'"
                 [applicationLogo]="'assets/img/brand/logo.png'"
@@ -67,6 +68,7 @@ This is an example with the three components enabled.
                 [(lastName)]="lastName"
                 [(email)]="email"
                 [isSignUpActive]="true"
+                [minPasswordStrengthValue]="'1'"
                 [currentForm]="currentForm"
                 [companyLogo]="'assets/img/brand/werfen.png'"
                 [applicationLogo]="'assets/img/brand/logo.png'"
@@ -166,6 +168,16 @@ You can set up the images of the component, set your path for each of images.
 
 - **version**: If you have a versioned application you can display the current version.
 
+#### minPasswordStrengthValue
+
+The minimum password strength values are:
+
+- 2: Moderate
+- 3: Good
+- 4: Strong
+- 5: Very Strong
+
+It is necessary in order to check the password during the sign up registration.
 
 # systelab-change-password
 

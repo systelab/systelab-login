@@ -3,13 +3,26 @@
        id="inputUserName" [(ngModel)]="userName" placeholder="{{ 'COMMON_USERNAME' | translate | async }}"
        name="inputUserName" (keyup.enter)="doSignUp()" required autocomplete="off" maxlength="20" minlength="6">
 
-<input #inputPassword="ngModel" type="password" [class.slab-form_input--error]="inputPassword.invalid && inputPassword.touched" placeholder="{{ 'COMMON_PASSWORD' | translate | async }}"
+<input #inputPassword="ngModel" type="password" [class.slab-form_input--error]="!isPasswordOK() && inputPassword.touched" placeholder="{{ 'COMMON_PASSWORD' | translate | async }}"
        autocomplete="off" class="w-100 slab-form__input slab-form__input--bottomradius" id="inputPassword"
-       name="inputPassword" (keyup.enter)="doSignUp()" [(ngModel)]="password" pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,20})"
-       required maxlength="20" minlength="6"/>
+       name="inputPassword" (keyup.enter)="doSignUp()" [(ngModel)]="password"
+       required minlength="{{getMinPasswordLength()}}"/>
 
-<div class="slab-form_input--marginTop15 text-center">
-    <small class="slab-text slab-text--xsmall badge badge-warning">{{ 'COMMON_PASSWORD_STR' | translate | async }}</small>
+
+<div class="d-none d-sm-block slab-form_input--marginTop15 text-right">
+    <i class="icon-info-circle mt-1 slab-info-icon" title="{{ getPasswordComplexityTooltip() }}"></i>
+</div>
+
+<div class="slab-password-strength mt-1 d-inline-block"
+     [ngClass]="getPasswordComplexityStyle()">
+    <div class="d-inline-block slab-first-step"></div>
+    <div class="d-inline-block slab-second-step"></div>
+    <div class="d-inline-block slab-third-step"></div>
+    <div class="d-inline-block slab-fourth-step"></div>
+    <div class="d-inline-block slab-fifth-step"></div>
+</div>
+<div class="slab-password-strength-label">
+    <div>{{getPasswordComplexityAsLabel()}}&nbsp;</div>
 </div>
 
 <input #inputEmail="ngModel" type="email" [class.slab-form_input--error]="inputEmail.invalid && inputEmail.touched" autocomplete="off"
@@ -25,7 +38,7 @@
        required maxlength="80" minlength="2"/>
 
 <button type="button" class="w-100 btn btn-primary slab-form__submit mt-4" (click)="doSignUp()"
-        [disabled]="inputUserName.invalid || inputEmail.invalid || inputPassword.invalid || inputName.invalid ||  inputLastName.invalid ">{{ 'COMMON_SEND' | translate | async }}
+        [disabled]="inputUserName.invalid || inputEmail.invalid || inputPassword.invalid || inputName.invalid ||  inputLastName.invalid || !isPasswordOK()">{{ 'COMMON_SEND' | translate | async }}
 </button>
 
 

@@ -1,4 +1,65 @@
 
+.slab-info-icon {
+  font-size: 20px;
+  color: rgb(21, 143, 239);
+}
+
+.slab-password-strength {
+  height: 5px;
+  width: 100%;
+  div {
+    height: 5px;
+    width: 18.8%;
+    background-color: rgb(221, 221, 221);
+  }
+  &.slab-weak {
+    .slab-first-step {
+      background-color: rgb(215, 56, 45);
+    }
+  }
+
+  &.slab-moderate {
+    .slab-first-step,
+    .slab-second-step {
+      background-color: rgb(249, 136, 0);
+    }
+  }
+
+  &.slab-good {
+    .slab-first-step,
+    .slab-second-step,
+    .slab-third-step {
+      background-color: rgb(174, 222, 51);
+    }
+  }
+
+  &.slab-strong {
+    .slab-first-step,
+    .slab-second-step,
+    .slab-third-step,
+    .slab-fourth-step {
+      background-color: rgb(40, 189, 35);
+    }
+  }
+
+  &.slab-very-strong {
+    .slab-first-step,
+    .slab-second-step,
+    .slab-third-step,
+    .slab-fourth-step,
+    .slab-fifth-step {
+      background-color: rgb(47, 148, 60);
+    }
+  }
+}
+
+.slab-password-strength-label {
+  div {
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+  }
+}
 
 .slab-login {
   min-height: 620px;
@@ -8,6 +69,12 @@
   flex: 1;
   padding: 44px;
   background-color: white;
+}
+
+@media screen and (max-width: 550px) {
+  .slab-login__content {
+    padding: 24px !important;
+  }
 }
 
 .slab-login__background {

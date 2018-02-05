@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { I18nService } from 'systelab-translate/lib/i18n.service';
+import { PasswordUtil } from '../password.util';
 
 @Component({
 	selector:    'slt-form-signup',
@@ -12,6 +14,8 @@ export class FormSignupComponent {
 	private _name = '';
 	private _email = '';
 	private _currentForm = '';
+
+	@Input() public minPasswordStrengthValue = 1;
 
 	@Input()
 	get userName(): string {
@@ -88,9 +92,9 @@ export class FormSignupComponent {
 	@Input() isLoginActive = false;
 	@Input() errorUserExist = false;
 	@Output() signUp = new EventEmitter();
-	@Input() isLoading: boolean = false;
+	@Input() isLoading = false;
 
-	constructor() {
+	constructor(protected i18nService: I18nService) {
 	}
 
 	public goLogin() {
@@ -99,6 +103,30 @@ export class FormSignupComponent {
 
 	public doSignUp() {
 		this.signUp.emit();
+	}
+
+	public getPasswordComplexityTooltip() {
+		return PasswordUtil.getPasswordComplexityTooltip(this.minPasswordStrengthValue, this.i18nService);
+	}
+
+	public getPasswordComplexityStyle() {
+		return PasswordUtil.getStyle(PasswordUtil.evaluatePasswordStrength(this.password));
+	}
+	public isPasswordOK() {
+		return PasswordUtil.evaluatePasswordStrength(this.password) >= this.minPasswordStrengthValue;
+	}
+
+	public getMinPasswordLength():number {
+		return PasswordUtil.getMinPasswordLength(this.minPasswordStrengthValue);
+	}
+
+	public getPasswordComplexityAsLabel() {
+		const key = PasswordUtil.getTranslationKey(PasswordUtil.evaluatePasswordStrength(this.password));
+		if (key) {
+			return this.i18nService.instant(key);
+		} else {
+			return '';
+		}
 	}
 
 }

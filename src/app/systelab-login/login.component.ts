@@ -93,7 +93,9 @@ export class LoginComponent implements OnInit {
 	@Input() errorMessage = '';
 	@Input() isLoading = false;
 	@Input() txtUsername = '';
-	@Input() txtRecoverProcessStarted = undefined;
+	@Input() txtRecoverProcessStarted = undefined
+	@Input() minPasswordStrengthValue = 1;
+
 
 	@Input() pathTerms = undefined;
 	@Input() pathPrivacy = undefined;
