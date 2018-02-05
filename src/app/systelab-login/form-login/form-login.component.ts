@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { I18nService } from 'systelab-translate/lib/i18n.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { I18nService } from 'systelab-translate/lib/i18n.service';
 	templateUrl: './form-login.component.html',
 	styleUrls:   ['../login.component.scss']
 })
-export class FormLoginComponent {
+export class FormLoginComponent implements OnInit {
 
 	private _currentForm = '';
 	private _userName = '';
@@ -57,11 +57,12 @@ export class FormLoginComponent {
 	@Output() login = new EventEmitter();
 
 	constructor(protected i18nService: I18nService) {
+	}
 
+	public ngOnInit() {
 		if (!this.txtUsername) {
 			this.txtUsername = this.i18nService.instant('COMMON_USERNAME');
 		}
-
 	}
 
 	public doLogin() {

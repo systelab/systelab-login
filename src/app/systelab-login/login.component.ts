@@ -1,13 +1,12 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { I18nService } from 'systelab-translate/lib/i18n.service';
-import { DialogService } from 'systelab-components/widgets/modal/dialog/dialog.service';
 
 @Component({
 	selector:    'systelab-login',
 	templateUrl: 'login.component.html',
 	styleUrls:   ['login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 	private _userName = '';
 	private _password = '';
 	private _lastName = '';
@@ -103,10 +102,13 @@ export class LoginComponent {
 	@Output() signUp = new EventEmitter();
 	@Output() recovery = new EventEmitter();
 
-	constructor(protected dialogService: DialogService, protected i18nService: I18nService) {
+	constructor(protected i18nService: I18nService) {
 		if (!this.currentForm) {
 			this.currentForm = 'login'
 		}
+	}
+
+	public ngOnInit() {
 		if (!this.txtUsername) {
 			this.txtUsername = this.i18nService.instant('COMMON_USERNAME');
 		}

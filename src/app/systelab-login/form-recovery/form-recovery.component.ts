@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { I18nService } from 'systelab-translate/lib/i18n.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { I18nService } from 'systelab-translate/lib/i18n.service';
 	templateUrl: './form-recovery.component.html',
 	styleUrls:   ['../login.component.scss']
 })
-export class FormRecoveryComponent {
+export class FormRecoveryComponent implements OnInit {
 	private _userName = '';
 	private _currentForm = '';
 
@@ -43,8 +43,12 @@ export class FormRecoveryComponent {
 	@Input() isLoading = false;
 
 	constructor(protected i18nService: I18nService) {
+	}
+
+
+	public ngOnInit() {
 		if (!this.txtUsername) {
-			this.txtUsername = i18nService.instant('COMMON_USERNAME');
+			this.txtUsername = this.i18nService.instant('COMMON_USERNAME');
 		}
 	}
 
