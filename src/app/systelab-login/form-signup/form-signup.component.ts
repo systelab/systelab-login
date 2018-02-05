@@ -3,7 +3,8 @@ import { I18nService } from 'systelab-translate/lib/i18n.service';
 
 @Component({
   selector: 'slt-form-signup',
-  templateUrl: './form-signup.component.html'
+  templateUrl: './form-signup.component.html',
+  styleUrls:   ['../login.component.scss']
 })
 export class FormSignupComponent  {
   private _userName = '';

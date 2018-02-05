@@ -3,7 +3,8 @@ import { I18nService } from 'systelab-translate/lib/i18n.service';
 
 @Component({
   selector: 'slt-form-recovery',
-  templateUrl: './form-recovery.component.html'
+  templateUrl: './form-recovery.component.html',
+  styleUrls:   ['../login.component.scss']
 })
 export class FormRecoveryComponent  {
   private _userName = '';

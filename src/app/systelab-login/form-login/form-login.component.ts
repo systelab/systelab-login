@@ -2,7 +2,8 @@ import {  Component, EventEmitter, Input, Output  } from '@angular/core';
 import { I18nService } from 'systelab-translate/lib/i18n.service';
 @Component({
   selector: 'slt-form-login',
-  templateUrl: './form-login.component.html'
+  templateUrl: './form-login.component.html',
+  styleUrls:   ['../login.component.scss']
 })
 export class FormLoginComponent  {
 

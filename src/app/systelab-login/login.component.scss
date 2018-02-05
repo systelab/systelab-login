@@ -1,16 +1,16 @@
 
 
-::ng-deep .slab-login {
+.slab-login {
   min-height: 620px;
 }
 
-::ng-deep .slab-login__content {
+.slab-login__content {
   flex: 1;
   padding: 44px;
   background-color: white;
 }
 
-::ng-deep .slab-login__background {
+.slab-login__background {
   display: none;
   flex: 1 1 auto;
   background-repeat: no-repeat;
@@ -23,11 +23,11 @@
   animation: fadein 3s;
 }
 
-::ng-deep .slab-login__background--laboratory {
+.slab-login__background--laboratory {
   background-position: center;
 }
 
-::ng-deep .spin{
+.spin{
    -webkit-transform-origin: 50% 58%;
    transform-origin:50% 58%;
    -ms-transform-origin:50% 58%; /* IE 9 */
@@ -62,11 +62,11 @@
 
 
 @media screen and (min-width: 550px) {
-::ng-deep .slab-login__content {
+.slab-login__content {
     flex: 0 0 414px;
   }
 
-::ng-deep .slab-login__background {
+.slab-login__background {
     display: block;
   }
 }
@@ -89,37 +89,37 @@
 ========================================================================== */
 
 
-::ng-deep .slab-text {
+.slab-text {
   font-size: 0.9em;
   line-height: 0.8;
 }
 
-::ng-deep .slab-text--large {
+.slab-text--large {
   font-size: 1.6em;
   line-height: 1.5;
 }
 
-::ng-deep .slab-text--small {
+.slab-text--small {
   font-size: 0.8em;
   line-height: 1.5;
 }
 
-::ng-deep .slab-text--muted {
+.slab-text--muted {
   color: #bebebe;
 }
 
-::ng-deep .slab-text--link {
+.slab-text--link {
   color: #0074f2;
 }
 
-::ng-deep .slab-text--xsmall{
+.slab-text--xsmall{
   font-size: 0.7em;
   line-height: 1.5;
 }
-::ng-deep small.badge{
+small.badge{
   font-weight: normal;
 }
-::ng-deep small.badge-warning{
+small.badge-warning{
   color:#ffffff;
 }
 
@@ -133,11 +133,11 @@
   height: 68px;
 }
 
-::ng-deep .slab-form {
+.slab-form {
   flex: 1;
 }
 
-::ng-deep .slab-form__input {
+.slab-form__input {
   height: 41px;
   border: 0;
   box-shadow: 0 0 4px #d0d0d0;
@@ -147,23 +147,23 @@
   outline: none;
 }
 
-::ng-deep .slab-form__input:focus {
+.slab-form__input:focus {
   border-left: 3px solid #0074f2;
   transition: border-color .6s ease-out;
 }
 
-::ng-deep .slab-form__input--topradius {
+.slab-form__input--topradius {
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   border-bottom: none;
 }
 
-::ng-deep .slab-form__input--bottomradius {
+.slab-form__input--bottomradius {
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
 }
 
-::ng-deep .slab-form__submit {
+.slab-form__submit {
   background-color: rgba(0, 116, 242, 1);
   color: white;
   height: 45px;
@@ -171,22 +171,22 @@
   cursor: pointer;
 }
 
-::ng-deep .slab-form__submit:hover {
+.slab-form__submit:hover {
   background-color: rgba(0, 116, 242, .8);
   border: 2px solid rgba(0, 0, 0, .1);
   transition: all .3s ease-out;
 }
 
-::ng-deep .slab-form_input--marginTop25{
+.slab-form_input--marginTop25{
   margin-top:25px;
 }
-::ng-deep .slab-form_input--marginTop15{
+.slab-form_input--marginTop15{
   margin-top:15px;
 }
-::ng-deep .slab-form_input--error{
+.slab-form_input--error{
   border-left: 3px solid #f45642 !important;
 }
-::ng-deep .slab-form_input:disabled,.btn:disabled{
+.slab-form_input:disabled,.btn:disabled{
   cursor:no-drop;
 }
 
