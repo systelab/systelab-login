@@ -1,0 +1,42 @@
+<input class="w-100 slab-form__input slab-form__input--topradius" [ngClass]="{'slab-form_input--error':  inputUserName.invalid && inputUserName.touched }"
+  id="inputUserName" [(ngModel)]="userName" placeholder="{{ 'COMMON_USERNAME' | translate | async }}" #inputUserName="ngModel"
+  name="inputUserName" ng-enter="doSignUp()" type="text" required autocomplete="off" maxlength="20" minlength="6">
+
+<input type="password" [ngClass]="{'slab-form_input--error':  inputPassword.invalid && inputPassword.touched }" placeholder="{{ 'COMMON_PASSWORD' | translate | async }}"
+  autocomplete="off" class="w-100 slab-form__input slab-form__input--bottomradius" id="inputPassword" #inputPassword="ngModel"
+  name="inputPassword" ng-enter="doSignUp()" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,20})"
+  required maxlength="20" minlength="6" />
+
+<div class="slab-form_input--marginTop15 text-center">
+  <small class="slab-text slab-text--xsmall badge badge-warning">{{ 'COMMON_PASSWORD_STR' | translate | async }}</small>
+</div>
+
+<input type="email" [ngClass]="{'slab-form_input--error':  inputEmail.invalid && inputEmail.touched  }" autocomplete="off"
+  placeholder=" {{ 'COMMON_EMAIL' | translate | async }}" class="w-100 slab-form_input--marginTop15 slab-form__input slab-form__input--topradius"
+  ng-enter="doSignUp()" id="inputEmail" #inputEmail="ngModel" name="inputEmail" [(ngModel)]="email" [ngModelOptions]="{standalone: true}"
+  required email/>
+
+<input type="text" [ngClass]="{'slab-form_input--error':  inputName.invalid && inputName.touched  }" placeholder=" {{ 'COMMON_NAME' | translate | async }}"
+  class="w-100  slab-form__input " ng-enter="doSignUp()" id="inputName" name="inputName" #inputName="ngModel" [(ngModel)]="name"
+  [ngModelOptions]="{standalone: true}" required maxlength="50" minlength="2" />
+
+<input type="text" [ngClass]="{'slab-form_input--error':  inputLastName.invalid && inputLastName.touched  }" placeholder=" {{ 'COMMON_LASTNAME' | translate | async }}"
+  class="w-100  slab-form__input " ng-enter="doSignUp()" id="inputLastName" #inputLastName="ngModel" name="inputLastName" [(ngModel)]="lastName"
+  [ngModelOptions]="{standalone: true}" required maxlength="80" minlength="2" />
+
+<button class="w-100 btn btn-primary slab-form__submit mt-4" (click)="doSignUp()" [disabled]="inputUserName.invalid || inputEmail.invalid || inputPassword.invalid || inputName.invalid ||  inputLastName.invalid ">{{ 'COMMON_SEND' | translate | async }}</button>
+
+
+<div class="slab-form_input--marginTop25 text-center" *ngIf="activeLogin">
+  <a href="#" class="slab-text slab-text--link  " (click)="goLogin()">{{ 'COMMON_I_HAVE_ACCOUNT' | translate | async }}</a>
+</div>
+
+<div *ngIf="errorUserExist" class="alert alert-danger text-center slab-form_input--marginTop25">
+  <a>{{ 'ERROR_USER_ALREADY_EXIST' | translate | async }}</a>
+</div>
+
+<div *ngIf="isLoading" class="text-center pt-2">
+  {{ 'COMMON_LOADING' | translate | async }}...
+  <i class="icon-spinner spin"></i>
+</div>
+

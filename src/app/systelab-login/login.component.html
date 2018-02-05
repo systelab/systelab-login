@@ -2,39 +2,47 @@
     <div class="slab-login__background slab-login__background--configuration" [style.background-image]="'url(' + background + ')'"></div>
     <div class="slab-login__content d-flex flex-column">
         <div class="d-flex slab-header align-content-center">
-            <img class="slab-header__logo mr-4" src="{{applicationLogo}}">
+            <img *ngIf="applicationLogo" class="slab-header__logo mr-4" src="{{applicationLogo}}">
             <div>
-                <div class="slab-text">{{applicationName}}</div>
-                <div class="slab-text slab-text--large">{{moduleName}}</div>
-                <div class="slab-text slab-text--small slab-text--muted">{{ 'COMMON_VERSION' | translate | async }}: {{version}}</div>
+                <div class="slab-text" *ngIf="applicationName">{{applicationName}}</div>
+                <div class="slab-text slab-text--large" *ngIf="moduleName">{{moduleName}}</div>
+                <div class="slab-text slab-text--small slab-text--muted" *ngIf="version">{{ 'COMMON_VERSION' | translate | async }}: {{version}}</div>
             </div>
         </div>
-        <div class="d-flex slab-form align-content-center flex-wrap mt-4">
+        <div class="d-flex slab-form align-content-center flex-wrap mt-4"  *ngIf="typeForm === 'login'">
             <div class="mb-4 slab-text slab-text--large slab-text--muted">{{ 'COMMON_SESSION_LOGIN' | translate | async }}</div>
-            <form>
-                <input class="w-100 slab-form__input slab-form__input--topradius" [(ngModel)]="userName" id="inputUserName" placeholder="{{ 'COMMON_USERNAME' | translate | async }}" name="login" type="text" required autocomplete="off">
-                <input class="w-100 slab-form__input slab-form__input--bottomradius" [(ngModel)]="password" id="inputPassword" placeholder="{{ 'COMMON_PASSWORD' | translate | async }}" name="pwd" type="password" required autocomplete="off">
-                <button class="w-100 btn btn-primary slab-form__submit mt-4" (click)="doLogin()">{{ 'COMMON_ENTER' | translate | async }}</button>
-                <div *ngIf="errorUserPwd" class="text-center text-danger pt-2">
-                    {{ errorMessage | translate | async}}
-                </div>
-                <div *ngIf="!errorUserPwd" class="text-center text-danger pt-2">
-                    &nbsp;
-                </div>
-                <div *ngIf="isLoading" class="text-center pt-2" >
-                    {{ 'COMMON_LOADING' | translate | async }}...
-                    <i class="icon-spinner spin"></i>
-                </div>
-                <div *ngIf="!isLoading" class="text-center pt-2" >
-                    &nbsp;
-                </div>
+                <form novalidate class="w-100">
+                        <slt-form-login (login)="doLogin($event)"  
+                            [(userName)]="userName"
+                            [(password)]="password" [activeRecovery]="activeRecovery"
+                            [activeSignUp]="activeSignUp"  [errorUserPwd]="errorUserPwd" [txtUsername]="txtUsername"  [(typeForm)]="typeForm" [isLoading] ="isLoading">
+                    </slt-form-login>
+                </form>
+        </div>
+        <div class="d-flex slab-form align-content-center flex-wrap mt-4" *ngIf="typeForm === 'signup'">
+            <div class="mb-4 slab-text slab-text--large slab-text--muted">{{ 'COMMON_SESSION_SIGNUP' | translate | async }}</div>
+            <form novalidate class="w-100">
+               <slt-form-signup (signUp)="doSignUp($event)"  [(userName)]="userName" [(password)]="password" [(name)]="name" [(lastName)]="lastName"
+               [(email)]="email" [activeLogin]="activeLogin" [(typeForm)]="typeForm" [errorUserExist]="errorUserExist"  [isLoading] ="isLoading">
+               </slt-form-signup>
             </form>
         </div>
+        <div class="d-flex slab-form align-content-center flex-wrap mt-4" *ngIf="typeForm === 'recovery'">
+                <div class="mb-4 slab-text slab-text--large slab-text--muted">{{ 'COMMON_SESSION_RECOVERY' | translate | async }}</div>
+                <form novalidate class="w-100">
+                    <slt-form-recovery (recovery)="doRecovery($event)"  [(userName)]="userName" [txtUsername]="txtUsername"  [(typeForm)]="typeForm"
+                    [errorUserDoesNotExist]="errorUserDoesNotExist" [activeLogin]="activeLogin" [txtRecoverProcessStarted]="txtRecoverProcessStarted"  [isLoading] ="isLoading">
+                    </slt-form-recovery>
+                </form>
+            </div>
+
         <div class="d-flex slab-footer flex-column">
             <img width="132" src="{{ companyLogo }}" class="mt-4 align-self-center">
             <div class="slab-text slab-text--small align-self-center mt-4 ">{{copyright}}</div>
             <div class="mt-4 align-self-center">
-                <a class="slab-text slab-text--link slab-text--small mr-2 " href="">{{ 'COMMON_TERMS_OF_USE' | translate | async }}</a> · <a class="ml-2 slab-text slab-text--link slab-text--small" href="">{{ 'COMMON_PRIVACY' | translate | async }}</a>
+                <a class="slab-text slab-text--link slab-text--small mr-2 "  target="_blank" *ngIf="pathTerms" href="pathTerms">{{ 'COMMON_TERMS_OF_USE' | translate | async }}</a> <span *ngIf="pathTerms && pathPrivacy">·</span>
+                <a class="ml-2 slab-text slab-text--link slab-text--small"
+                    href="pathPrivacy" target="_blank" *ngIf="pathPrivacy">{{ 'COMMON_PRIVACY' | translate | async }}</a>
             </div>
         </div>
     </div>

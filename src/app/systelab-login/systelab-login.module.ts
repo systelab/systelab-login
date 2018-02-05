@@ -6,6 +6,9 @@ import { SystelabTranslateModule } from 'systelab-translate';
 import { LoginComponent } from './login.component';
 import { ChangePasswordDialog } from './change-password-dialog.component';
 import { SystelabComponentsModule } from 'systelab-components';
+import { FormLoginComponent } from './form-login/form-login.component';
+import { FormSignupComponent } from './form-signup/form-signup.component';
+import { FormRecoveryComponent } from './form-recovery/form-recovery.component';
 
 @NgModule({
 	imports:         [
@@ -16,7 +19,10 @@ import { SystelabComponentsModule } from 'systelab-components';
 	],
 	declarations:    [
 		LoginComponent,
-		ChangePasswordDialog
+		ChangePasswordDialog,
+		FormLoginComponent,
+		FormSignupComponent,
+		FormRecoveryComponent
 	],
 	exports:         [
 		LoginComponent
