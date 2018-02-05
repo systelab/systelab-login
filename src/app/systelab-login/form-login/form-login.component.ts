@@ -61,7 +61,10 @@ export class FormLoginComponent implements OnInit {
 
 	public ngOnInit() {
 		if (!this.txtUsername) {
-			this.txtUsername = this.i18nService.instant('COMMON_USERNAME');
+			this.i18nService.get('COMMON_USERNAME')
+				.subscribe((res: string) => {
+					this.txtUsername = res;
+				});
 		}
 	}
 
