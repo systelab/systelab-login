@@ -1,4 +1,4 @@
-<input #inputUserName type="text" class="w-100 slab-form__input slab-form__input--topradius" [ngClass]="{'slab-form_input--error':  inputUserName.invalid && inputUserName.touched }"
+<input #inputUserName="ngModel" type="text" class="w-100 slab-form__input slab-form__input--topradius" [class.slab-form_input--error]="inputUserName.invalid && inputUserName.touched"
        id="inputUserName" [(ngModel)]="userName" placeholder="{{txtUsername}}"
        name="inputUserName" (keyup.enter)="doSignUp()" required autocomplete="off" maxlength="20" minlength="6">
 

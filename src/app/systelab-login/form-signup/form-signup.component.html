@@ -1,9 +1,9 @@
-<input #inputUserName type="text" class="w-100 slab-form__input slab-form__input--topradius"
-       [ngClass]="{'slab-form_input--error':  inputUserName.invalid && inputUserName.touched }"
+<input #inputUserName="ngModel" type="text" class="w-100 slab-form__input slab-form__input--topradius"
+       [class.slab-form_input--error]="inputUserName.invalid && inputUserName.touched"
        id="inputUserName" [(ngModel)]="userName" placeholder="{{ 'COMMON_USERNAME' | translate | async }}"
        name="inputUserName" (keyup.enter)="doSignUp()" required autocomplete="off" maxlength="20" minlength="6">
 
-<input #inputPassword type="password" [ngClass]="{'slab-form_input--error':  inputPassword.invalid && inputPassword.touched }" placeholder="{{ 'COMMON_PASSWORD' | translate | async }}"
+<input #inputPassword="ngModel" type="password" [class.slab-form_input--error]="inputPassword.invalid && inputPassword.touched" placeholder="{{ 'COMMON_PASSWORD' | translate | async }}"
        autocomplete="off" class="w-100 slab-form__input slab-form__input--bottomradius" id="inputPassword"
        name="inputPassword" (keyup.enter)="doSignUp()" [(ngModel)]="password" pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,20})"
        required maxlength="20" minlength="6"/>
@@ -12,15 +12,15 @@
     <small class="slab-text slab-text--xsmall badge badge-warning">{{ 'COMMON_PASSWORD_STR' | translate | async }}</small>
 </div>
 
-<input #inputEmail type="email" [ngClass]="{'slab-form_input--error':  inputEmail.invalid && inputEmail.touched  }" autocomplete="off"
+<input #inputEmail="ngModel" type="email" [class.slab-form_input--error]="inputEmail.invalid && inputEmail.touched" autocomplete="off"
        placeholder=" {{ 'COMMON_EMAIL' | translate | async }}" class="w-100 slab-form_input--marginTop15 slab-form__input slab-form__input--topradius"
        (keyup.enter)="doSignUp()" id="inputEmail"  name="inputEmail" [(ngModel)]="email" required email/>
 
-<input #inputName type="text" [ngClass]="{'slab-form_input--error':  inputName.invalid && inputName.touched  }" placeholder=" {{ 'COMMON_NAME' | translate | async }}"
+<input #inputName="ngModel" type="text" [class.slab-form_input--error]="inputName.invalid && inputName.touched" placeholder=" {{ 'COMMON_NAME' | translate | async }}"
        class="w-100  slab-form__input " (keyup.enter)="doSignUp()" id="inputName" name="inputName"  [(ngModel)]="name"
        required maxlength="50" minlength="2"/>
 
-<input #inputLastName type="text" [ngClass]="{'slab-form_input--error':  inputLastName.invalid && inputLastName.touched  }" placeholder=" {{ 'COMMON_LASTNAME' | translate | async }}"
+<input #inputLastName="ngModel" type="text" [class.slab-form_input--error]="inputLastName.invalid && inputLastName.touched" placeholder=" {{ 'COMMON_LASTNAME' | translate | async }}"
        class="w-100  slab-form__input " (keyup.enter)="doSignUp()" id="inputLastName" name="inputLastName" [(ngModel)]="lastName"
        required maxlength="80" minlength="2"/>
 
