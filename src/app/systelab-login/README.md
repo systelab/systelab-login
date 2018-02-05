@@ -53,7 +53,7 @@ This is an example of a combiantion of the three available components.
                 [pathTerms]="pathTerms"
                 [pathPrivacy]="pathPrivacy"
                 [txtUsername]="txtUsername"
-                [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'">
+                [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'" [isLoading]="isLoading">
                 </systelab-login>
 ```
 
@@ -75,7 +75,7 @@ This is an example of a combiantion of the three available components.
                 [errorUserExist]="errorUserExist"
                 [pathTerms]="pathTerms"
                 [pathPrivacy]="pathPrivacy"
-                [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'">
+                [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'" [isLoading]="isLoading">
                 </systelab-login>
 ```
 
@@ -94,7 +94,7 @@ This is an example of a combiantion of the three available components.
                 [txtUsername]="txtUsername"
                 [errorUserDoesNotExist]="errorUserDoesNotExist"
                 [txtRecoverProcessStarted]="txtRecoverProcessStarted"
-                [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'">
+                [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'" [isLoading]="isLoading">
                 </systelab-login>
 ```
 
@@ -120,7 +120,7 @@ This is an example of a combiantion of the three available components.
                 [pathTerms]="pathTerms"
                 [pathPrivacy]="pathPrivacy"
                 [txtUsername]="txtUsername"
-                [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'">
+                [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'" [isLoading]="isLoading">
                 </systelab-login>
 ```
 
@@ -144,7 +144,7 @@ This is an example of a combiantion of the three available components.
                 [pathPrivacy]="pathPrivacy"
                 [txtUsername]="txtUsername"
                 [txtRecoverProcessStarted]="txtRecoverProcessStarted"
-                [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'">
+                [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'" [isLoading]="isLoading">
                 </systelab-login>
 ```
 
