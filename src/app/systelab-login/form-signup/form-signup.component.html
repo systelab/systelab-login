@@ -6,7 +6,7 @@
 <input #inputPassword="ngModel" type="password" [class.slab-form_input--error]="!isPasswordOK() && inputPassword.touched" placeholder="{{ 'COMMON_PASSWORD' | translate | async }}"
        autocomplete="off" class="w-100 slab-form__input slab-form__input--bottomradius" id="inputPassword"
        name="inputPassword" (keyup.enter)="doSignUp()" [(ngModel)]="password"
-       required minlength="{{getMinPasswordLength()}}"/>
+       required/>
 
 
 <div class="d-none d-sm-block slab-form_input--marginTop15 text-right">

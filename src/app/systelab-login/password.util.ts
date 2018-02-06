@@ -2,15 +2,10 @@ import { I18nService } from 'systelab-translate/lib/i18n.service';
 
 export class PasswordUtil {
 
-	private static strongPatternEx = '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^a-zA-Z0-9])(?=.{8,})';
-	private static veryStrongPatternEx = '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^a-zA-Z0-9])(?=.{14,})';
-	private static goodPatternEx = '^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})';
-	private static moderatePatternEx = '^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{4,})';
-
-	private static strongPatternRegex = new RegExp(PasswordUtil.strongPatternEx);
-	private static veryStrongPatternRegex = new RegExp(PasswordUtil.veryStrongPatternEx);
-	private static goodPatternRegex = new RegExp(PasswordUtil.goodPatternEx);
-	private static moderatePatternRegex = new RegExp(PasswordUtil.moderatePatternEx);
+	private static strongPatternRegex = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^a-zA-Z0-9])(?=.{8,})');
+	private static veryStrongPatternRegex = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^a-zA-Z0-9])(?=.{14,})');
+	private static goodPatternRegex = new RegExp('^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})');
+	private static moderatePatternRegex = new RegExp('^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{4,})');
 
 	private static getPasswordComplexityTooltipTranslationKey(minPasswordStrengthValue: number) {
 		switch (minPasswordStrengthValue) {
@@ -42,7 +37,7 @@ export class PasswordUtil {
 		}
 	}
 
-	public static getMinPasswordLength(minPasswordStrengthValue: number) {
+	private static getMinPasswordLength(minPasswordStrengthValue: number) {
 		switch (minPasswordStrengthValue) {
 			case 2:
 				return 4;
@@ -62,23 +57,6 @@ export class PasswordUtil {
 			complexity:  PasswordUtil.getPasswordComplexity(minPasswordStrengthValue, i18nService),
 			char_number: PasswordUtil.getMinPasswordLength(minPasswordStrengthValue)
 		});
-	}
-
-	public static getPasswordComplexityPattern(minPasswordStrengthValue: number) {
-		switch (minPasswordStrengthValue) {
-			case 5:
-				return PasswordUtil.veryStrongPatternEx;
-			case 4:
-				return PasswordUtil.strongPatternEx;
-			case 3:
-				return PasswordUtil.goodPatternEx;
-			case 2:
-				return PasswordUtil.moderatePatternEx;
-			case 1:
-				return '';
-			default:
-				return '';
-		}
 	}
 
 	public static evaluatePasswordStrength(currentPassword) {

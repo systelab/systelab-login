@@ -112,12 +112,9 @@ export class FormSignupComponent {
 	public getPasswordComplexityStyle() {
 		return PasswordUtil.getStyle(PasswordUtil.evaluatePasswordStrength(this.password));
 	}
+
 	public isPasswordOK() {
 		return PasswordUtil.evaluatePasswordStrength(this.password) >= this.minPasswordStrengthValue;
-	}
-
-	public getMinPasswordLength():number {
-		return PasswordUtil.getMinPasswordLength(this.minPasswordStrengthValue);
 	}
 
 	public getPasswordComplexityAsLabel() {
