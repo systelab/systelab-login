@@ -3,7 +3,6 @@ import { DialogRef, ModalComponent } from 'ngx-modialog';
 import { I18nService } from 'systelab-translate/lib/i18n.service';
 import { Observable } from 'rxjs/Observable';
 import { DialogService, MessagePopupService, SystelabModalContext } from 'systelab-components/widgets/modal';
-import { PasswordUtil } from './password.util';
 
 export class ChangePasswordDialogParameters extends SystelabModalContext {
 	public width = 550;
@@ -27,7 +26,6 @@ export class ChangePasswordDialog implements ModalComponent<ChangePasswordDialog
 	public repeatedPassword: string;
 	public oldPassword: string;
 
-	public minPasswordLength: number;
 
 	public static getParameters(): ChangePasswordDialogParameters {
 		return new ChangePasswordDialogParameters();
@@ -51,8 +49,7 @@ export class ChangePasswordDialog implements ModalComponent<ChangePasswordDialog
 
 	public isOK() {
 		return this.oldPassword &&
-			this.newPassword === this.repeatedPassword &&
-			PasswordUtil.evaluatePasswordStrength(this.newPassword) >= this.parameters.minPasswordStrengthValue;
+			this.newPassword === this.repeatedPassword;
 	}
 
 	public changePassword(): void {
@@ -64,23 +61,6 @@ export class ChangePasswordDialog implements ModalComponent<ChangePasswordDialog
 					}
 				}
 			);
-	}
-
-	public getPasswordComplexityTooltip() {
-		return PasswordUtil.getPasswordComplexityTooltip(this.parameters.minPasswordStrengthValue, this.i18nService);
-	}
-
-	public getPasswordComplexityStyle() {
-		return PasswordUtil.getStyle(PasswordUtil.evaluatePasswordStrength(this.newPassword));
-	}
-
-	public getPasswordComplexityAsLabel() {
-		const key = PasswordUtil.getTranslationKey(PasswordUtil.evaluatePasswordStrength(this.newPassword));
-		if (key) {
-			return this.i18nService.instant(key);
-		} else {
-			return '';
-		}
 	}
 
 	public checkNewRepeatedPassword(): boolean {

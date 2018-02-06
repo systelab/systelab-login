@@ -1,10 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { I18nService } from 'systelab-translate/lib/i18n.service';
-import { PasswordUtil } from '../password.util';
 
 @Component({
 	selector:    'slt-form-signup',
-	templateUrl: './form-signup.component.html',
+	templateUrl: 'form-signup.component.html',
 	styleUrls:   ['../login.component.scss']
 })
 export class FormSignupComponent {
@@ -103,27 +102,6 @@ export class FormSignupComponent {
 
 	public doSignUp() {
 		this.signUp.emit();
-	}
-
-	public getPasswordComplexityTooltip() {
-		return PasswordUtil.getPasswordComplexityTooltip(this.minPasswordStrengthValue, this.i18nService);
-	}
-
-	public getPasswordComplexityStyle() {
-		return PasswordUtil.getStyle(PasswordUtil.evaluatePasswordStrength(this.password));
-	}
-
-	public isPasswordOK() {
-		return PasswordUtil.evaluatePasswordStrength(this.password) >= this.minPasswordStrengthValue;
-	}
-
-	public getPasswordComplexityAsLabel() {
-		const key = PasswordUtil.getTranslationKey(PasswordUtil.evaluatePasswordStrength(this.password));
-		if (key) {
-			return this.i18nService.instant(key);
-		} else {
-			return '';
-		}
 	}
 
 }

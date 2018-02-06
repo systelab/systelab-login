@@ -1,6 +1,6 @@
 <input type="text" class="w-100 slab-form__input slab-form__input--topradius" [(ngModel)]="userName" [class.slab-form_input--error]="inputUserName.invalid && inputUserName.touched"
        id="inputUserName" placeholder="{{txtUsername}}" #inputUserName="ngModel" name="inputUserName" (keyup.enter)="doLogin()"
-       required autocomplete="off" maxlength="20" minlength="6">
+       required autocomplete="off">
 
 <input type="password" class="w-100 slab-form__input slab-form__input--bottomradius" [(ngModel)]="password" [class.slab-form_input--error]="inputPassword.invalid && inputPassword.touched"
        id="inputPassword" placeholder="{{ 'COMMON_PASSWORD' | translate | async }}" #inputPassword="ngModel" name="inputPassword"

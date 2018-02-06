@@ -24,6 +24,7 @@
 	"PASSWORD_STRENGTH_GOOD":"Strength is Good",
 	"PASSWORD_STRENGTH_WEAK":"Strength is Weak",
 	"PASSWORD_STRENGTH_VERY_STRONG":"Strength is Very Strong",
+	"PASSWORD_STRENGTH_MODERATE":"Strength is Moderate",
 	"PASSWORD_STRENGTH_STRONG":"Strength is Strong",
 	"COMMON_USERNAME_AND_EMAIL":"Username or Email",
 	"COMMON_SESSION_RECOVERY":"Password Recovery"
