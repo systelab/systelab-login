@@ -61,7 +61,4 @@ export class FormRecoveryComponent implements OnInit {
 	public goLogin() {
 		this.currentForm = 'login';
 	}
-
-	public doSignUp() {
-	}
 }
