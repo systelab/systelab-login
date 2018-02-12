@@ -1,6 +1,6 @@
 {
   "name": "systelab-login",
-  "version": "2.6.4",
+  "version": "2.6.5",
   "license": "MIT",
   "keywords": [
     "Angular",
@@ -19,7 +19,7 @@
     "cleardown": "rimraf css html build widgets",
     "inline-build-templates": "gulp inline-build-templates",
     "ngc-build": "ngc -p ./tsconfig.lib.json",
-    "prepare": "npm run cleardown && npm run inline-build-templates && npm run ngc-build"
+    "prepublish": "npm run cleardown && npm run inline-build-templates && npm run ngc-build"
   },
   "files": [
     "widgets"
