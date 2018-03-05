@@ -1,5 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
-import { DialogRef, ModalComponent } from 'ngx-modialog';
+import { DialogRef, ModalComponent } from 'systelab-components/widgets/modal';
 import { I18nService } from 'systelab-translate/lib/i18n.service';
 import { Observable } from 'rxjs/Observable';
 import { DialogService, MessagePopupService, SystelabModalContext } from 'systelab-components/widgets/modal';
