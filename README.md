@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/systelab/systelab-login.svg?branch=master)](https://travis-ci.org/systelab/systelab-login)
+
 # systelab-login
 
 Library with common Systelab login components to speed up our Angular developments
