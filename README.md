@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5e9224e6efa34e2a98375cc4afcec7ec)](https://app.codacy.com/app/alfonsserra/systelab-login?utm_source=github.com&utm_medium=referral&utm_content=systelab/systelab-login&utm_campaign=badger)
 [![Build Status](https://travis-ci.org/systelab/systelab-login.svg?branch=master)](https://travis-ci.org/systelab/systelab-login)
 
 # systelab-login
