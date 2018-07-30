@@ -23,7 +23,7 @@ before_script:
   - ng build
 
 script: 
-  - ng test --single-run
+  - ng test --watch=false
 
 deploy:
   provider: npm
