@@ -20,10 +20,10 @@ before_install:
 
 before_script:
   - npm install
-  - ng build
+
 
 script: 
-  - ng test --watch=false
+  - ng build
 
 deploy:
   provider: npm
