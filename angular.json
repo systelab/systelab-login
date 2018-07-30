@@ -110,8 +110,7 @@
                 "glob": "**/*",
                 "input": "src/i18n/language",
                 "output": "/i18n/language"
-              },
-              "src/favicon.ico"
+              }
             ]
           }
         },
