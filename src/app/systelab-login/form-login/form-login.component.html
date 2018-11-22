@@ -1,16 +1,21 @@
-<input type="text" class="w-100 slab-form__input slab-form__input--topradius" [(ngModel)]="userName" [class.slab-form_input--error]="inputUserName.invalid && inputUserName.touched"
+<input type="text" class="w-100 slab-form__input slab-form__input--topradius" [(ngModel)]="userName" [class.slab-form_input--error]="checkWhiteSpaces(userName) || inputUserName.invalid && inputUserName.touched"
        id="inputUserName" placeholder="{{txtUsername}}" #inputUserName="ngModel" name="inputUserName" (keyup.enter)="doLogin()"
        required autocomplete="off">
 
-<input type="password" class="w-100 slab-form__input slab-form__input--bottomradius" [(ngModel)]="password" [class.slab-form_input--error]="inputPassword.invalid && inputPassword.touched"
+<div class="input-group w-100 slab-form__input--password slab-form__input--bottomradius">
+    <input [type]="showPwd ? 'text' : 'password'" class="form-control" [(ngModel)]="password"  [class.slab-form_input--error]="checkWhiteSpaces(password) || inputPassword.invalid && inputPassword.touched"
        id="inputPassword" placeholder="{{ 'COMMON_PASSWORD' | translate | async }}" #inputPassword="ngModel" name="inputPassword"
        (keyup.enter)="doLogin()" required autocomplete="off">
+       <div class="input-group-append">
+        <div class="slab-form_input-text_append" (click)="visiblePassword()"><span *ngIf="showPwd === false">{{ 'COMMON_SHOW' | translate | async }}</span><span *ngIf="showPwd === true">{{ 'COMMON_HIDE' | translate | async }}</span></div>
+      </div>
+  </div>
 
 <div class="slab-form_input--marginTop15 text-right" *ngIf="isRecoveryActive">
     <a href="#" class="slab-text slab-text--link" (click)="goRecovery()">{{ 'COMMON_FORGOT_PASSWORD' | translate | async }}</a>
 </div>
 
-<button type="button" class="w-100 btn btn-primary slab-form__submit mt-4" [disabled]="inputUserName.invalid ||  inputPassword.invalid"
+<button type="button" class="w-100 btn btn-primary slab-form__submit mt-4" [disabled]="checkWhiteSpaces(userName) || checkWhiteSpaces(password) || inputUserName.invalid ||  inputPassword.invalid"
         (click)="doLogin()">{{ 'COMMON_ENTER' | translate | async }}
 </button>
 

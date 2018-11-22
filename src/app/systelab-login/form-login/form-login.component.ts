@@ -56,6 +56,8 @@ export class FormLoginComponent implements OnInit {
 
 	@Output() login = new EventEmitter();
 
+	public showPwd = false;
+
 	constructor(protected i18nService: I18nService) {
 	}
 
@@ -78,5 +80,24 @@ export class FormLoginComponent implements OnInit {
 
 	public goRecovery() {
 		this.currentForm = 'recovery';
+	}
+
+	public checkWhiteSpaces(value) {
+		if(value) {
+			let result =value.trim();
+			if(result.length > 0) {
+				return false;
+			}
+			else{
+				return true;
+			}
+		}
+		else{
+			return false;
+		}
+	}
+
+	public visiblePassword() {
+		this.showPwd = !this.showPwd;
 	}
 }
