@@ -169,11 +169,8 @@ small.badge-warning{
 
 .slab-form__input--password {
   border: 0;
+  box-shadow: 0 0 4px #d0d0d0;
   padding-top:1px;
-  box-shadow:0 1px 6px 0 #d0d0d0;
-  -moz-box-shadow:0 1px 6px 0 #d0d0d0;
-  -webkit-box-shadow:0 1px 6px 0 #d0d0d0;
-  -khtml-box-shadow:0 1px 6px 0 #d0d0d0;
    input {
      border-left: 3px solid #fff;
      border-right: 0px;
