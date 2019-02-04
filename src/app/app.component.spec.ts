@@ -10,6 +10,8 @@ import { MessagePopupService } from 'systelab-components/widgets/modal/message-p
 import { BrowserModule } from '@angular/platform-browser';
 import { DialogService } from 'systelab-components/widgets/modal/dialog/dialog.service';
 import { FormsModule } from '@angular/forms';
+import { ShowcaseModule } from './showcase/showcase.module';
+
 
 describe('AppComponent', () => {
 	beforeEach(async(() => {
@@ -20,7 +22,8 @@ describe('AppComponent', () => {
 			imports: [
 				BrowserModule,
 				FormsModule,
-				HttpClientModule,
+                HttpClientModule,
+                ShowcaseModule,
 				SystelabLoginModule.forRoot(),
 				SystelabComponentsModule.forRoot(),
 				SystelabTranslateModule.forRoot(),
