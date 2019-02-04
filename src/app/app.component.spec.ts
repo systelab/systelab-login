@@ -12,6 +12,8 @@ import { DialogService } from 'systelab-components/widgets/modal/dialog/dialog.s
 import { FormsModule } from '@angular/forms';
 import { ShowcaseModule } from './showcase/showcase.module';
 
+import {APP_BASE_HREF} from '@angular/common';
+
 
 describe('AppComponent', () => {
 	beforeEach(async(() => {
@@ -31,7 +33,8 @@ describe('AppComponent', () => {
 			],
 			providers: [
 				MessagePopupService,
-				DialogService
+                DialogService,
+                {provide: APP_BASE_HREF, useValue : '/' }
 			],
 		})
 			.compileComponents();
