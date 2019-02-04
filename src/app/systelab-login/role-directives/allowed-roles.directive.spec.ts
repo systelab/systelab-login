@@ -10,7 +10,7 @@ import { LoggedUserRolesService } from "./logged-user-roles.service";
 
 // Stub for the LoggedUserRolesService interface
 @Injectable()
-export class TestLoggedUserRolesService implements LoggedUserRolesService
+export class StubLoggedUserRolesService implements LoggedUserRolesService
 {
     private loggedRoles = new BehaviorSubject<string[]>([]);
     private loggedRoles$ = this.loggedRoles.asObservable();
@@ -63,11 +63,11 @@ describe("AllowedRolesDirective", () =>
 {
     let onlyAdminFixture: ComponentFixture<TestOnlyAdminAllowedComponent>;
     let adminAndBasicFixture: ComponentFixture<TestAdminAndBasicAllowedComponent>;
-    let loggedUserRolesService: TestLoggedUserRolesService;
+    let loggedUserRolesService: StubLoggedUserRolesService;
 
     beforeEach(async(() =>
     {
-        loggedUserRolesService = new TestLoggedUserRolesService();
+        loggedUserRolesService = new StubLoggedUserRolesService();
         TestBed.configureTestingModule({
             declarations:
             [
