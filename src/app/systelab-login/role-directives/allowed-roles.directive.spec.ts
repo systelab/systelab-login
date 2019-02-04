@@ -169,5 +169,3 @@ function isHeaderVisible(headerClassName: string, fixture: ComponentFixture<Allo
 {
     return (fixture.debugElement.query(By.css("h1." + headerClassName)) != null);
 }
-
-}
