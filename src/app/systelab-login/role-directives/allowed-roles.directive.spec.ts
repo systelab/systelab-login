@@ -29,40 +29,25 @@ export class StubLoggedUserRolesService implements LoggedUserRolesService
 }
 
 
-// Test component used to check if sltAllowedRolesDirective is filtering correctly for 'admin' users.
+// Test component used to check if sltAllowedRoles directive is filtering correctly.
 @Component({
-    selector: 'app-test-only-admin-allowed',
+    selector: 'app-allowed-roles-test',
     template: `
         <div>
-            <h1 *sltAllowedRoles="['admin']">Content to be shown or hidden</h1>
+            <h1 class="onlyAdminUsers" *sltAllowedRoles="['admin']">Content to be shown or hidden</h1>
+            <h1 class="adminAndBasicUsers" *sltAllowedRoles="['admin','basic']">Content to be shown or hidden</h1>
         </div>
     `,
     styles: []
 })
-export class TestOnlyAdminAllowedComponent
-{
-}
-
-
-// Test component used to check if sltAllowedRolesDirective is filtering correctly for 'admin' and 'basic' users.
-@Component({
-    selector: 'app-test-admin-and-basic-allowed',
-    template: `
-        <div>
-            <h1 *sltAllowedRoles="['admin','basic']">Content to be shown or hidden</h1>
-        </div>
-    `,
-    styles: []
-})
-export class TestAdminAndBasicAllowedComponent
+export class AllowedRolesTestComponent
 {
 }
 
 
 describe("AllowedRolesDirective", () =>
 {
-    let onlyAdminFixture: ComponentFixture<TestOnlyAdminAllowedComponent>;
-    let adminAndBasicFixture: ComponentFixture<TestAdminAndBasicAllowedComponent>;
+    let allowedRolesTestFixture: ComponentFixture<AllowedRolesTestComponent>;
     let loggedUserRolesService: StubLoggedUserRolesService;
 
     beforeEach(async(() =>
@@ -72,8 +57,7 @@ describe("AllowedRolesDirective", () =>
             declarations:
             [
                 AllowedRolesDirective,
-                TestOnlyAdminAllowedComponent,
-                TestAdminAndBasicAllowedComponent
+                AllowedRolesTestComponent
             ],
             providers:
             [
@@ -85,106 +69,105 @@ describe("AllowedRolesDirective", () =>
 
     beforeEach(() =>
     {
-        onlyAdminFixture = TestBed.createComponent(TestOnlyAdminAllowedComponent);
-        onlyAdminFixture.detectChanges();
-
-        adminAndBasicFixture = TestBed.createComponent(TestAdminAndBasicAllowedComponent);
-        adminAndBasicFixture.detectChanges();
+        allowedRolesTestFixture = TestBed.createComponent(AllowedRolesTestComponent);
+        allowedRolesTestFixture.detectChanges();
     });
 
 
-    // Only 'admin' allowed tests
-    it("should NOT display test header in TestOnlyAdminAllowedComponent on startup", () =>
+    // Tests for 'onlyAdminUsers' header
+    it("should NOT display 'onlyAdminUsers' header on startup", () =>
     {
-        expect(isTestHeaderVisible(onlyAdminFixture)).toBeFalsy();
+        expect(isHeaderVisible("onlyAdminUsers", allowedRolesTestFixture)).toBeFalsy();
     });
 
-    it("should display test header in TestOnlyAdminAllowedComponent when logged user is admin", () =>
+    it("should display 'onlyAdminUsers' header when logged user is admin", () =>
     {
         loggedUserRolesService.updateLoggedRoles(['admin']);
-        onlyAdminFixture.detectChanges();
-        expect(isTestHeaderVisible(onlyAdminFixture)).toBeTruthy();
+        allowedRolesTestFixture.detectChanges();
+        expect(isHeaderVisible("onlyAdminUsers", allowedRolesTestFixture)).toBeTruthy();
     });
 
-    it("should display test header in TestOnlyAdminAllowedComponent when logged user is basic and admin", () =>
+    it("should display 'onlyAdminUsers' header when logged user is basic and admin", () =>
     {
         loggedUserRolesService.updateLoggedRoles(['basic', 'admin']);
-        onlyAdminFixture.detectChanges();
-        expect(isTestHeaderVisible(onlyAdminFixture)).toBeTruthy();
+        allowedRolesTestFixture.detectChanges();
+        expect(isHeaderVisible("onlyAdminUsers", allowedRolesTestFixture)).toBeTruthy();
     });
 
-    it("should NOT display test header in TestOnlyAdminAllowedComponent when logged user is basic", () =>
+    it("should NOT display 'onlyAdminUsers' header when logged user is basic", () =>
     {
         loggedUserRolesService.updateLoggedRoles(['basic']);
-        onlyAdminFixture.detectChanges();
-        expect(isTestHeaderVisible(onlyAdminFixture)).toBeFalsy();
+        allowedRolesTestFixture.detectChanges();
+        expect(isHeaderVisible("onlyAdminUsers", allowedRolesTestFixture)).toBeFalsy();
     });
 
-    it("should NOT display test header in TestOnlyAdminAllowedComponent when no logged user", () =>
+    it("should NOT display 'onlyAdminUsers' header when no logged user", () =>
     {
         loggedUserRolesService.updateLoggedRoles([]);
-        onlyAdminFixture.detectChanges();
-        expect(isTestHeaderVisible(onlyAdminFixture)).toBeFalsy();
+        allowedRolesTestFixture.detectChanges();
+        expect(isHeaderVisible("onlyAdminUsers", allowedRolesTestFixture)).toBeFalsy();
     });
 
-    it("should NOT display test header in TestOnlyAdminAllowedComponent when logged user data not set", () =>
+    it("should NOT display 'onlyAdminUsers' header when logged user data not set", () =>
     {
         loggedUserRolesService.updateLoggedRoles(null);
-        onlyAdminFixture.detectChanges();
-        expect(isTestHeaderVisible(onlyAdminFixture)).toBeFalsy();
+        allowedRolesTestFixture.detectChanges();
+        expect(isHeaderVisible("onlyAdminUsers", allowedRolesTestFixture)).toBeFalsy();
     });
 
 
-    // 'admin' and 'basic' allowed tests
-    it("should NOT display test header in TestAdminAndBasicAllowedComponent on startup", () =>
+    // Tests for 'adminAndBasicUsers' header
+    it("should NOT display 'adminAndBasicUsers' header on startup", () =>
     {
-        expect(isTestHeaderVisible(adminAndBasicFixture)).toBeFalsy();
+        expect(isHeaderVisible("adminAndBasicUsers", allowedRolesTestFixture)).toBeFalsy();
     });
 
-    it("should display test header in TestAdminAndBasicAllowedComponent when logged user is admin", () =>
+    it("should display 'adminAndBasicUsers' header when logged user is admin", () =>
     {
         loggedUserRolesService.updateLoggedRoles(['admin']);
-        adminAndBasicFixture.detectChanges();
-        expect(isTestHeaderVisible(adminAndBasicFixture)).toBeTruthy();
+        allowedRolesTestFixture.detectChanges();
+        expect(isHeaderVisible("adminAndBasicUsers", allowedRolesTestFixture)).toBeTruthy();
     });
 
-    it("should display test header in TestAdminAndBasicAllowedComponent when logged user is basic", () =>
+    it("should display 'adminAndBasicUsers' header when logged user is basic", () =>
     {
         loggedUserRolesService.updateLoggedRoles(['basic']);
-        adminAndBasicFixture.detectChanges();
-        expect(isTestHeaderVisible(adminAndBasicFixture)).toBeTruthy();
+        allowedRolesTestFixture.detectChanges();
+        expect(isHeaderVisible("adminAndBasicUsers", allowedRolesTestFixture)).toBeTruthy();
     });
 
-    it("should display test header in TestAdminAndBasicAllowedComponent when logged user is basic and admin", () =>
+    it("should display 'adminAndBasicUsers' header when logged user is basic and admin", () =>
     {
         loggedUserRolesService.updateLoggedRoles(['basic', 'admin']);
-        adminAndBasicFixture.detectChanges();
-        expect(isTestHeaderVisible(adminAndBasicFixture)).toBeTruthy();
+        allowedRolesTestFixture.detectChanges();
+        expect(isHeaderVisible("adminAndBasicUsers", allowedRolesTestFixture)).toBeTruthy();
     });
 
-    it("should NOT display test header in TestAdminAndBasicAllowedComponent when logged user is other", () =>
+    it("should NOT display 'adminAndBasicUsers' header when logged user is other", () =>
     {
         loggedUserRolesService.updateLoggedRoles(['other']);
-        adminAndBasicFixture.detectChanges();
-        expect(isTestHeaderVisible(adminAndBasicFixture)).toBeFalsy();
+        allowedRolesTestFixture.detectChanges();
+        expect(isHeaderVisible("adminAndBasicUsers", allowedRolesTestFixture)).toBeFalsy();
     });
 
-    it("should NOT display test header in TestAdminAndBasicAllowedComponent when no logged user", () =>
+    it("should NOT display 'adminAndBasicUsers' header when no logged user", () =>
     {
         loggedUserRolesService.updateLoggedRoles([]);
-        adminAndBasicFixture.detectChanges();
-        expect(isTestHeaderVisible(adminAndBasicFixture)).toBeFalsy();
+        allowedRolesTestFixture.detectChanges();
+        expect(isHeaderVisible("adminAndBasicUsers", allowedRolesTestFixture)).toBeFalsy();
     });
 
-    it("should NOT display test header in TestAdminAndBasicAllowedComponent when logged user data not set", () =>
+    it("should NOT display 'adminAndBasicUsers' header when logged user data not set", () =>
     {
         loggedUserRolesService.updateLoggedRoles(null);
-        adminAndBasicFixture.detectChanges();
-        expect(isTestHeaderVisible(adminAndBasicFixture)).toBeFalsy();
+        allowedRolesTestFixture.detectChanges();
+        expect(isHeaderVisible("adminAndBasicUsers", allowedRolesTestFixture)).toBeFalsy();
     });
 });
 
-function isTestHeaderVisible<TestComponent>(fixture: ComponentFixture<TestComponent>): boolean
+function isHeaderVisible(headerClassName: string, fixture: ComponentFixture<AllowedRolesTestComponent>): boolean
 {
-    return (fixture.debugElement.query(By.css("h1")) != null);
+    return (fixture.debugElement.query(By.css("h1." + headerClassName)) != null);
+}
+
 }
