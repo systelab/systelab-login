@@ -29,55 +29,26 @@ export class StubLoggedUserRolesService implements LoggedUserRolesService
 }
 
 
-// Test component used to check if sltForbiddenRolesDirective is filtering correctly not logged users.
+// Test component used to check if sltForbiddenRoles directive is filtering correctly.
 @Component({
-    selector: 'app-test-not-logged-forbidden',
+    selector: 'app-forbidden-roles-test',
     template: `
         <div>
-            <h1 *sltForbiddenRoles="[]">Content to be shown or hidden</h1>
+            <h1 class="allLoggedUsers" *sltForbiddenRoles="[]">Only for logged users</h1>
+            <h1 class="basicUsersForbidden" *sltForbiddenRoles="['basic']">Only for logged users that are not basic</h1>
+            <h1 class="basicAndAdvancedUsersForbidden" *sltForbiddenRoles="['basic','advanced']">Only for logged users that are not basic nor advanced</h1>
         </div>
     `,
     styles: []
 })
-export class TestNotLoggedForbiddenComponent
+export class ForbiddenRolesTestComponent
 {
 }
 
-
-// Test component used to check if sltForbiddenRolesDirective is filtering correctly 'basic' users.
-@Component({
-    selector: 'app-test-basic-forbidden',
-    template: `
-        <div>
-            <h1 *sltForbiddenRoles="['basic']">Content to be shown or hidden</h1>
-        </div>
-    `,
-    styles: []
-})
-export class TestBasicForbiddenComponent
-{
-}
-
-
-// Test component used to check if sltForbiddenRolesDirective is filtering correctly 'basic' and 'advanced' users.
-@Component({
-    selector: 'app-test-basic-and-advanced-forbidden',
-    template: `
-        <div>
-            <h1 *sltForbiddenRoles="['basic','advanced']">Content to be shown or hidden</h1>
-        </div>
-    `,
-    styles: []
-})
-export class TestBasicAndAdvancedForbiddenComponent
-{
-}
 
 describe("ForbiddenRolesDirective", () =>
 {
-    let notLoggedForbiddenFixture: ComponentFixture<TestNotLoggedForbiddenComponent>;
-    let basicForbiddenFixture: ComponentFixture<TestBasicForbiddenComponent>;
-    let basicAndAdvancedForbiddenFixture: ComponentFixture<TestBasicAndAdvancedForbiddenComponent>;
+    let forbiddenRolesTestFixture: ComponentFixture<ForbiddenRolesTestComponent>;
     let loggedUserRolesService: StubLoggedUserRolesService;
 
     beforeEach(async(() =>
@@ -87,9 +58,7 @@ describe("ForbiddenRolesDirective", () =>
             declarations:
             [
                 ForbiddenRolesDirective,
-                TestNotLoggedForbiddenComponent,
-                TestBasicForbiddenComponent,
-                TestBasicAndAdvancedForbiddenComponent
+                ForbiddenRolesTestComponent
             ],
             providers:
             [
@@ -101,172 +70,166 @@ describe("ForbiddenRolesDirective", () =>
 
     beforeEach(() =>
     {
-        notLoggedForbiddenFixture = TestBed.createComponent(TestNotLoggedForbiddenComponent);
-        notLoggedForbiddenFixture.detectChanges();
-
-        basicForbiddenFixture = TestBed.createComponent(TestBasicForbiddenComponent);
-        basicForbiddenFixture.detectChanges();
-
-        basicAndAdvancedForbiddenFixture = TestBed.createComponent(TestBasicAndAdvancedForbiddenComponent);
-        basicAndAdvancedForbiddenFixture.detectChanges();
+        forbiddenRolesTestFixture = TestBed.createComponent(ForbiddenRolesTestComponent);
+        forbiddenRolesTestFixture.detectChanges();
     });
 
 
-    // Not logged users forbidden tests
-    it("should NOT display test header in TestNotLoggedForbiddenComponent on startup", () =>
+    // Tests for 'allLoggedUsers' header
+    it("should NOT display 'allLoggedUsers' header on startup", () =>
     {
-        expect(isTestHeaderVisible(notLoggedForbiddenFixture)).toBeFalsy();
+        expect(isHeaderVisible("allLoggedUsers", forbiddenRolesTestFixture)).toBeFalsy();
     });
 
-    it("should display test header in TestNotLoggedForbiddenComponent when logged user is basic", () =>
+    it("should display 'allLoggedUsers' header when logged user is basic", () =>
     {
         loggedUserRolesService.updateLoggedRoles(['basic']);
-        notLoggedForbiddenFixture.detectChanges();
-        expect(isTestHeaderVisible(notLoggedForbiddenFixture)).toBeTruthy();
+        forbiddenRolesTestFixture.detectChanges();
+        expect(isHeaderVisible("allLoggedUsers", forbiddenRolesTestFixture)).toBeTruthy();
     });
 
-    it("should display test header in TestNotLoggedForbiddenComponent when logged user is admin", () =>
+    it("should display 'allLoggedUsers' header when logged user is admin", () =>
     {
         loggedUserRolesService.updateLoggedRoles(['admin']);
-        notLoggedForbiddenFixture.detectChanges();
-        expect(isTestHeaderVisible(notLoggedForbiddenFixture)).toBeTruthy();
+        forbiddenRolesTestFixture.detectChanges();
+        expect(isHeaderVisible("allLoggedUsers", forbiddenRolesTestFixture)).toBeTruthy();
     });
 
-    it("should display test header in TestNotLoggedForbiddenComponent when logged user is basic and admin", () =>
+    it("should display 'allLoggedUsers' header when logged user is basic and admin", () =>
     {
         loggedUserRolesService.updateLoggedRoles(['basic', 'admin']);
-        notLoggedForbiddenFixture.detectChanges();
-        expect(isTestHeaderVisible(notLoggedForbiddenFixture)).toBeTruthy();
+        forbiddenRolesTestFixture.detectChanges();
+        expect(isHeaderVisible("allLoggedUsers", forbiddenRolesTestFixture)).toBeTruthy();
     });
 
-    it("should NOT display test header in TestNotLoggedForbiddenComponent when no user logged", () =>
+    it("should NOT display 'allLoggedUsers' header when no user logged", () =>
     {
         loggedUserRolesService.updateLoggedRoles([]);
-        notLoggedForbiddenFixture.detectChanges();
-        expect(isTestHeaderVisible(notLoggedForbiddenFixture)).toBeFalsy();
+        forbiddenRolesTestFixture.detectChanges();
+        expect(isHeaderVisible("allLoggedUsers", forbiddenRolesTestFixture)).toBeFalsy();
     });
 
-    it("should NOT display test header in TestNotLoggedForbiddenComponent when logged user data not set", () =>
+    it("should NOT display 'allLoggedUsers' header when logged user data not set", () =>
     {
         loggedUserRolesService.updateLoggedRoles(null);
-        notLoggedForbiddenFixture.detectChanges();
-        expect(isTestHeaderVisible(notLoggedForbiddenFixture)).toBeFalsy();
+        forbiddenRolesTestFixture.detectChanges();
+        expect(isHeaderVisible("allLoggedUsers", forbiddenRolesTestFixture)).toBeFalsy();
     });
 
 
-    // Basic users forbidden tests
-    it("should NOT display test header in TestBasicForbiddenComponent on startup", () =>
+    // Tests for 'basicUsersForbidden' header
+    it("should NOT display 'basicUsersForbidden' header on startup", () =>
     {
-        expect(isTestHeaderVisible(basicForbiddenFixture)).toBeFalsy();
+        expect(isHeaderVisible("basicUsersForbidden", forbiddenRolesTestFixture)).toBeFalsy();
     });
 
-    it("should NOT display test header in TestBasicForbiddenComponent when logged user is basic", () =>
+    it("should NOT display 'basicUsersForbidden' header when logged user is basic", () =>
     {
         loggedUserRolesService.updateLoggedRoles(['basic']);
-        basicForbiddenFixture.detectChanges();
-        expect(isTestHeaderVisible(basicForbiddenFixture)).toBeFalsy();
+        forbiddenRolesTestFixture.detectChanges();
+        expect(isHeaderVisible("basicUsersForbidden", forbiddenRolesTestFixture)).toBeFalsy();
     });
 
-    it("should display test header in TestBasicForbiddenComponent when logged user is admin", () =>
+    it("should display 'basicUsersForbidden' header when logged user is admin", () =>
     {
         loggedUserRolesService.updateLoggedRoles(['admin']);
-        basicForbiddenFixture.detectChanges();
-        expect(isTestHeaderVisible(basicForbiddenFixture)).toBeTruthy();
+        forbiddenRolesTestFixture.detectChanges();
+        expect(isHeaderVisible("basicUsersForbidden", forbiddenRolesTestFixture)).toBeTruthy();
     });
 
-    it("should NOT display test header in TestBasicForbiddenComponent when logged user is basic and admin", () =>
+    it("should NOT display 'basicUsersForbidden' header when logged user is basic and admin", () =>
     {
         loggedUserRolesService.updateLoggedRoles(['basic', 'admin']);
-        basicForbiddenFixture.detectChanges();
-        expect(isTestHeaderVisible(basicForbiddenFixture)).toBeFalsy();
+        forbiddenRolesTestFixture.detectChanges();
+        expect(isHeaderVisible("basicUsersForbidden", forbiddenRolesTestFixture)).toBeFalsy();
     });
 
-    it("should NOT display test header in TestBasicForbiddenComponent when no logged user", () =>
+    it("should NOT display 'basicUsersForbidden' header when no logged user", () =>
     {
         loggedUserRolesService.updateLoggedRoles([]);
-        basicForbiddenFixture.detectChanges();
-        expect(isTestHeaderVisible(basicForbiddenFixture)).toBeFalsy();
+        forbiddenRolesTestFixture.detectChanges();
+        expect(isHeaderVisible("basicUsersForbidden", forbiddenRolesTestFixture)).toBeFalsy();
     });
 
-    it("should NOT display test header in TestBasicForbiddenComponent when logged user data not set", () =>
+    it("should NOT display 'basicUsersForbidden' header when logged user data not set", () =>
     {
         loggedUserRolesService.updateLoggedRoles(null);
-        basicForbiddenFixture.detectChanges();
-        expect(isTestHeaderVisible(basicForbiddenFixture)).toBeFalsy();
+        forbiddenRolesTestFixture.detectChanges();
+        expect(isHeaderVisible("basicUsersForbidden", forbiddenRolesTestFixture)).toBeFalsy();
     });
 
 
-    // Basic and advanced users forbidden tests
-    it("should NOT display test header in TestBasicAndAdvancedForbiddenComponent on startup", () =>
+    // Tests for 'basicAndAdvancedUsersForbidden' header    
+    it("should NOT display 'basicAndAdvancedUsersForbidden' header on startup", () =>
     {
-        expect(isTestHeaderVisible(basicAndAdvancedForbiddenFixture)).toBeFalsy();
+        expect(isHeaderVisible("basicAndAdvancedUsersForbidden", forbiddenRolesTestFixture)).toBeFalsy();
     });
 
-    it("should NOT display test header in TestBasicAndAdvancedForbiddenComponent when logged user is basic", () =>
+    it("should NOT display 'basicAndAdvancedUsersForbidden' header when logged user is basic", () =>
     {
         loggedUserRolesService.updateLoggedRoles(['basic']);
-        basicAndAdvancedForbiddenFixture.detectChanges();
-        expect(isTestHeaderVisible(basicAndAdvancedForbiddenFixture)).toBeFalsy();
+        forbiddenRolesTestFixture.detectChanges();
+        expect(isHeaderVisible("basicAndAdvancedUsersForbidden", forbiddenRolesTestFixture)).toBeFalsy();
     });
 
-    it("should NOT display test header in TestBasicAndAdvancedForbiddenComponent when logged user is advanced", () =>
+    it("should NOT display 'basicAndAdvancedUsersForbidden' header when logged user is advanced", () =>
     {
         loggedUserRolesService.updateLoggedRoles(['advanced']);
-        basicAndAdvancedForbiddenFixture.detectChanges();
-        expect(isTestHeaderVisible(basicAndAdvancedForbiddenFixture)).toBeFalsy();
+        forbiddenRolesTestFixture.detectChanges();
+        expect(isHeaderVisible("basicAndAdvancedUsersForbidden", forbiddenRolesTestFixture)).toBeFalsy();
     });
 
-    it("should NOT display test header in TestBasicAndAdvancedForbiddenComponent when logged user is basic and advanced", () =>
+    it("should NOT display 'basicAndAdvancedUsersForbidden' header when logged user is basic and advanced", () =>
     {
         loggedUserRolesService.updateLoggedRoles(['basic', 'advanced']);
-        basicAndAdvancedForbiddenFixture.detectChanges();
-        expect(isTestHeaderVisible(basicAndAdvancedForbiddenFixture)).toBeFalsy();
+        forbiddenRolesTestFixture.detectChanges();
+        expect(isHeaderVisible("basicAndAdvancedUsersForbidden", forbiddenRolesTestFixture)).toBeFalsy();
     });
 
-    it("should NOT display test header in TestBasicAndAdvancedForbiddenComponent when logged user is basic and admin", () =>
+    it("should NOT display 'basicAndAdvancedUsersForbidden' header when logged user is basic and admin", () =>
     {
         loggedUserRolesService.updateLoggedRoles(['basic', 'admin']);
-        basicAndAdvancedForbiddenFixture.detectChanges();
-        expect(isTestHeaderVisible(basicAndAdvancedForbiddenFixture)).toBeFalsy();
+        forbiddenRolesTestFixture.detectChanges();
+        expect(isHeaderVisible("basicAndAdvancedUsersForbidden", forbiddenRolesTestFixture)).toBeFalsy();
     });
 
-    it("should NOT display test header in TestBasicAndAdvancedForbiddenComponent when logged user is advanced and admin", () =>
+    it("should NOT display 'basicAndAdvancedUsersForbidden' header when logged user is advanced and admin", () =>
     {
         loggedUserRolesService.updateLoggedRoles(['advanced', 'admin']);
-        basicAndAdvancedForbiddenFixture.detectChanges();
-        expect(isTestHeaderVisible(basicAndAdvancedForbiddenFixture)).toBeFalsy();
+        forbiddenRolesTestFixture.detectChanges();
+        expect(isHeaderVisible("basicAndAdvancedUsersForbidden", forbiddenRolesTestFixture)).toBeFalsy();
     });
 
-    it("should NOT display test header in TestBasicAndAdvancedForbiddenComponent when logged user is basic, advanced and admin", () =>
+    it("should NOT display 'basicAndAdvancedUsersForbidden' header when logged user is basic, advanced and admin", () =>
     {
         loggedUserRolesService.updateLoggedRoles(['basic', 'advanced', 'admin']);
-        basicAndAdvancedForbiddenFixture.detectChanges();
-        expect(isTestHeaderVisible(basicAndAdvancedForbiddenFixture)).toBeFalsy();
+        forbiddenRolesTestFixture.detectChanges();
+        expect(isHeaderVisible("basicAndAdvancedUsersForbidden", forbiddenRolesTestFixture)).toBeFalsy();
     });
 
-    it("should display test header in TestBasicAndAdvancedForbiddenComponent when logged user is admin", () =>
+    it("should display 'basicAndAdvancedUsersForbidden' header when logged user is admin", () =>
     {
         loggedUserRolesService.updateLoggedRoles(['admin']);
-        basicAndAdvancedForbiddenFixture.detectChanges();
-        expect(isTestHeaderVisible(basicAndAdvancedForbiddenFixture)).toBeTruthy();
+        forbiddenRolesTestFixture.detectChanges();
+        expect(isHeaderVisible("basicAndAdvancedUsersForbidden", forbiddenRolesTestFixture)).toBeTruthy();
     });
 
-    it("should NOT display test header in TestBasicAndAdvancedForbiddenComponent when no logged user", () =>
+    it("should NOT display 'basicAndAdvancedUsersForbidden' header when no logged user", () =>
     {
         loggedUserRolesService.updateLoggedRoles([]);
-        basicAndAdvancedForbiddenFixture.detectChanges();
-        expect(isTestHeaderVisible(basicAndAdvancedForbiddenFixture)).toBeFalsy();
+        forbiddenRolesTestFixture.detectChanges();
+        expect(isHeaderVisible("basicAndAdvancedUsersForbidden", forbiddenRolesTestFixture)).toBeFalsy();
     });
 
-    it("should NOT display test header in TestBasicAndAdvancedForbiddenComponent when logged user data not set", () =>
+    it("should NOT display 'basicAndAdvancedUsersForbidden' header when logged user data not set", () =>
     {
         loggedUserRolesService.updateLoggedRoles(null);
-        basicAndAdvancedForbiddenFixture.detectChanges();
-        expect(isTestHeaderVisible(basicAndAdvancedForbiddenFixture)).toBeFalsy();
+        forbiddenRolesTestFixture.detectChanges();
+        expect(isHeaderVisible("basicAndAdvancedUsersForbidden", forbiddenRolesTestFixture)).toBeFalsy();
     });
 });
 
-function isTestHeaderVisible<TestComponent>(fixture: ComponentFixture<TestComponent>): boolean
+function isHeaderVisible(headerClassName: string, fixture: ComponentFixture<ForbiddenRolesTestComponent>): boolean
 {
-    return (fixture.debugElement.query(By.css("h1")) != null);
+    return (fixture.debugElement.query(By.css("h1." + headerClassName)) != null);
 }
