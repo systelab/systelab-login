@@ -1,4 +1,4 @@
-import { Directive, Input, Inject, OnDestroy, OnInit, TemplateRef, ViewContainerRef, trigger } from '@angular/core';
+import { Directive, Input, Inject, OnDestroy, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { takeUntil, first } from 'rxjs/operators';
 
