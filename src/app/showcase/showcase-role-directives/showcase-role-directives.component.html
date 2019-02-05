@@ -1,0 +1,38 @@
+<div class="pl-2 pt-4 pb-2">
+    <h4 class="d-inline">Role directives</h4>
+</div>
+
+<form novalidate [formGroup]="roleForm" class="row mt-1 pl-2 pt-4 pb-2 roleUpdate">
+    <label class="col-md-2 col-form-label">Logged user roles:</label>
+    <div class="col-md-2">
+        <input type="checkbox" id="basic" name="basic" formControlName="basic"/>
+        <label for="basic" class="col-form-label"> Basic</label>
+    </div>
+    <div class="col-md-2">
+        <input type="checkbox" id="author" name="author" formControlName="author"/>
+        <label for="author" class="col-form-label"> Author</label>
+    </div>
+    <div class="col-md-2">
+        <input name="admin" id="admin" type="checkbox" formControlName="admin"/>
+        <label for="admin" class="col-form-label"> Admin</label>        
+    </div>
+</form>
+
+<div _ngcontent-c1="" class="pl-2 pt-4 px-2">
+    <h6 _ngcontent-c1="" class="d-inline">sltAllowedRoles</h6>
+</div>
+<div class="pl-2 pt-4 px-2">
+    <app-showcase-logged-users-can-view *sltAllowedRoles="['basic','author','admin']"></app-showcase-logged-users-can-view>
+    <app-showcase-authors-and-admins-can-view *sltAllowedRoles="['author','admin']"></app-showcase-authors-and-admins-can-view>
+    <app-showcase-only-for-admins *sltAllowedRoles="['admin']"></app-showcase-only-for-admins>
+</div>
+
+<div _ngcontent-c1="" class="pl-2 pt-4 px-2">
+        <h6 _ngcontent-c1="" class="d-inline">sltForbiddenRoles</h6>
+</div>
+<div class="pl-2 pt-4 px-2">
+    <app-showcase-logged-users-can-view *sltForbiddenRoles="[]"></app-showcase-logged-users-can-view>
+    <app-showcase-forbidden-for-basic-users *sltForbiddenRoles="['basic']"></app-showcase-forbidden-for-basic-users>
+    <app-showcase-forbidden-for-basic-and-authors *sltForbiddenRoles="['basic','author']"></app-showcase-forbidden-for-basic-and-authors>
+</div>
+    
