@@ -10,6 +10,8 @@ import {FormLoginComponent} from './form-login/form-login.component';
 import {FormSignupComponent} from './form-signup/form-signup.component';
 import {FormRecoveryComponent} from './form-recovery/form-recovery.component';
 import {PasswordIndicatorComponent} from './password-indicator/password-indicator.component';
+import {AllowedRolesDirective} from './role-directives/allowed-roles.directive';
+import {ForbiddenRolesDirective} from './role-directives/forbidden-roles.directive';
 
 @NgModule({
     imports: [
@@ -24,11 +26,15 @@ import {PasswordIndicatorComponent} from './password-indicator/password-indicato
         FormLoginComponent,
         FormSignupComponent,
         FormRecoveryComponent,
-        PasswordIndicatorComponent
+        PasswordIndicatorComponent,
+        AllowedRolesDirective,
+        ForbiddenRolesDirective
     ],
     exports: [
         LoginComponent,
-        PasswordIndicatorComponent
+        PasswordIndicatorComponent,
+        AllowedRolesDirective,
+        ForbiddenRolesDirective
     ],
     entryComponents: [
         ChangePasswordDialog
