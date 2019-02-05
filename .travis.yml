@@ -29,5 +29,6 @@ deploy:
   provider: npm
   email: aserra@werfen.com
   api_key: $NPM_TOKEN
+  skip_cleanup: true
   on:
     tags: true
