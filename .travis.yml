@@ -21,7 +21,8 @@ before_install:
 before_script:
   - npm install
 
-script: 
+script:
+  - ng lint
   - ng build
 
 deploy:
