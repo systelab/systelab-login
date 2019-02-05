@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
         width: 300px;
         border: 2px solid green;
         margin-bottom: 5px;
-        padding: 4px; 
+        padding: 4px;
     }
   `]
 })

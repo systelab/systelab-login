@@ -9,12 +9,13 @@ import { ShowcaseLoggedUsersCanViewComponent } from './showcase-role-directives/
 import { ShowcaseOnlyForAdminsComponent } from './showcase-role-directives/showcase-only-for-admins.component';
 import { ShowcaseLoggedUserRolesService } from './showcase-role-directives/showcase-logged-user-roles.service';
 import { ShowcaseForbiddenForBasicUsersComponent } from './showcase-role-directives/showcase-forbidden-for-basic-users.component';
-import { ShowcaseForbiddenForBasicAndAuthorsComponent } from './showcase-role-directives/showcase-forbidden-for-basic-and-authors.component';
+import {
+    ShowcaseForbiddenForBasicAndAuthorsComponent } from './showcase-role-directives/showcase-forbidden-for-basic-and-authors.component';
 import { LoggedUserRolesService } from '../systelab-login/role-directives/logged-user-roles.service';
 import { SystelabLoginModule } from '../systelab-login/systelab-login.module';
 
 @NgModule({
-	imports: [
+    imports: [
         BrowserModule,
         ReactiveFormsModule,
         SystelabLoginModule

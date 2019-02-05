@@ -8,39 +8,31 @@ import { LoggedUserRolesService } from './logged-user-roles.service';
 @Directive({
   selector: '[sltForbiddenRoles]'
 })
-export class ForbiddenRolesDirective implements OnInit, OnDestroy
-{
+export class ForbiddenRolesDirective implements OnInit, OnDestroy {
+
     @Input() sltForbiddenRoles: string[];
-    isVisible: boolean = false;
+    isVisible = false;
     stop$ = new Subject();
 
     constructor(
         private viewContainerRef: ViewContainerRef,
         private templateRef: TemplateRef<any>,
         private loggedUserRolesService: LoggedUserRolesService
-    )
-    {}
+    ) {}
 
-    ngOnInit()
-    {
+    ngOnInit() {
         this.loggedUserRolesService.getLoggedUserRoles().pipe(takeUntil(this.stop$)).subscribe(
-            (loggedUserRoles: string[]) =>
-            {
-                if (!loggedUserRoles)
-                {
+            (loggedUserRoles: string[]) => {
+                if (!loggedUserRoles) {
                     this.viewContainerRef.clear();
                 }
 
                 const isLogged: boolean = loggedUserRoles && (loggedUserRoles.length > 0);
-                if (!isLogged || this.isAnyRoleForbidden(loggedUserRoles))
-                {
+                if (!isLogged || this.isAnyRoleForbidden(loggedUserRoles)) {
                     this.isVisible = false;
                     this.viewContainerRef.clear();
-                }
-                else
-                {
-                    if (!this.isVisible)
-                    {
+                } else {
+                    if (!this.isVisible) {
                         this.isVisible = true;
                         this.viewContainerRef.createEmbeddedView(this.templateRef);
                     }
@@ -49,19 +41,15 @@ export class ForbiddenRolesDirective implements OnInit, OnDestroy
         );
     }
 
-    ngOnDestroy()
-    {
+    ngOnDestroy() {
         this.stop$.next();
     }
 
-    private isAnyRoleForbidden(roles: string[]): boolean 
-    {
+    private isAnyRoleForbidden(roles: string[]): boolean {
         return !!roles.find(
-            (role: string) :boolean =>
-            {
+            (role: string): boolean => {
                 return !!this.sltForbiddenRoles.find(
-                    (forbiddenRole: string) :boolean =>
-                    {
+                    (forbiddenRole: string): boolean => {
                         return role === forbiddenRole;
                     }
                 );

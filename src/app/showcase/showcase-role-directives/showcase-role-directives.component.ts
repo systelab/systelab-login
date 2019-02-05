@@ -16,8 +16,7 @@ export class ShowcaseRoleDirectivesComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private rolesService: ShowcaseLoggedUserRolesService
-  )
-  {
+  ) {
     this.roleForm = formBuilder.group({
         basic: true,
         author: false,
@@ -37,7 +36,7 @@ export class ShowcaseRoleDirectivesComponent implements OnInit {
         });
         return roles;
       };
-  
+
       // Listen to the changes from the form and update the roles
       // the user has in the rolesService
       this.roleForm.valueChanges

@@ -1,29 +1,27 @@
 import { Component, DebugElement, Injectable } from '@angular/core';
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
-import { By } from "@angular/platform-browser";
-import { Observable } from "rxjs/Observable";
-import { BehaviorSubject } from "rxjs/BehaviorSubject";
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
-import { AllowedRolesDirective } from "./allowed-roles.directive";
-import { LoggedUserRolesService } from "./logged-user-roles.service";
+import { AllowedRolesDirective } from './allowed-roles.directive';
+import { LoggedUserRolesService } from './logged-user-roles.service';
 
 
 // Stub for the LoggedUserRolesService interface
 @Injectable()
-export class StubLoggedUserRolesService implements LoggedUserRolesService
-{
+export class StubLoggedUserRolesService implements LoggedUserRolesService {
+
     private loggedRoles = new BehaviorSubject<string[]>([]);
     private loggedRoles$ = this.loggedRoles.asObservable();
 
     constructor() {}
 
-    public getLoggedUserRoles(): Observable<string[]>
-    {
+    public getLoggedUserRoles(): Observable<string[]> {
         return this.loggedRoles$;
     }
 
-    public updateLoggedRoles(newLoggedRoles: string[])
-    {
+    public updateLoggedRoles(newLoggedRoles: string[]) {
         this.loggedRoles.next(newLoggedRoles);
     }
 }
@@ -40,18 +38,15 @@ export class StubLoggedUserRolesService implements LoggedUserRolesService
     `,
     styles: []
 })
-export class AllowedRolesTestComponent
-{
+export class AllowedRolesTestComponent {
 }
 
 
-describe("AllowedRolesDirective", () =>
-{
+describe('AllowedRolesDirective', () => {
     let allowedRolesTestFixture: ComponentFixture<AllowedRolesTestComponent>;
     let loggedUserRolesService: StubLoggedUserRolesService;
 
-    beforeEach(async(() =>
-    {
+    beforeEach(async(() => {
         loggedUserRolesService = new StubLoggedUserRolesService();
         TestBed.configureTestingModule({
             declarations:
@@ -67,105 +62,90 @@ describe("AllowedRolesDirective", () =>
         .compileComponents();
     }));
 
-    beforeEach(() =>
-    {
+    beforeEach(() => {
         allowedRolesTestFixture = TestBed.createComponent(AllowedRolesTestComponent);
         allowedRolesTestFixture.detectChanges();
     });
 
 
     // Tests for 'onlyAdminUsers' header
-    it("should NOT display 'onlyAdminUsers' header on startup", () =>
-    {
-        expect(isHeaderVisible("onlyAdminUsers", allowedRolesTestFixture)).toBeFalsy();
+    it('should NOT display \'onlyAdminUsers\' header on startup', () => {
+        expect(isHeaderVisible('onlyAdminUsers', allowedRolesTestFixture)).toBeFalsy();
     });
 
-    it("should display 'onlyAdminUsers' header when logged user is admin", () =>
-    {
+    it('should display \'onlyAdminUsers\' header when logged user is admin', () => {
         loggedUserRolesService.updateLoggedRoles(['admin']);
         allowedRolesTestFixture.detectChanges();
-        expect(isHeaderVisible("onlyAdminUsers", allowedRolesTestFixture)).toBeTruthy();
+        expect(isHeaderVisible('onlyAdminUsers', allowedRolesTestFixture)).toBeTruthy();
     });
 
-    it("should display 'onlyAdminUsers' header when logged user is basic and admin", () =>
-    {
+    it('should display \'onlyAdminUsers\' header when logged user is basic and admin', () => {
         loggedUserRolesService.updateLoggedRoles(['basic', 'admin']);
         allowedRolesTestFixture.detectChanges();
-        expect(isHeaderVisible("onlyAdminUsers", allowedRolesTestFixture)).toBeTruthy();
+        expect(isHeaderVisible('onlyAdminUsers', allowedRolesTestFixture)).toBeTruthy();
     });
 
-    it("should NOT display 'onlyAdminUsers' header when logged user is basic", () =>
-    {
+    it('should NOT display \'onlyAdminUsers\' header when logged user is basic', () => {
         loggedUserRolesService.updateLoggedRoles(['basic']);
         allowedRolesTestFixture.detectChanges();
-        expect(isHeaderVisible("onlyAdminUsers", allowedRolesTestFixture)).toBeFalsy();
+        expect(isHeaderVisible('onlyAdminUsers', allowedRolesTestFixture)).toBeFalsy();
     });
 
-    it("should NOT display 'onlyAdminUsers' header when no logged user", () =>
-    {
+    it('should NOT display \'onlyAdminUsers\' header when no logged user', () => {
         loggedUserRolesService.updateLoggedRoles([]);
         allowedRolesTestFixture.detectChanges();
-        expect(isHeaderVisible("onlyAdminUsers", allowedRolesTestFixture)).toBeFalsy();
+        expect(isHeaderVisible('onlyAdminUsers', allowedRolesTestFixture)).toBeFalsy();
     });
 
-    it("should NOT display 'onlyAdminUsers' header when logged user data not set", () =>
-    {
+    it('should NOT display \'onlyAdminUsers\' header when logged user data not set', () => {
         loggedUserRolesService.updateLoggedRoles(null);
         allowedRolesTestFixture.detectChanges();
-        expect(isHeaderVisible("onlyAdminUsers", allowedRolesTestFixture)).toBeFalsy();
+        expect(isHeaderVisible('onlyAdminUsers', allowedRolesTestFixture)).toBeFalsy();
     });
 
 
     // Tests for 'adminAndBasicUsers' header
-    it("should NOT display 'adminAndBasicUsers' header on startup", () =>
-    {
-        expect(isHeaderVisible("adminAndBasicUsers", allowedRolesTestFixture)).toBeFalsy();
+    it('should NOT display \'adminAndBasicUsers\' header on startup', () => {
+        expect(isHeaderVisible('adminAndBasicUsers', allowedRolesTestFixture)).toBeFalsy();
     });
 
-    it("should display 'adminAndBasicUsers' header when logged user is admin", () =>
-    {
+    it('should display \'adminAndBasicUsers\' header when logged user is admin', () => {
         loggedUserRolesService.updateLoggedRoles(['admin']);
         allowedRolesTestFixture.detectChanges();
-        expect(isHeaderVisible("adminAndBasicUsers", allowedRolesTestFixture)).toBeTruthy();
+        expect(isHeaderVisible('adminAndBasicUsers', allowedRolesTestFixture)).toBeTruthy();
     });
 
-    it("should display 'adminAndBasicUsers' header when logged user is basic", () =>
-    {
+    it('should display \'adminAndBasicUsers\' header when logged user is basic', () => {
         loggedUserRolesService.updateLoggedRoles(['basic']);
         allowedRolesTestFixture.detectChanges();
-        expect(isHeaderVisible("adminAndBasicUsers", allowedRolesTestFixture)).toBeTruthy();
+        expect(isHeaderVisible('adminAndBasicUsers', allowedRolesTestFixture)).toBeTruthy();
     });
 
-    it("should display 'adminAndBasicUsers' header when logged user is basic and admin", () =>
-    {
+    it('should display \'adminAndBasicUsers\' header when logged user is basic and admin', () => {
         loggedUserRolesService.updateLoggedRoles(['basic', 'admin']);
         allowedRolesTestFixture.detectChanges();
-        expect(isHeaderVisible("adminAndBasicUsers", allowedRolesTestFixture)).toBeTruthy();
+        expect(isHeaderVisible('adminAndBasicUsers', allowedRolesTestFixture)).toBeTruthy();
     });
 
-    it("should NOT display 'adminAndBasicUsers' header when logged user is other", () =>
-    {
+    it('should NOT display \'adminAndBasicUsers\' header when logged user is other', () => {
         loggedUserRolesService.updateLoggedRoles(['other']);
         allowedRolesTestFixture.detectChanges();
-        expect(isHeaderVisible("adminAndBasicUsers", allowedRolesTestFixture)).toBeFalsy();
+        expect(isHeaderVisible('adminAndBasicUsers', allowedRolesTestFixture)).toBeFalsy();
     });
 
-    it("should NOT display 'adminAndBasicUsers' header when no logged user", () =>
-    {
+    it('should NOT display \'adminAndBasicUsers\' header when no logged user', () => {
         loggedUserRolesService.updateLoggedRoles([]);
         allowedRolesTestFixture.detectChanges();
-        expect(isHeaderVisible("adminAndBasicUsers", allowedRolesTestFixture)).toBeFalsy();
+        expect(isHeaderVisible('adminAndBasicUsers', allowedRolesTestFixture)).toBeFalsy();
     });
 
-    it("should NOT display 'adminAndBasicUsers' header when logged user data not set", () =>
-    {
+    it('should NOT display \'adminAndBasicUsers\' header when logged user data not set', () => {
         loggedUserRolesService.updateLoggedRoles(null);
         allowedRolesTestFixture.detectChanges();
-        expect(isHeaderVisible("adminAndBasicUsers", allowedRolesTestFixture)).toBeFalsy();
+        expect(isHeaderVisible('adminAndBasicUsers', allowedRolesTestFixture)).toBeFalsy();
     });
 });
 
-function isHeaderVisible(headerClassName: string, fixture: ComponentFixture<AllowedRolesTestComponent>): boolean
-{
-    return (fixture.debugElement.query(By.css("h1." + headerClassName)) != null);
+function isHeaderVisible(headerClassName: string, fixture: ComponentFixture<AllowedRolesTestComponent>): boolean {
+    return (fixture.debugElement.query(By.css('h1.' + headerClassName)) != null);
 }
