@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SystelabLoginModule } from './systelab-login/systelab-login.module';
 import { ShowcaseModule } from './showcase/showcase.module';
 import { DialogService, MessagePopupService } from 'systelab-components/widgets/modal';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 @NgModule({
 	declarations: [
@@ -18,15 +19,15 @@ import { DialogService, MessagePopupService } from 'systelab-components/widgets/
 		FormsModule,
 		HttpClientModule,
 		ShowcaseModule,
+		OverlayModule,
 		SystelabLoginModule.forRoot(),
 		SystelabComponentsModule.forRoot(),
 		SystelabTranslateModule.forRoot(),
 		SystelabPreferencesModule.forRoot()
 	],
 	providers:    [
-		MessagePopupService,
-		DialogService
-	],
+		DialogService,
+		MessagePopupService],
 	bootstrap:    [AppComponent]
 })
 export class AppModule {

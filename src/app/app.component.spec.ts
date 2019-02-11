@@ -6,12 +6,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { SystelabLoginModule } from './systelab-login/systelab-login.module';
 import { SystelabComponentsModule } from 'systelab-components';
 import { SystelabPreferencesModule } from 'systelab-preferences';
-import { DialogService, MessagePopupService } from 'systelab-components/widgets/modal';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ShowcaseModule } from './showcase/showcase.module';
 
 import { APP_BASE_HREF } from '@angular/common';
+import { DialogService, MessagePopupService } from 'systelab-components/widgets/modal';
 
 describe('AppComponent', () => {
 	beforeEach(async(() => {
@@ -30,8 +30,8 @@ describe('AppComponent', () => {
 				SystelabPreferencesModule.forRoot()
 			],
 			providers:    [
-				MessagePopupService,
 				DialogService,
+				MessagePopupService,
 				{provide: APP_BASE_HREF, useValue: '/'}
 			],
 		})
