@@ -2,81 +2,81 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { I18nService } from 'systelab-translate/lib/i18n.service';
 
 @Component({
-    selector: 'slt-form-login',
-    templateUrl: 'form-login.component.html',
-    styleUrls: ['../login.component.scss']
+	selector:    'slt-form-login',
+	templateUrl: 'form-login.component.html',
+	styleUrls:   ['../login.component.scss']
 })
 export class FormLoginComponent implements OnInit {
 
-    private _currentForm = '';
-    private _userName = '';
-    private _password = '';
+	private _currentForm = '';
+	private _userName = '';
+	private _password = '';
 
-    @Input()
-    get userName(): string {
-        return this._userName;
-    }
+	@Input()
+	get userName(): string {
+		return this._userName;
+	}
 
-    @Output() userNameChange = new EventEmitter();
+	@Output() userNameChange = new EventEmitter();
 
-    set userName(value: string) {
-        this._userName = value;
-        this.userNameChange.emit(this._userName);
-    }
+	set userName(value: string) {
+		this._userName = value;
+		this.userNameChange.emit(this._userName);
+	}
 
-    @Input()
-    get password(): string {
-        return this._password;
-    }
+	@Input()
+	get password(): string {
+		return this._password;
+	}
 
-    @Output() passwordChange = new EventEmitter();
+	@Output() public passwordChange = new EventEmitter();
 
-    set password(value: string) {
-        this._password = value;
-        this.passwordChange.emit(this._password);
-    }
+	set password(value: string) {
+		this._password = value;
+		this.passwordChange.emit(this._password);
+	}
 
-    @Input()
-    get currentForm(): string {
-        return this._currentForm;
-    }
+	@Input()
+	get currentForm(): string {
+		return this._currentForm;
+	}
 
-    @Output() currentFormChange = new EventEmitter();
+	@Output() public currentFormChange = new EventEmitter();
 
-    set currentForm(value: string) {
-        this._currentForm = value;
-        this.currentFormChange.emit(this._currentForm);
-    }
+	set currentForm(value: string) {
+		this._currentForm = value;
+		this.currentFormChange.emit(this._currentForm);
+	}
 
-    @Input() isRecoveryActive = false;
-    @Input() isSignUpActive = false;
-    @Input() errorUserPwd = false;
-    @Input() txtUsername = '';
-    @Input() isLoading = false;
+	@Input() public isRecoveryActive = false;
+	@Input() public isSignUpActive = false;
+	@Input() public errorUserPwd = false;
+	@Input() public txtUsername = '';
+	@Input() public isLoading = false;
 
-    @Output() login = new EventEmitter();
+	@Output() public login = new EventEmitter();
 
-    constructor(protected i18nService: I18nService) {
-    }
+	constructor(protected i18nService: I18nService) {
+	}
 
-    public ngOnInit() {
-        if (!this.txtUsername) {
-            this.i18nService.get('COMMON_USERNAME')
-                .subscribe((res: string) => {
-                    this.txtUsername = res;
-                });
-        }
-    }
+	public ngOnInit() {
+		if (!this.txtUsername) {
+			this.i18nService.get('COMMON_USERNAME')
+				.subscribe((res: string) => {
+					this.txtUsername = res;
+				});
+		}
+	}
 
-    public doLogin() {
-        this.login.emit();
-    }
+	public doLogin() {
+		this.login.emit();
+	}
 
-    public goSignUp() {
-        this.currentForm = 'signup';
-    }
+	public goSignUp() {
+		this.currentForm = 'signup';
+	}
 
-    public goRecovery() {
-        this.currentForm = 'recovery';
-    }
+	public goRecovery() {
+		this.currentForm = 'recovery';
+	}
 }

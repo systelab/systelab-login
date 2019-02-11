@@ -1,5 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
-import { DialogRef, ModalComponent, SystelabModalContext } from 'systelab-components/widgets/modal';
+import { DialogRef, MessagePopupService, ModalComponent, SystelabModalContext } from 'systelab-components/widgets/modal';
 import { I18nService } from 'systelab-translate/lib/i18n.service';
 import { Observable } from 'rxjs/Observable';
 
@@ -30,7 +30,7 @@ export class ChangePasswordDialog implements ModalComponent<ChangePasswordDialog
 	}
 
 	constructor(public dialog: DialogRef<ChangePasswordDialogParameters>,
-	            protected i18nService: I18nService) {
+	            protected i18nService: I18nService, protected messagePopupService: MessagePopupService) {
 		this.parameters = dialog.context;
 	}
 
