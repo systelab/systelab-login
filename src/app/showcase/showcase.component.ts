@@ -1,15 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-showcase',
-  templateUrl: './showcase.component.html',
-  styleUrls: ['./showcase.component.css']
+	selector:    'app-showcase',
+	templateUrl: './showcase.component.html'
 })
-export class ShowcaseComponent implements OnInit {
+export class ShowcaseComponent {
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+	constructor() {
+	}
 }
