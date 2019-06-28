@@ -1,6 +1,6 @@
 {
   "name": "systelab-login",
-  "version": "6.0.1",
+  "version": "6.1.0",
   "license": "MIT",
   "keywords": [
     "Angular",
@@ -31,9 +31,9 @@
     "url": "https://github.com/systelab/systelab-login.git"
   },
   "dependencies": {
-    "systelab-components": "^8.0.4",
-    "systelab-preferences": "^4.0.0",
-    "systelab-translate": "^5.0.0"
+    "systelab-components": "^8.7.1",
+    "systelab-preferences": "^4.3.0",
+    "systelab-translate": "^5.4.0"
   },
   "devDependencies": {
     "@angular/animations": "7.0.0",
