@@ -103,6 +103,8 @@ export class LoginComponent implements OnInit {
 	@Output() public signUp = new EventEmitter();
 	@Output() public recovery = new EventEmitter();
 
+	@Input() public maxUsernameLength = 20;
+
 	constructor(protected i18nService: I18nService) {
 		if (!this.currentForm) {
 			this.currentForm = 'login';

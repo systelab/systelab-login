@@ -16,6 +16,7 @@ export class FormRecoveryComponent implements OnInit {
 	}
 
 	@Output() public userNameChange = new EventEmitter();
+	@Input() public maxUsernameLength = 20;
 
 	set userName(value: string) {
 		this._userName = value;

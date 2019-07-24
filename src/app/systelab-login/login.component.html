@@ -15,7 +15,7 @@
                 <slt-form-login (login)="doLogin($event)"
                                 [(userName)]="userName"
                                 [(password)]="password" [isRecoveryActive]="isRecoveryActive"
-                                [isSignUpActive]="isSignUpActive" [errorUserPwd]="errorUserPwd" [txtUsername]="txtUsername" [(currentForm)]="currentForm" [isLoading]="isLoading">
+                                [isSignUpActive]="isSignUpActive" [errorUserPwd]="errorUserPwd" [txtUsername]="txtUsername" [(currentForm)]="currentForm" [isLoading]="isLoading" [maxUsernameLength]="maxUsernameLength">
                 </slt-form-login>
             </form>
         </div>
@@ -24,7 +24,7 @@
             <form novalidate class="w-100" autocomplete="off">
                 <slt-form-signup (signUp)="doSignUp($event)" [(userName)]="userName" [(password)]="password" [(name)]="name" [(lastName)]="lastName"
                                  [(email)]="email" [isLoginActive]="isLoginActive" [(currentForm)]="currentForm" [errorUserExist]="errorUserExist" [isLoading]="isLoading"
-                                 [minPasswordStrengthValue]="minPasswordStrengthValue">
+                                 [minPasswordStrengthValue]="minPasswordStrengthValue" [maxUsernameLength]="maxUsernameLength">
                 </slt-form-signup>
             </form>
         </div>
@@ -33,7 +33,7 @@
             <form novalidate class="w-100" autocomplete="off">
                 <slt-form-recovery (recovery)="doRecovery($event)" [(userName)]="userName" [txtUsername]="txtUsername" [(currentForm)]="currentForm"
                                    [errorUserDoesNotExist]="errorUserDoesNotExist" [isLoginActive]="isLoginActive" [txtRecoverProcessStarted]="txtRecoverProcessStarted"
-                                   [isLoading]="isLoading">
+                                   [isLoading]="isLoading" [maxUsernameLength]="maxUsernameLength">
                 </slt-form-recovery>
             </form>
         </div>
