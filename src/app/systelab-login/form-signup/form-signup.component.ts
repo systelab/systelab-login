@@ -15,6 +15,7 @@ export class FormSignupComponent {
 	private _currentForm = '';
 
 	@Input() public minPasswordStrengthValue = 1;
+	@Input() public maxUsernameLength = 20;
 
 	@Input()
 	get userName(): string {

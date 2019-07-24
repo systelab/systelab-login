@@ -1,6 +1,6 @@
 <input #inputUserName="ngModel" type="text" class="w-100 slab-form__input slab-form__input--topradius" [class.slab-form_input--error]="inputUserName.invalid && inputUserName.touched"
        id="inputUserName" [(ngModel)]="userName" placeholder="{{txtUsername}}"
-       name="inputUserName" (keyup.enter)="doRecovery()" required autocomplete="off">
+       name="inputUserName" (keyup.enter)="doRecovery()" required autocomplete="off" maxlength="{{maxUsernameLength}}">
 
 <button type="button" class="w-100 btn btn-primary slab-form__submit mt-4" (click)="doRecovery()" [disabled]="inputUserName.invalid ">{{ 'COMMON_SEND' | translate | async }}</button>
 

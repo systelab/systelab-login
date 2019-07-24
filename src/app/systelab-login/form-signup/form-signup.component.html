@@ -1,7 +1,7 @@
 <input #inputUserName="ngModel" type="text" class="w-100 slab-form__input slab-form__input--topradius"
        [class.slab-form_input--error]="inputUserName.invalid && inputUserName.touched"
        id="inputUserName" [(ngModel)]="userName" placeholder="{{ 'COMMON_USERNAME' | translate | async }}"
-       name="inputUserName" (keyup.enter)="doSignUp()" required autocomplete="off" maxlength="20" minlength="6">
+       name="inputUserName" (keyup.enter)="doSignUp()" required autocomplete="off" maxlength="{{maxUsernameLength}}">
 
 <input #inputPassword="ngModel" type="password" [class.slab-form_input--error]="!passwordIndicator.isOK() && inputPassword.touched" placeholder="{{ 'COMMON_PASSWORD' | translate | async }}"
        autocomplete="off" class="w-100 slab-form__input slab-form__input--bottomradius" id="inputPassword"

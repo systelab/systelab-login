@@ -54,6 +54,8 @@ export class FormLoginComponent implements OnInit {
 	@Input() public txtUsername = '';
 	@Input() public isLoading = false;
 
+	@Input() public maxUsernameLength = 20;
+
 	@Output() public login = new EventEmitter();
 
 	constructor(protected i18nService: I18nService) {
