@@ -179,6 +179,10 @@ The minimum password strength values are:
 
 It is necessary in order to check the password during the sign up registration.
 
+#### maxUsernameLength
+
+It is used to control the maximum username length in the registration process. The aim of this value is to avoid sqlinjection when registering a new username. Teh default value is 20
+
 # systelab-change-password
 
 In order to show the change password dialog you should do:
