@@ -1,8 +1,7 @@
 import { Directive, Input, OnDestroy, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
-import { takeUntil } from 'rxjs/operators';
-
+import { Subject } from 'rxjs';
 import { LoggedUserRolesService } from './logged-user-roles.service';
+import { takeUntil } from 'rxjs/operators';
 
 @Directive({
 	selector: '[sltAllowedRoles]'

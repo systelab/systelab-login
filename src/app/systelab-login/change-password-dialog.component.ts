@@ -1,7 +1,7 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { DialogRef, MessagePopupService, ModalComponent, SystelabModalContext } from 'systelab-components/widgets/modal';
 import { I18nService } from 'systelab-translate/lib/i18n.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 export class ChangePasswordDialogParameters extends SystelabModalContext {
 	public width = 550;
