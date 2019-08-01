@@ -31,9 +31,9 @@
     "url": "https://github.com/systelab/systelab-login.git"
   },
   "dependencies": {
-    "systelab-components": "^8.7.1",
-    "systelab-preferences": "^4.3.0",
-    "systelab-translate": "^5.4.0"
+    "systelab-components": "file:../systelab-components/systelab-components-8.7.3.tgz",
+    "systelab-preferences": "file:../systelab-preferences/systelab-preferences-5.0.0.tgz",
+    "systelab-translate": "file:../systelab-translate/systelab-translate-6.0.0.tgz"
   },
   "devDependencies": {
     "@angular/animations": "7.0.0",

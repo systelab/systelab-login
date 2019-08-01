@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-
 import { LoggedUserRolesService } from '../../systelab-login/role-directives/logged-user-roles.service';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable()
 export class ShowcaseLoggedUserRolesService implements LoggedUserRolesService {

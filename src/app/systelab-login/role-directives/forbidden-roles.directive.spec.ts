@@ -1,11 +1,10 @@
 import { Component, Injectable } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { ForbiddenRolesDirective } from './forbidden-roles.directive';
 import { LoggedUserRolesService } from './logged-user-roles.service';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 // Stub for the LoggedUserRolesService interface
 @Injectable()
