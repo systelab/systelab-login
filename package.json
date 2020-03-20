@@ -31,7 +31,7 @@
     "url": "https://github.com/systelab/systelab-login.git"
   },
   "dependencies": {
-    "systelab-components": "^9.0.0",
+    "systelab-components": "^10.0.0",
     "systelab-preferences": "^5.0.0",
     "systelab-translate": "^6.0.0",
     "tslib": "^1.10.0"
