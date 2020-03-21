@@ -1,4 +1,4 @@
-import { ModuleWithProviders, NgModule, Type } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -35,11 +35,7 @@ import { ForbiddenRolesDirective } from './role-directives/forbidden-roles.direc
 		PasswordIndicatorComponent,
 		AllowedRolesDirective,
 		ForbiddenRolesDirective
-	],
-	entryComponents: [
-		ChangePasswordDialog
 	]
-
 })
 export class SystelabLoginModule {
 }

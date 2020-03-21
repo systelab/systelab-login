@@ -25,9 +25,6 @@ import { OverlayModule } from '@angular/cdk/overlay';
 		SystelabTranslateModule,
 		SystelabPreferencesModule
 	],
-	providers:    [
-		DialogService,
-		MessagePopupService],
 	bootstrap:    [AppComponent]
 })
 export class AppModule {

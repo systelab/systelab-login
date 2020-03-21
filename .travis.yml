@@ -21,7 +21,6 @@ script:
   - npm run build-showcase
 
 before_deploy:
-  - cp README.md dist/systelab-showcase
   - cd dist/systelab-showcase
 
 deploy:

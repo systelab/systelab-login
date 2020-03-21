@@ -30,8 +30,6 @@ describe('AppComponent', () => {
 				SystelabPreferencesModule
 			],
 			providers:    [
-				DialogService,
-				MessagePopupService,
 				{provide: APP_BASE_HREF, useValue: '/'}
 			],
 		})

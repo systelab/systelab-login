@@ -7,27 +7,6 @@
 
 Library with common Systelab login components to speed up our Angular developments
 
-## Installing the library
-
-```bash
-npm install systelab-login --save
-```
-
-You must import the SystelabLoginModule in your Application Module:
-
-```javacript
-@NgModule({
-	imports:         [
-		BrowserModule,
-		FormsModule,
-		HttpClientModule,
-		SystelabTranslateModule.forRoot(),
-		SystelabPreferencesModule.forRoot(),
-		SystelabComponentsModule.forRoot(),
-		SystelabLoginModule.forRoot(),
-    ...
-	],
-```
 
 ## Working with the repo
 
@@ -35,5 +14,20 @@ You must import the SystelabLoginModule in your Application Module:
 git clone https://github.com/systelab/systelab-login.git
 cd systelab-login
 npm install
-ng serve
 ```
+
+## Publish the library:
+
+Given that you have a user with enough privileges, in order to publish the library in npmjs.com run the following script:
+
+```bash
+npm run build
+cd dist/systelab-login
+npm publish
+```
+
+Library will be published at: https://www.npmjs.com/package/systelab-login
+
+## Documentation
+
+Read the [provided documentation](https://github.com/systelab/systelab-login/blob/master/projects/systelab-login/README.md) to use the library 
