@@ -22,7 +22,7 @@ script:
   - npm run test
 
 before_deploy:
-  - cd dist/systelab-showcase
+  - cd dist/systelab-login
 
 deploy:
   provider: npm
