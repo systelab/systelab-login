@@ -12,7 +12,7 @@
         <div class="d-flex slab-form align-content-center flex-wrap mt-4" *ngIf="currentForm === 'login'">
             <div class="mb-4 slab-text slab-text--large slab-text--muted">{{ 'COMMON_SESSION_LOGIN' | translate | async }}</div>
             <form novalidate class="w-100" autocomplete="off">
-                <slt-form-login (login)="doLogin($event)"
+                <slt-form-login (login)="doLogin()"
                                 [(userName)]="userName"
                                 [(password)]="password" [isRecoveryActive]="isRecoveryActive"
                                 [isSignUpActive]="isSignUpActive" [errorUserPwd]="errorUserPwd" [txtUsername]="txtUsername" [(currentForm)]="currentForm" [isLoading]="isLoading" [maxUsernameLength]="maxUsernameLength">
@@ -22,7 +22,7 @@
         <div class="d-flex slab-form align-content-center flex-wrap mt-4" *ngIf="currentForm === 'signup'">
             <div class="mb-4 slab-text slab-text--large slab-text--muted">{{ 'COMMON_SESSION_SIGNUP' | translate | async }}</div>
             <form novalidate class="w-100" autocomplete="off">
-                <slt-form-signup (signUp)="doSignUp($event)" [(userName)]="userName" [(password)]="password" [(name)]="name" [(lastName)]="lastName"
+                <slt-form-signup (signUp)="doSignUp()" [(userName)]="userName" [(password)]="password" [(name)]="name" [(lastName)]="lastName"
                                  [(email)]="email" [isLoginActive]="isLoginActive" [(currentForm)]="currentForm" [errorUserExist]="errorUserExist" [isLoading]="isLoading"
                                  [minPasswordStrengthValue]="minPasswordStrengthValue" [maxUsernameLength]="maxUsernameLength">
                 </slt-form-signup>
@@ -31,7 +31,7 @@
         <div class="d-flex slab-form align-content-center flex-wrap mt-4" *ngIf="currentForm === 'recovery'">
             <div class="mb-4 slab-text slab-text--large slab-text--muted">{{ 'COMMON_SESSION_RECOVERY' | translate | async }}</div>
             <form novalidate class="w-100" autocomplete="off">
-                <slt-form-recovery (recovery)="doRecovery($event)" [(userName)]="userName" [txtUsername]="txtUsername" [(currentForm)]="currentForm"
+                <slt-form-recovery (recovery)="doRecovery()" [(userName)]="userName" [txtUsername]="txtUsername" [(currentForm)]="currentForm"
                                    [errorUserDoesNotExist]="errorUserDoesNotExist" [isLoginActive]="isLoginActive" [txtRecoverProcessStarted]="txtRecoverProcessStarted"
                                    [isLoading]="isLoading" [maxUsernameLength]="maxUsernameLength">
                 </slt-form-recovery>
