@@ -8,7 +8,6 @@ import { SystelabTranslateModule } from 'systelab-translate';
 import { HttpClientModule } from '@angular/common/http';
 import { SystelabLoginModule } from 'systelab-login';
 import { ShowcaseModule } from './showcase/showcase.module';
-import { DialogService, MessagePopupService } from 'systelab-components';
 import { OverlayModule } from '@angular/cdk/overlay';
 
 @NgModule({

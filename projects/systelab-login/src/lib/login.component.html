@@ -4,7 +4,7 @@
         <div class="d-flex slab-header align-content-center">
             <img *ngIf="applicationLogo" class="slab-header__logo mr-4" src="{{applicationLogo}}">
             <div>
-                <div class="slab-text" *ngIf="applicationName">{{applicationName}}</div>
+                <div id="application-name-id" class="slab-text" *ngIf="applicationName">{{applicationName}}</div>
                 <div class="slab-text slab-text--large" *ngIf="moduleName">{{moduleName}}</div>
                 <div class="slab-text slab-text--small slab-text--muted" *ngIf="version">{{ 'COMMON_VERSION' | translate | async }}: {{version}}</div>
             </div>

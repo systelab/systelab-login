@@ -11,7 +11,6 @@ import { FormsModule } from '@angular/forms';
 import { ShowcaseModule } from './showcase/showcase.module';
 
 import { APP_BASE_HREF } from '@angular/common';
-import { DialogService, MessagePopupService } from 'systelab-components';
 
 describe('AppComponent', () => {
 	beforeEach(async(() => {

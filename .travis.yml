@@ -19,6 +19,7 @@ install:
 script:
   - npm run build-lib
   - npm run build-showcase
+  - npm run test
 
 before_deploy:
   - cd dist/systelab-showcase
