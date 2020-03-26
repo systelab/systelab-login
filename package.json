@@ -8,7 +8,7 @@
     "build": "ng build",
     "build-showcase": "ng build showcase --prod",
     "build-lib": "ng build systelab-login --prod",
-    "test": "ng test",
+    "test": "ng test systelab-login",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
