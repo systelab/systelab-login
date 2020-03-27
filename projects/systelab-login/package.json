@@ -1,0 +1,24 @@
+{
+  "name": "systelab-login",
+  "version": "8.0.1",
+  "license": "MIT",
+  "keywords": [
+    "Angular",
+    "Angular-cli",
+    "NPM",
+    "Systelab"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/systelab/systelab-login.git"
+  },
+  "private": false,
+  "peerDependencies": {
+    "@angular/common": ">=9.0.6 <10.0.0",
+    "@angular/core": ">=9.0.6 <10.0.0",
+    "tslib": ">=1.10.0 <2.0.0",
+    "systelab-components": ">=10.0.2 <11.0.0",
+    "systelab-preferences": ">=6.0.2 <7.0.0",
+    "systelab-translate": ">=7.0.5 <8.0.0"
+  }
+}
