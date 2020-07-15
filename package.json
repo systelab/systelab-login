@@ -27,7 +27,7 @@
     "zone.js": "~0.10.2",
     "systelab-components": "^10.0.6",
     "systelab-preferences": "^6.0.3",
-    "systelab-translate": "^7.0.6",
+    "systelab-translate": "^8.0.1",
     "@ngx-translate/core": "^12.1.1",
     "@ngx-translate/http-loader": "^4.0.0",
     "date-fns": "^2.14.0",
