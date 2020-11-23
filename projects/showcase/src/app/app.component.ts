@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DialogService } from 'systelab-components';
-import { ChangePasswordDialog } from 'systelab-login';
+import {ChangePasswordDialog} from 'systelab-login';
 
 @Component({
 	selector:    'app-root',
