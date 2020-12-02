@@ -21,7 +21,7 @@ npm install
 Given that you have a user with enough privileges, in order to publish the library in npmjs.com run the following script:
 
 ```bash
-npm run build
+npm run build-lib
 cd dist/systelab-login
 npm publish
 ```
