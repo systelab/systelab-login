@@ -15,38 +15,7 @@
           "projects/showcase/e2e/tsconfig.json"
         ],
         "createDefaultProgram": true
-      },
-      "rules": {
-        "@angular-eslint/directive-selector": [
-          "error",
-          {
-            "type": "attribute",
-            "prefix": "slt",
-            "style": "camelCase"
-          }
-        ],
-        "@typescript-eslint/consistent-type-definitions": "error",
-        "@typescript-eslint/dot-notation": "off",
-        "@typescript-eslint/explicit-member-accessibility": [
-          "off",
-          {
-            "accessibility": "explicit"
-          }
-        ],
-        "brace-style": [
-          "error",
-          "1tbs"
-        ],
-        "id-blacklist": "off",
-        "id-match": "off",
-        "no-underscore-dangle": "off"
       }
-    },
-    {
-      "files": [
-        "*.html"
-      ],
-      "rules": {}
     }
   ]
 }
