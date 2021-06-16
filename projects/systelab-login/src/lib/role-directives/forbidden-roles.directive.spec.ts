@@ -1,5 +1,5 @@
 import { Component, Injectable } from '@angular/core';
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { ForbiddenRolesDirective } from './forbidden-roles.directive';
@@ -49,7 +49,7 @@ describe('ForbiddenRolesDirective', () => {
 	let forbiddenRolesTestFixture: ComponentFixture<ForbiddenRolesTestComponent>;
 	let loggedUserRolesService: StubLoggedUserRolesService;
 
-	beforeEach(waitForAsync(() => {
+	beforeEach(async () => {
 		loggedUserRolesService = new StubLoggedUserRolesService();
 		TestBed.configureTestingModule({
 			declarations:
@@ -63,7 +63,7 @@ describe('ForbiddenRolesDirective', () => {
 				]
 		})
 			.compileComponents();
-	}));
+	});
 
 	beforeEach(() => {
 		forbiddenRolesTestFixture = TestBed.createComponent(ForbiddenRolesTestComponent);

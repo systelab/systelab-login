@@ -1,4 +1,4 @@
-import { waitForAsync, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
 import { SystelabTranslateModule } from 'systelab-translate';
@@ -13,7 +13,7 @@ import { ShowcaseModule } from './showcase/showcase.module';
 import { APP_BASE_HREF } from '@angular/common';
 
 describe('AppComponent', () => {
-	beforeEach(waitForAsync(() => {
+	beforeEach(async () => {
 		TestBed.configureTestingModule({
 			declarations: [
 				AppComponent
@@ -33,12 +33,12 @@ describe('AppComponent', () => {
 			],
 		})
 			.compileComponents();
-	}));
+	});
 
-	it('should create the app', waitForAsync(() => {
+	it('should create the app', async () => {
 		const fixture = TestBed.createComponent(AppComponent);
 		const app = fixture.debugElement.componentInstance;
 		expect(app)
 			.toBeTruthy();
-	}));
+	});
 });
