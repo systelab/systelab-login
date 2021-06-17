@@ -44,7 +44,7 @@ describe('AllowedRolesDirective', () => {
 
 	beforeEach(async () => {
 		loggedUserRolesService = new StubLoggedUserRolesService();
-		TestBed.configureTestingModule({
+		await TestBed.configureTestingModule({
 			declarations:
 				[
 					AllowedRolesDirective,
