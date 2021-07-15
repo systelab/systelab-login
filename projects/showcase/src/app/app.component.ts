@@ -31,21 +31,21 @@ export class AppComponent {
 		this.txtUsername = 'Username';
 	}
 
-	public doLogin() {
+	public doLogin(): void {
 		console.log(this.userName + ' ' + this.password);
 		this.dialogService.showDialog(ChangePasswordDialog, ChangePasswordDialog.getParameters());
 		console.log('doLogin');
 		this.isLoading = true;
 	}
 
-	public doSignUp() {
+	public doSignUp(): void {
 		console.log(this.userName + ' ' + this.password + ' ' + this.name + ' ' + this.lastName + ' ' + this.email);
 		this.dialogService.showDialog(ChangePasswordDialog, ChangePasswordDialog.getParameters());
 		console.log('doSignUp');
 		this.isLoading = true;
 	}
 
-	public doRecovery() {
+	public doRecovery(): void {
 		console.log(this.userName);
 		this.dialogService.showDialog(ChangePasswordDialog, ChangePasswordDialog.getParameters());
 		console.log('doRecovery');
