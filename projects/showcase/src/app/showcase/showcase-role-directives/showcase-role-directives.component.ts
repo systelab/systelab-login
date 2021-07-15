@@ -23,7 +23,7 @@ export class ShowcaseRoleDirectivesComponent implements OnInit {
 		});
 	}
 
-	public ngOnInit() {
+	public ngOnInit(): void {
 		// Utility method to transform the array of roles to an array of strings
 		// Fe: [{name: 'user'}, {name: 'author'}] -> ['user', 'author']
 		const mapRoleArrayToStringArray = obj => {

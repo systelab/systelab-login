@@ -14,7 +14,7 @@ export class ShowcaseLoggedUserRolesService implements LoggedUserRolesService {
 		return this.loggedRoles$;
 	}
 
-	public updateRoles(newRoles: string[]) {
+	public updateRoles(newRoles: string[]): void {
 		this.loggedRoles.next(newRoles);
 	}
 }

@@ -59,7 +59,6 @@
             "main": "projects/showcase/src/main.ts",
             "polyfills": "projects/showcase/src/polyfills.ts",
             "tsConfig": "projects/showcase/tsconfig.app.json",
-            "aot": true,
             "assets": [
               "projects/showcase/src/assets/img/brand/werfen.png",
               "projects/showcase/src/assets/img/brand/logo.png",
@@ -84,7 +83,13 @@
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/popper.js/dist/umd/popper.js",
               "node_modules/pako/dist/pako.min.js"
-            ]
+            ],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {

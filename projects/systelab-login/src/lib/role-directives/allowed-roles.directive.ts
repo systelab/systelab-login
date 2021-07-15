@@ -18,7 +18,7 @@ export class AllowedRolesDirective implements OnInit, OnDestroy {
 	) {
 	}
 
-	public ngOnInit() {
+	public ngOnInit(): void {
 		this.loggedUserRolesService.getLoggedUserRoles()
 			.pipe(takeUntil(this.stop$))
 			.subscribe(
@@ -41,7 +41,7 @@ export class AllowedRolesDirective implements OnInit, OnDestroy {
 			);
 	}
 
-	public ngOnDestroy() {
+	public ngOnDestroy(): void {
 		this.stop$.next();
 	}
 
