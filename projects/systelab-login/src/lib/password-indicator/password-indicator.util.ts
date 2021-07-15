@@ -5,7 +5,65 @@ export class PasswordUtil {
 	private static strongPatternRegex = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^a-zA-Z0-9])(?=.{8,})');
 	private static veryStrongPatternRegex = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^a-zA-Z0-9])(?=.{14,})');
 	private static goodPatternRegex = new RegExp('^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})');
-	private static moderatePatternRegex = new RegExp('^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{4,})');
+	private static moderatePatternRegex =
+		new RegExp('^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{4,})');
+
+	public static getPasswordComplexityTooltip(minPasswordStrengthValue: number, i18nService: I18nService): string | any {
+		return i18nService.instant(PasswordUtil.getPasswordComplexityTooltipTranslationKey(minPasswordStrengthValue), {
+			complexity:  PasswordUtil.getPasswordComplexity(minPasswordStrengthValue, i18nService),
+			char_number: PasswordUtil.getMinPasswordLength(minPasswordStrengthValue)
+		});
+	}
+
+	public static evaluatePasswordStrength(currentPassword): number {
+		if (!currentPassword) {
+			return 0;
+		} else if (PasswordUtil.veryStrongPatternRegex.test(currentPassword)) {
+			return 5;
+		} else if (PasswordUtil.strongPatternRegex.test(currentPassword)) {
+			return 4;
+		} else if (PasswordUtil.goodPatternRegex.test(currentPassword)) {
+			return 3;
+		} else if (PasswordUtil.moderatePatternRegex.test(currentPassword)) {
+			return 2;
+		} else {
+			return 1;
+		}
+	}
+
+	public static getTranslationKey(n: number): string | undefined {
+		switch (n) {
+			case 5:
+				return 'PASSWORD_STRENGTH_VERY_STRONG';
+			case 4:
+				return 'PASSWORD_STRENGTH_STRONG';
+			case 3:
+				return 'PASSWORD_STRENGTH_GOOD';
+			case 2:
+				return 'PASSWORD_STRENGTH_MODERATE';
+			case 1:
+				return 'PASSWORD_STRENGTH_WEAK';
+			default:
+				return undefined;
+		}
+	}
+
+	public static getStyle(n: number): string {
+		switch (n) {
+			case 5:
+				return 'slab-very-strong';
+			case 4:
+				return 'slab-strong';
+			case 3:
+				return 'slab-good';
+			case 2:
+				return 'slab-moderate';
+			case 1:
+				return 'slab-weak';
+			default:
+				return 'slab-very-weak';
+		}
+	}
 
 	private static getPasswordComplexityTooltipTranslationKey(minPasswordStrengthValue: number) {
 		switch (minPasswordStrengthValue) {
@@ -51,62 +109,4 @@ export class PasswordUtil {
 				return 2;
 		}
 	}
-
-	public static getPasswordComplexityTooltip(minPasswordStrengthValue: number, i18nService: I18nService) {
-		return i18nService.instant(PasswordUtil.getPasswordComplexityTooltipTranslationKey(minPasswordStrengthValue), {
-			complexity:  PasswordUtil.getPasswordComplexity(minPasswordStrengthValue, i18nService),
-			char_number: PasswordUtil.getMinPasswordLength(minPasswordStrengthValue)
-		});
-	}
-
-	public static evaluatePasswordStrength(currentPassword) {
-		if (!currentPassword) {
-			return 0;
-		} else if (PasswordUtil.veryStrongPatternRegex.test(currentPassword)) {
-			return 5;
-		} else if (PasswordUtil.strongPatternRegex.test(currentPassword)) {
-			return 4;
-		} else if (PasswordUtil.goodPatternRegex.test(currentPassword)) {
-			return 3;
-		} else if (PasswordUtil.moderatePatternRegex.test(currentPassword)) {
-			return 2;
-		} else {
-			return 1;
-		}
-	}
-
-	public static getTranslationKey(n: number) {
-		switch (n) {
-			case 5:
-				return 'PASSWORD_STRENGTH_VERY_STRONG';
-			case 4:
-				return 'PASSWORD_STRENGTH_STRONG';
-			case 3:
-				return 'PASSWORD_STRENGTH_GOOD';
-			case 2:
-				return 'PASSWORD_STRENGTH_MODERATE';
-			case 1:
-				return 'PASSWORD_STRENGTH_WEAK';
-			default:
-				return undefined;
-		}
-	}
-
-	public static getStyle(n: number) {
-		switch (n) {
-			case 5:
-				return 'slab-very-strong';
-			case 4:
-				return 'slab-strong';
-			case 3:
-				return 'slab-good';
-			case 2:
-				return 'slab-moderate';
-			case 1:
-				return 'slab-weak';
-			default:
-				return 'slab-very-weak';
-		}
-	}
-
 }

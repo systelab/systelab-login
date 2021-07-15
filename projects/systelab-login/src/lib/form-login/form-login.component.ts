@@ -7,17 +7,22 @@ import { I18nService } from 'systelab-translate';
 	styleUrls:   ['../login.component.scss']
 })
 export class FormLoginComponent implements OnInit {
+	@Input() public isRecoveryActive = false;
+	@Input() public isSignUpActive = false;
+	@Input() public errorUserPwd = false;
+	@Input() public txtUsername = '';
+	@Input() public isLoading = false;
+	@Input() public maxUsernameLength = 20;
 
-	private _currentForm = '';
-	private _userName = '';
-	private _password = '';
+	@Output() userNameChange = new EventEmitter();
+	@Output() public passwordChange = new EventEmitter();
+	@Output() public currentFormChange = new EventEmitter();
+	@Output() public login = new EventEmitter();
 
 	@Input()
 	get userName(): string {
 		return this._userName;
 	}
-
-	@Output() userNameChange = new EventEmitter();
 
 	set userName(value: string) {
 		this._userName = value;
@@ -29,8 +34,6 @@ export class FormLoginComponent implements OnInit {
 		return this._password;
 	}
 
-	@Output() public passwordChange = new EventEmitter();
-
 	set password(value: string) {
 		this._password = value;
 		this.passwordChange.emit(this._password);
@@ -41,27 +44,19 @@ export class FormLoginComponent implements OnInit {
 		return this._currentForm;
 	}
 
-	@Output() public currentFormChange = new EventEmitter();
-
 	set currentForm(value: string) {
 		this._currentForm = value;
 		this.currentFormChange.emit(this._currentForm);
 	}
 
-	@Input() public isRecoveryActive = false;
-	@Input() public isSignUpActive = false;
-	@Input() public errorUserPwd = false;
-	@Input() public txtUsername = '';
-	@Input() public isLoading = false;
-
-	@Input() public maxUsernameLength = 20;
-
-	@Output() public login = new EventEmitter();
+	private _currentForm = '';
+	private _userName = '';
+	private _password = '';
 
 	constructor(protected i18nService: I18nService) {
 	}
 
-	public ngOnInit() {
+	public ngOnInit(): void {
 		if (!this.txtUsername) {
 			this.i18nService.get('COMMON_USERNAME')
 				.subscribe((res: string) => {
@@ -70,15 +65,15 @@ export class FormLoginComponent implements OnInit {
 		}
 	}
 
-	public doLogin() {
+	public doLogin(): void {
 		this.login.emit();
 	}
 
-	public goSignUp() {
+	public goSignUp(): void {
 		this.currentForm = 'signup';
 	}
 
-	public goRecovery() {
+	public goRecovery(): void {
 		this.currentForm = 'recovery';
 	}
 }

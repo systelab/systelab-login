@@ -16,11 +16,11 @@ export class PasswordIndicatorComponent {
 	constructor(protected i18nService: I18nService) {
 	}
 
-	public getPasswordComplexityTooltip() {
+	public getPasswordComplexityTooltip(): string | any {
 		return PasswordUtil.getPasswordComplexityTooltip(this.minPasswordStrengthValue, this.i18nService);
 	}
 
-	public getPasswordComplexityStyle() {
+	public getPasswordComplexityStyle(): string {
 		return PasswordUtil.getStyle(PasswordUtil.evaluatePasswordStrength(this.password));
 	}
 
@@ -28,7 +28,7 @@ export class PasswordIndicatorComponent {
 		return PasswordUtil.evaluatePasswordStrength(this.password) >= this.minPasswordStrengthValue;
 	}
 
-	public getPasswordComplexityAsLabel() {
+	public getPasswordComplexityAsLabel(): string | any {
 		const key = PasswordUtil.getTranslationKey(PasswordUtil.evaluatePasswordStrength(this.password));
 		if (key) {
 			return this.i18nService.instant(key);
@@ -36,5 +36,4 @@ export class PasswordIndicatorComponent {
 			return '';
 		}
 	}
-
 }
