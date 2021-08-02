@@ -19,7 +19,7 @@ export class StubLoggedUserRolesService implements LoggedUserRolesService {
 		return this.loggedRoles$;
 	}
 
-	public updateLoggedRoles(newLoggedRoles: string[]) {
+	public updateLoggedRoles(newLoggedRoles: string[]): void {
 		this.loggedRoles.next(newLoggedRoles);
 	}
 }

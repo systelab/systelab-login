@@ -4,8 +4,8 @@ import { I18nService } from 'systelab-translate';
 import { Observable } from 'rxjs';
 
 export class ChangePasswordDialogParameters extends SystelabModalContext {
-	public width = 550;
-	public height = 330;
+	public override width = 550;
+	public override height = 330;
 	public userName: string;
 	public minPasswordStrengthValue = 1;
 	public action: (oldPassword: string, newPassword: string) => Observable<boolean>;
@@ -25,16 +25,16 @@ export class ChangePasswordDialog implements ModalComponent<ChangePasswordDialog
 	public repeatedPassword: string;
 	public oldPassword: string;
 
+	constructor(public dialog: DialogRef<ChangePasswordDialogParameters>,
+							protected i18nService: I18nService, protected messagePopupService: MessagePopupService) {
+		this.parameters = dialog.context;
+	}
+
 	public static getParameters(): ChangePasswordDialogParameters {
 		return new ChangePasswordDialogParameters();
 	}
 
-	constructor(public dialog: DialogRef<ChangePasswordDialogParameters>,
-	            protected i18nService: I18nService, protected messagePopupService: MessagePopupService) {
-		this.parameters = dialog.context;
-	}
-
-	public ngAfterViewInit() {
+	public ngAfterViewInit(): void {
 		setTimeout(() => {
 			document.getElementById('form-h-it')
 				.focus();
@@ -46,7 +46,7 @@ export class ChangePasswordDialog implements ModalComponent<ChangePasswordDialog
 		this.dialog.close();
 	}
 
-	public isOK() {
+	public isOK(): boolean {
 		return this.oldPassword &&
 			this.newPassword === this.repeatedPassword;
 	}
