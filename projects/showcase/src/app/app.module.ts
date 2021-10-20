@@ -1,12 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {SystelabLoginModule} from '../../../systelab-login/src/lib/systelab-login.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { SystelabComponentsModule } from 'systelab-components';
 import { SystelabPreferencesModule } from 'systelab-preferences';
 import { SystelabTranslateModule } from 'systelab-translate';
 import { HttpClientModule } from '@angular/common/http';
-import { SystelabLoginModule } from 'systelab-login';
 import { ShowcaseModule } from './showcase/showcase.module';
 import { OverlayModule } from '@angular/cdk/overlay';
 

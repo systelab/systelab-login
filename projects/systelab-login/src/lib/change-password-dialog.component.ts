@@ -9,6 +9,7 @@ export class ChangePasswordDialogParameters extends SystelabModalContext {
 	public userName: string;
 	public minPasswordStrengthValue = 1;
 	public action: (oldPassword: string, newPassword: string) => Observable<boolean>;
+	public hasNumpad = false;
 }
 
 @Component({
