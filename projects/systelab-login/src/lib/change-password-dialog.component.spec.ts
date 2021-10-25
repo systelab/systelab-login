@@ -1,36 +1,18 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {DialogRef, MessagePopupService} from 'systelab-components';
-import {I18nService, SystelabTranslateModule} from 'systelab-translate';
-import {ChangePasswordDialog, ChangePasswordDialogParameters} from './change-password-dialog.component';
+import {Observable} from 'rxjs';
 
-describe('ChangePasswordDialogComponent', () => {
-    let component: ChangePasswordDialog;
-    let fixture: ComponentFixture<ChangePasswordDialog>;
+export class ChangePasswordDialogParametersMock {
+    public width = 550;
+    public maxHeight = 360;
+    public userName: string;
+    public minPasswordStrengthValue = 1;
+    public action: (oldPassword: string, newPassword: string) => Observable<boolean>;
+    public hasNumpad = false;
+}
 
-    beforeEach(async () => {
-        const spyDialogRef = jasmine.createSpyObj('DialogRef', ['close']);
-
-        await TestBed.configureTestingModule({
-            declarations: [ChangePasswordDialog],
-            imports: [
-                SystelabTranslateModule
-            ],
-            providers: [
-                MessagePopupService,
-                {provide: DialogRef, useValue: spyDialogRef},
-                {provide: I18nService, useClass: I18nService}
-            ]
-        }).compileComponents();
-    });
-
-    beforeEach(() => {
-        fixture = TestBed.createComponent(ChangePasswordDialog);
-        component = fixture.componentInstance;
-    });
-
+describe('ChangePasswordDialogParameter', () => {
     it('should set numpad invisible by default in change password dialog', () => {
-		const parameters = new ChangePasswordDialogParameters();
+        const parameters = new ChangePasswordDialogParametersMock();
 
-		expect(parameters.hasNumpad).toBeFalsy();
+        expect(parameters.hasNumpad).toBeFalsy();
     });
 });
