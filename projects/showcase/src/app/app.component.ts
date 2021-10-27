@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { DialogService } from 'systelab-components';
-import {ChangePasswordDialog} from 'systelab-login';
+import {
+	ChangePasswordDialog,
+	ChangePasswordDialogParameters
+} from '../../../systelab-login/src/lib/change-password-dialog.component';
 
 @Component({
 	selector:    'app-root',
@@ -33,7 +36,9 @@ export class AppComponent {
 
 	public doLogin(): void {
 		console.log(this.userName + ' ' + this.password);
-		this.dialogService.showDialog(ChangePasswordDialog, ChangePasswordDialog.getParameters());
+		const parameters = new ChangePasswordDialogParameters();
+		parameters.hasNumpad = true;
+		this.dialogService.showDialog(ChangePasswordDialog, parameters);
 		console.log('doLogin');
 		this.isLoading = true;
 	}

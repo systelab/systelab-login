@@ -5,10 +5,11 @@ import { Observable } from 'rxjs';
 
 export class ChangePasswordDialogParameters extends SystelabModalContext {
 	public override width = 550;
-	public override height = 330;
+	public override maxHeight = 360;
 	public userName: string;
 	public minPasswordStrengthValue = 1;
 	public action: (oldPassword: string, newPassword: string) => Observable<boolean>;
+	public hasNumpad = false;
 }
 
 @Component({
