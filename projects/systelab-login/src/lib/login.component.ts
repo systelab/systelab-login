@@ -11,6 +11,7 @@ export class LoginComponent implements OnInit {
 	@Input() public isRecoveryActive = false;
 	@Input() public isLoginActive = false;
 	@Input() public isSignUpActive = false;
+	@Input() public moreInfo = false;
 
 	@Input() public applicationName = undefined;
 	@Input() public moduleName = undefined;
@@ -41,6 +42,7 @@ export class LoginComponent implements OnInit {
 	@Output() public nameChange = new EventEmitter();
 	@Output() public emailChange = new EventEmitter();
 
+	@Output() public onMoreInfo = new EventEmitter();
 	@Output() public login = new EventEmitter();
 	@Output() public signUp = new EventEmitter();
 	@Output() public recovery = new EventEmitter();
@@ -138,5 +140,9 @@ export class LoginComponent implements OnInit {
 
 	public goLogin(): void {
 		this.currentForm = 'login';
+	}
+
+	public doMoreInfo(): void {
+		this.onMoreInfo.emit();
 	}
 }
