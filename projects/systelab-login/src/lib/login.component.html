@@ -6,7 +6,7 @@
             <div>
                 <div id="application-name-id" class="slab-text" *ngIf="applicationName">{{applicationName}}</div>
                 <div class="slab-text slab-text--large" *ngIf="moduleName">{{moduleName}}</div>
-                <div class="slab-text slab-text--small slab-text--muted" *ngIf="version">{{ 'COMMON_VERSION' | translate | async }}: {{version}} <i *ngIf="moreInfo" class="fas fa-info-circle" (click)="doMoreInfo()"></i></div>
+                <div class="slab-text slab-text--small slab-text--muted" *ngIf="version">{{ 'COMMON_VERSION' | translate | async }}: {{version}} <i *ngIf="moreInfo" class="fas fa-info-circle" style="cursor: pointer" (click)="doMoreInfo()"></i></div>
             </div>
         </div>
         <div class="d-flex slab-form align-content-center flex-wrap mt-4" *ngIf="currentForm === 'login'">
