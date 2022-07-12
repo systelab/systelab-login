@@ -11,7 +11,7 @@ You can setup and use the individual components or a combination of them.
 This is an example with the three components enabled.
 
 ```
-<systelab-login (login)="doLogin()" (signUp)="doSignUp()" (recovery)="doRecovery()"  
+<systelab-login (login)="doLogin()" (signUp)="doSignUp()" (recovery)="doRecovery()"
                 [(userName)]="userName"
                 [(password)]="password"
                 [(name)]="name"
@@ -61,7 +61,7 @@ This is an example with the three components enabled.
 ### Only Registration
 
 ```
-<systelab-login  (signUp)="doSignUp()"   
+<systelab-login  (signUp)="doSignUp()"
                 [(userName)]="userName"
                 [(password)]="password"
                 [(name)]="name"
@@ -83,7 +83,7 @@ This is an example with the three components enabled.
 
 ### Only Password Recovery
 ```
-<systelab-login  (recovery)="doRecovery()"  
+<systelab-login  (recovery)="doRecovery()"
                 [(userName)]="userName"
                 [isRecoveryActive]="true"
                 [currentForm]="currentForm"
@@ -118,7 +118,7 @@ There are three Outputs for the different actions.
 
 You can select which principal form to display.
 
-The possible values are: 
+The possible values are:
 
 - login
 - signup
@@ -174,8 +174,9 @@ The minimum password strength values are:
 
 - 2: Moderate
 - 3: Good
-- 4: Strong
-- 5: Very Strong
+- 4: Slightly Strong
+- 5: Strong
+- 6: Very Strong
 
 It is necessary in order to check the password during the sign up registration.
 
@@ -200,8 +201,9 @@ The minimum password strength values are:
 
 - 2: Moderate
 - 3: Good
-- 4: Strong
-- 5: Very Strong
+- 4: Slightly Strong
+- 5: Strong
+- 6: Very Strong
 
 Otherwise is considered as Weak.
 
