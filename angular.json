@@ -10,7 +10,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/systelab-login/tsconfig.lib.json",
             "project": "projects/systelab-login/ng-package.json"
@@ -195,6 +195,5 @@
         }
       }
     }
-  },
-  "defaultProject": "systelab-login"
+  }
 }
