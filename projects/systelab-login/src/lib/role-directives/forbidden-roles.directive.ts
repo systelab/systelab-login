@@ -42,7 +42,7 @@ export class ForbiddenRolesDirective implements OnInit, OnDestroy {
 	}
 
 	public ngOnDestroy(): void {
-		this.stop$.next();
+		this.stop$.next(true);
 	}
 
 	private isAnyRoleForbidden(roles: string[]): boolean {
