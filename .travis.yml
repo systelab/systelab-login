@@ -15,7 +15,7 @@ before_install:
 
 install:
   - npm install -g makeshift && makeshift -s @systelab-technologies -r https://registry.npmjs.org
-  - npm install
+  - npm ci
 
 script:
   - npm run build-lib
