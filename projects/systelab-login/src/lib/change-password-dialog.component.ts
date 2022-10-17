@@ -8,6 +8,7 @@ export class ChangePasswordDialogParameters extends SystelabModalContext {
 	public override maxHeight = 360;
 	public userName: string;
 	public minPasswordStrengthValue = 1;
+	public resetPasswordToken:string;
 	public action: (oldPassword: string, newPassword: string) => Observable<boolean>;
 	public hasNumpad = false;
 }
@@ -25,10 +26,12 @@ export class ChangePasswordDialog implements ModalComponent<ChangePasswordDialog
 	public newPassword: string;
 	public repeatedPassword: string;
 	public oldPassword: string;
+	public resetPasswordToken: string;
 
 	constructor(public dialog: DialogRef<ChangePasswordDialogParameters>,
 							protected i18nService: I18nService, protected messagePopupService: MessagePopupService) {
 		this.parameters = dialog.context;
+		this.resetPasswordToken = this.parameters.resetPasswordToken;
 	}
 
 	public static getParameters(): ChangePasswordDialogParameters {
@@ -37,9 +40,14 @@ export class ChangePasswordDialog implements ModalComponent<ChangePasswordDialog
 
 	public ngAfterViewInit(): void {
 		setTimeout(() => {
-			document.getElementById('form-h-it')
-				.focus();
-			this.oldPassword = '';
+			if (!this.resetPasswordToken){
+				document.getElementById('form-h-it')
+					.focus();
+				this.oldPassword = '';
+			} else {
+				document.getElementById('form-h-ip')
+					.focus();
+			}
 		}, 500);
 	}
 
@@ -48,12 +56,12 @@ export class ChangePasswordDialog implements ModalComponent<ChangePasswordDialog
 	}
 
 	public isOK(): boolean {
-		return this.oldPassword &&
+		return (this.oldPassword || this.resetPasswordToken) &&
 			this.newPassword === this.repeatedPassword;
 	}
 
 	public changePassword(): void {
-		this.parameters.action(this.oldPassword, this.newPassword)
+		this.parameters.action(this.resetPasswordToken?this.parameters.resetPasswordToken:this.oldPassword, this.newPassword)
 			.subscribe(
 				(response) => {
 					if (response) {
