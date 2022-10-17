@@ -196,7 +196,6 @@ public userName: string;
 public minPasswordStrengthValue: number;
 public action: (oldPassword: string, newPassword: string) => Observable<boolean>;
 ```
-Old password can be replaced for a reset password token, that is not visible for the user but allows to send the new password to server in order to reset it without knowing the old password. Reset token should include user information.
 
 The minimum password strength values are:
 
