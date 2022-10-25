@@ -43,9 +43,9 @@
     "primeng": "13.1.1",
     "quill": "^1.3.7",
     "rxjs": "^7.5.1",
-    "systelab-components": "^13.4.0",
-    "systelab-preferences": "^9.0.0",
-    "systelab-translate": "^11.0.0",
+    "systelab-components": "~14.0.0",
+    "systelab-preferences": "~14.0.1",
+    "systelab-translate": "~14.0.0",
     "tslib": "^2.4.0",
     "zone.js": "~0.11.4"
   },
