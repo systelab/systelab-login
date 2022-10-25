@@ -76,6 +76,7 @@
               "projects/showcase/src/favicon.png"
             ],
             "styles": [
+              "node_modules/systelab-components/sass/systelab-components.scss",
               "projects/showcase/src/styles.scss",
               "node_modules/systelab-components/icons/icomoon.css"
             ],
