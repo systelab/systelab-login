@@ -10,7 +10,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/systelab-login/tsconfig.lib.json",
             "project": "projects/systelab-login/ng-package.json"
@@ -76,6 +76,7 @@
               "projects/showcase/src/favicon.png"
             ],
             "styles": [
+              "node_modules/systelab-components/sass/systelab-components.scss",
               "projects/showcase/src/styles.scss",
               "node_modules/systelab-components/icons/icomoon.css"
             ],
@@ -102,7 +103,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -196,6 +196,5 @@
         }
       }
     }
-  },
-  "defaultProject": "systelab-login"
+  }
 }

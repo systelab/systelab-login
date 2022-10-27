@@ -42,7 +42,7 @@ export class AllowedRolesDirective implements OnInit, OnDestroy {
 	}
 
 	public ngOnDestroy(): void {
-		this.stop$.next();
+		this.stop$.next(true);
 	}
 
 	private isAnyRoleAllowed(roles: string[]): boolean {

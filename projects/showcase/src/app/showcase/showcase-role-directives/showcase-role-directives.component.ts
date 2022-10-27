@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { map } from 'rxjs/operators';
 
 import { ShowcaseLoggedUserRolesService } from './showcase-logged-user-roles.service';
@@ -10,10 +10,10 @@ import { ShowcaseLoggedUserRolesService } from './showcase-logged-user-roles.ser
 })
 export class ShowcaseRoleDirectivesComponent implements OnInit {
 
-	public roleForm: FormGroup;
+	public roleForm: UntypedFormGroup;
 
 	constructor(
-		private formBuilder: FormBuilder,
+		private formBuilder: UntypedFormBuilder,
 		private rolesService: ShowcaseLoggedUserRolesService
 	) {
 		this.roleForm = formBuilder.group({

@@ -1,6 +1,6 @@
 {
   "name": "systelab-login",
-  "version": "11.7.0",
+  "version": "14.0.0",
   "license": "MIT",
   "keywords": [
     "Angular",
@@ -17,10 +17,10 @@
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@angular/common": ">=12.0.0 <13.0.0",
-    "@angular/core": ">=12.0.0 <13.0.0",
-    "systelab-components": ">=13.0.0 <14.0.0",
-    "systelab-preferences": ">=9.0.0 <10.0.0",
-    "systelab-translate": ">=11.0.0 <12.0.0"
+    "@angular/common": ">=14.0.0 <15.0.0",
+    "@angular/core": ">=14.0.0 <15.0.0",
+    "systelab-components": ">=14.0.0 <15.0.0",
+    "systelab-preferences": ">=14.0.0 <15.0.0",
+    "systelab-translate": ">=14.0.0 <15.0.0"
   }
 }
