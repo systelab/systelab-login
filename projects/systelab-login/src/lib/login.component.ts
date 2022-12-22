@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit {
 	@Output() public login = new EventEmitter();
 	@Output() public signUp = new EventEmitter();
 	@Output() public recovery = new EventEmitter();
+	@Output() public logoClicked = new EventEmitter();
 
 	@Input()
 	get userName(): string {
@@ -144,5 +145,9 @@ export class LoginComponent implements OnInit {
 
 	public doMoreInfo(): void {
 		this.onMoreInfo.emit();
+	}
+
+	public doClickLogo(): void {
+		this.logoClicked.emit();
 	}
 }

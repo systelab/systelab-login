@@ -2,7 +2,7 @@
     <div class="slab-login__background slab-login__background--configuration" [style.background-image]="'url(' + background + ')'"></div>
     <div class="slab-login__content d-flex flex-column">
         <div class="d-flex slab-header align-content-center">
-            <img *ngIf="applicationLogo" class="slab-header__logo mr-4" src="{{applicationLogo}}">
+            <img *ngIf="applicationLogo" class="slab-header__logo mr-4" src="{{applicationLogo}}" (click)="doClickLogo()">
             <div>
                 <div id="application-name-id" class="slab-text" *ngIf="applicationName">{{applicationName}}</div>
                 <div class="slab-text slab-text--large" *ngIf="moduleName">{{moduleName}}</div>
