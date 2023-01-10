@@ -30,6 +30,8 @@ export class LoginComponent implements OnInit {
 	@Input() public txtUsername = '';
 	@Input() public txtRecoverProcessStarted = undefined;
 	@Input() public minPasswordStrengthValue = 1;
+	@Input() public showBackButton = false;
+	@Input() public noticeText: string;
 
 	@Input() public pathTerms = undefined;
 	@Input() public pathPrivacy = undefined;
@@ -103,6 +105,7 @@ export class LoginComponent implements OnInit {
 	private _name = '';
 	private _email = '';
 	private _userName = '';
+
 
 	constructor(protected i18nService: I18nService) {
 		if (!this.currentForm) {

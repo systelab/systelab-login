@@ -14,6 +14,7 @@ export class FormRecoveryComponent implements OnInit {
 	@Input() public txtUsername = '';
 	@Input() public maxUsernameLength = 20;
 	@Input() public isLoading = false;
+	@Input() public showBackButton = false;
 
 	@Output() public recovery = new EventEmitter();
 

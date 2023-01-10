@@ -34,7 +34,8 @@ This is an example with the three components enabled.
                 [txtUsername]="txtUsername"
                 [txtRecoverProcessStarted]="txtRecoverProcessStarted"
                 [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'"
-                [isLoading]="isLoading">
+                [isLoading]="isLoading"
+                [noticeText]="'Notice Text'">
                 </systelab-login>
 ```
 
@@ -54,7 +55,8 @@ This is an example with the three components enabled.
                 [pathTerms]="pathTerms"
                 [pathPrivacy]="pathPrivacy"
                 [txtUsername]="txtUsername"
-                [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'" [isLoading]="isLoading">
+                [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'" [isLoading]="isLoading"
+                [noticeText]="'Notice Text'">
                 </systelab-login>
 ```
 
@@ -77,7 +79,8 @@ This is an example with the three components enabled.
                 [errorUserExist]="errorUserExist"
                 [pathTerms]="pathTerms"
                 [pathPrivacy]="pathPrivacy"
-                [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'" [isLoading]="isLoading">
+                [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'" [isLoading]="isLoading"
+                [noticeText]="'Notice Text'">
                 </systelab-login>
 ```
 
@@ -96,7 +99,8 @@ This is an example with the three components enabled.
                 [txtUsername]="txtUsername"
                 [errorUserDoesNotExist]="errorUserDoesNotExist"
                 [txtRecoverProcessStarted]="txtRecoverProcessStarted"
-                [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'" [isLoading]="isLoading">
+                [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'" [isLoading]="isLoading"
+                [noticeText]="'Notice Text'">
                 </systelab-login>
 ```
 
