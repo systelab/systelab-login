@@ -35,7 +35,7 @@ This is an example with the three components enabled.
                 [txtRecoverProcessStarted]="txtRecoverProcessStarted"
                 [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'"
                 [isLoading]="isLoading"
-                [noticeText}="'Notice Text'">
+                [noticeText]="'Notice Text'">
                 </systelab-login>
 ```
 
@@ -56,7 +56,7 @@ This is an example with the three components enabled.
                 [pathPrivacy]="pathPrivacy"
                 [txtUsername]="txtUsername"
                 [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'" [isLoading]="isLoading"
-                [noticeText}="'Notice Text'">
+                [noticeText]="'Notice Text'">
                 </systelab-login>
 ```
 
@@ -80,7 +80,7 @@ This is an example with the three components enabled.
                 [pathTerms]="pathTerms"
                 [pathPrivacy]="pathPrivacy"
                 [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'" [isLoading]="isLoading"
-                [noticeText}="'Notice Text'">
+                [noticeText]="'Notice Text'">
                 </systelab-login>
 ```
 
@@ -100,7 +100,7 @@ This is an example with the three components enabled.
                 [errorUserDoesNotExist]="errorUserDoesNotExist"
                 [txtRecoverProcessStarted]="txtRecoverProcessStarted"
                 [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'" [isLoading]="isLoading"
-                [noticeText}="'Notice Text'">
+                [noticeText]="'Notice Text'">
                 </systelab-login>
 ```
 
