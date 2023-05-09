@@ -15,8 +15,15 @@
             <form novalidate class="w-100" autocomplete="off">
                 <slt-form-login (login)="doLogin()"
                                 [(userName)]="userName"
-                                [(password)]="password" [isRecoveryActive]="isRecoveryActive"
-                                [isSignUpActive]="isSignUpActive" [errorUserPwd]="errorUserPwd" [txtUsername]="txtUsername" [(currentForm)]="currentForm" [isLoading]="isLoading" [maxUsernameLength]="maxUsernameLength">
+                                [(password)]="password"
+                                [isRecoveryActive]="isRecoveryActive"
+                                [isSignUpActive]="isSignUpActive"
+                                [errorUserPwd]="errorUserPwd"
+                                [txtUsername]="txtUsername"
+                                [(currentForm)]="currentForm"
+                                [isLoading]="isLoading"
+                                [maxUsernameLength]="maxUsernameLength"
+                                [pathExternalLogin]="pathExternalLogin">
                 </slt-form-login>
             </form>
         </div>

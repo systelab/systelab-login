@@ -24,6 +24,7 @@ export class AppComponent {
 	public txtRecoverProcessStarted = '';
 	public pathTerms = 'http://www.werfen.com/en/terms-and-conditions';
 	public pathPrivacy = 'http://www.werfen.com/en/privacy-policy';
+	public pathExternalLogin = 'http://www.werfen.com';
 	public isRecoveryActive = true;
 	public isSignUpActive = true;
 	public isLoginActive = true;

@@ -29,5 +29,6 @@
 	"PASSWORD_STRENGTH_SLIGHTLY_STRONG":"Strength is Slightly Strong",
 	"PASSWORD_STRENGTH_STRONG":"Strength is Strong",
 	"COMMON_USERNAME_AND_EMAIL":"Username or Email",
-	"COMMON_SESSION_RECOVERY":"Password Recovery"
+	"COMMON_SESSION_RECOVERY":"Password Recovery",
+	"COMMON_EXTERNAL_LOGIN": "Sign in with an identity provider"
 }

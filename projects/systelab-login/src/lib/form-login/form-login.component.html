@@ -17,6 +17,11 @@
     <a href="#" class="slab-text slab-text--link  " (click)="goSignUp()">{{ 'COMMON_CREATE_NEW_ACCOUNT' | translate | async }}</a>
 </div>
 
+<div *ngIf="pathExternalLogin" class="slab-form_input--marginTop15 text-center">
+    <a class="slab-text slab-text--link"
+       href="{{pathExternalLogin}}">{{ 'COMMON_EXTERNAL_LOGIN' | translate | async }}</a>
+</div>
+
 <div *ngIf="errorUserPwd" class="alert alert-danger text-center slab-form_input--marginTop25">
     <a>{{ 'ERROR_INCORRECT_USERNAME_OR_PASSWORD' | translate | async }}</a>
 </div>
