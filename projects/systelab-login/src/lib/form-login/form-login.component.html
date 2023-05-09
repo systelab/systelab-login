@@ -18,7 +18,8 @@
 </div>
 
 <div *ngIf="pathExternalLogin" class="slab-form_input--marginTop15 text-center">
-    <a class="slab-text slab-text--link" href="{{pathExternalLogin}}" target="_blank">{{ 'COMMON_EXTERNAL_LOGIN' | translate | async }}</a>
+    <a class="slab-text slab-text--link"
+       href="{{pathExternalLogin}}">{{ 'COMMON_EXTERNAL_LOGIN' | translate | async }}</a>
 </div>
 
 <div *ngIf="errorUserPwd" class="alert alert-danger text-center slab-form_input--marginTop25">
