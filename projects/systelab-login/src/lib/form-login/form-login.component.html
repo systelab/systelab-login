@@ -18,8 +18,14 @@
 </div>
 
 <div *ngIf="pathExternalLogin" class="slab-form_input--marginTop15 text-center">
-    <a class="slab-text slab-text--link"
-       href="{{pathExternalLogin}}">{{ 'COMMON_EXTERNAL_LOGIN' | translate | async }}</a>
+    <ng-container *ngIf="useAppUrl else useExternalLink">
+        <a class="slab-text slab-text--link"
+           routerLink="{{pathExternalLogin}}">{{ 'COMMON_EXTERNAL_LOGIN' | translate | async }}</a>
+    </ng-container>
+    <ng-template #useExternalLink>
+        <a class="slab-text slab-text--link"
+           href="{{pathExternalLogin}}">{{ 'COMMON_EXTERNAL_LOGIN' | translate | async }}</a>
+    </ng-template>
 </div>
 
 <div *ngIf="errorUserPwd" class="alert alert-danger text-center slab-form_input--marginTop25">

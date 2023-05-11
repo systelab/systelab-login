@@ -12,13 +12,15 @@ import {FormRecoveryComponent} from './form-recovery/form-recovery.component';
 import {PasswordIndicatorComponent} from './password-indicator/password-indicator.component';
 import {AllowedRolesDirective} from './role-directives/allowed-roles.directive';
 import {ForbiddenRolesDirective} from './role-directives/forbidden-roles.directive';
+import {RouterLink} from "@angular/router";
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         SystelabTranslateModule,
-        SystelabComponentsModule
+        SystelabComponentsModule,
+        RouterLink
     ],
     declarations: [
         LoginComponent,
