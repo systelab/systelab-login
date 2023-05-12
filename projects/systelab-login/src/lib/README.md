@@ -36,7 +36,8 @@ This is an example with the three components enabled.
                 [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'"
                 [isLoading]="isLoading"
                 [noticeText]="'Notice Text'"
-                [pathExternalLogin]="pathExternalLogin">
+                [pathExternalLogin]="pathExternalLogin"
+                [useAppUrl]="useAppUrl">
                 </systelab-login>
 ```
 
@@ -58,7 +59,8 @@ This is an example with the three components enabled.
                 [txtUsername]="txtUsername"
                 [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'" [isLoading]="isLoading"
                 [noticeText]="'Notice Text'"
-                [pathExternalLogin]="pathExternalLogin">
+                [pathExternalLogin]="pathExternalLogin"
+                [useAppUrl]="useAppUrl">
                 </systelab-login>
 ```
 
@@ -83,7 +85,8 @@ This is an example with the three components enabled.
                 [pathPrivacy]="pathPrivacy"
                 [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'" [isLoading]="isLoading"
                 [noticeText]="'Notice Text'"
-                [pathExternalLogin]="pathExternalLogin">
+                [pathExternalLogin]="pathExternalLogin"
+                [useAppUrl]="useAppUrl">
                 </systelab-login>
 ```
 
@@ -104,7 +107,8 @@ This is an example with the three components enabled.
                 [txtRecoverProcessStarted]="txtRecoverProcessStarted"
                 [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'" [isLoading]="isLoading"
                 [noticeText]="'Notice Text'"
-                [pathExternalLogin]="pathExternalLogin">
+                [pathExternalLogin]="pathExternalLogin"
+                [useAppUrl]="useAppUrl">
                 </systelab-login>
 ```
 

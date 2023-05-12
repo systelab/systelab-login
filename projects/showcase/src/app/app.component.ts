@@ -25,6 +25,7 @@ export class AppComponent {
 	public pathTerms = 'http://www.werfen.com/en/terms-and-conditions';
 	public pathPrivacy = 'http://www.werfen.com/en/privacy-policy';
 	public pathExternalLogin = 'http://www.werfen.com';
+	public useAppUrl = false;
 	public isRecoveryActive = true;
 	public isSignUpActive = true;
 	public isLoginActive = true;
