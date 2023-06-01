@@ -1,4 +1,4 @@
-<systelab-login (login)="doLogin()" (signUp)="doSignUp()" (recovery)="doRecovery()"
+<systelab-login (login)="doLogin()" (externalLogin)="doExternalLogin()" (signUp)="doSignUp()" (recovery)="doRecovery()"
                 [(userName)]="userName"
                 [(password)]="password"
                 [(name)]="name"
@@ -23,5 +23,4 @@
                 [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'"
                 [isLoading]="isLoading"
                 [noticeText]="'Notice Text'"
-                [pathExternalLogin]="pathExternalLogin"
-                [useAppUrl]="useAppUrl"></systelab-login>
+                [isExternalLoginActive]="isExternalLoginActive"></systelab-login>

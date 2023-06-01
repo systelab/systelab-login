@@ -14,6 +14,7 @@
             <div class="mb-4 slab-text slab-text--large slab-text--muted">{{ 'COMMON_SESSION_LOGIN' | translate | async }}</div>
             <form novalidate class="w-100" autocomplete="off">
                 <slt-form-login (login)="doLogin()"
+                                (externalLogin)="doExternalLogin()"
                                 [(userName)]="userName"
                                 [(password)]="password"
                                 [isRecoveryActive]="isRecoveryActive"
@@ -23,8 +24,7 @@
                                 [(currentForm)]="currentForm"
                                 [isLoading]="isLoading"
                                 [maxUsernameLength]="maxUsernameLength"
-                                [pathExternalLogin]="pathExternalLogin"
-                                [useAppUrl]="useAppUrl">
+                                [isExternalLoginActive]="isExternalLoginActive">
                 </slt-form-login>
             </form>
         </div>
