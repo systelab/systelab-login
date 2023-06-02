@@ -24,8 +24,7 @@ export class AppComponent {
 	public txtRecoverProcessStarted = '';
 	public pathTerms = 'http://www.werfen.com/en/terms-and-conditions';
 	public pathPrivacy = 'http://www.werfen.com/en/privacy-policy';
-	public pathExternalLogin = 'http://www.werfen.com';
-	public useAppUrl = false;
+	public isExternalLoginActive = true;
 	public isRecoveryActive = true;
 	public isSignUpActive = true;
 	public isLoginActive = true;
@@ -42,6 +41,11 @@ export class AppComponent {
 		parameters.hasNumpad = true;
 		this.dialogService.showDialog(ChangePasswordDialog, parameters);
 		console.log('doLogin');
+		this.isLoading = true;
+	}
+
+	public doExternalLogin(): void {
+		console.log('doExternalLogin');
 		this.isLoading = true;
 	}
 

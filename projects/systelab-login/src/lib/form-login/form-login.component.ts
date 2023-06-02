@@ -13,13 +13,13 @@ export class FormLoginComponent implements OnInit {
 	@Input() public txtUsername = '';
 	@Input() public isLoading = false;
 	@Input() public maxUsernameLength = 20;
-	@Input() public pathExternalLogin = undefined;
-	@Input() public useAppUrl = false;
+	@Input() public isExternalLoginActive = false;
 
 	@Output() userNameChange = new EventEmitter();
 	@Output() public passwordChange = new EventEmitter();
 	@Output() public currentFormChange = new EventEmitter();
 	@Output() public login = new EventEmitter();
+	@Output() public externalLogin = new EventEmitter();
 
 	@Input()
 	get userName(): string {
@@ -71,6 +71,10 @@ export class FormLoginComponent implements OnInit {
 		this.login.emit();
 	}
 
+	public doExternalLogin(): void {
+		this.externalLogin.emit();
+	}
+
 	public goSignUp(): void {
 		this.currentForm = 'signup';
 	}
@@ -78,4 +82,6 @@ export class FormLoginComponent implements OnInit {
 	public goRecovery(): void {
 		this.currentForm = 'recovery';
 	}
+
+	protected readonly undefined = undefined;
 }

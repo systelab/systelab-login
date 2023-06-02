@@ -1,6 +1,6 @@
 # systelab-login
 
-Component to show a fancy screen which offer different components such as login, sign up and password recovery.
+Component to show a fancy screen which offer different components such as login, external login, sign up and password recovery.
 
 You can setup and use the individual components or a combination of them.
 
@@ -11,7 +11,8 @@ You can setup and use the individual components or a combination of them.
 This is an example with the three components enabled.
 
 ```
-<systelab-login (login)="doLogin()" (signUp)="doSignUp()" (recovery)="doRecovery()"
+<systelab-login (login)="doLogin()" (externalLogin)="doExternalLogin()" 
+                (signUp)="doSignUp()" (recovery)="doRecovery()"
                 [(userName)]="userName"
                 [(password)]="password"
                 [(name)]="name"
@@ -36,8 +37,7 @@ This is an example with the three components enabled.
                 [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'"
                 [isLoading]="isLoading"
                 [noticeText]="'Notice Text'"
-                [pathExternalLogin]="pathExternalLogin"
-                [useAppUrl]="useAppUrl">
+                [isExternalLoginActive]="isExternalLoginActive">
                 </systelab-login>
 ```
 
@@ -59,8 +59,29 @@ This is an example with the three components enabled.
                 [txtUsername]="txtUsername"
                 [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'" [isLoading]="isLoading"
                 [noticeText]="'Notice Text'"
-                [pathExternalLogin]="pathExternalLogin"
-                [useAppUrl]="useAppUrl">
+                [isExternalLoginActive]="isExternalLoginActive">
+                </systelab-login>
+```
+
+### Only External Login
+
+```
+<systelab-login (externalLogin)="doExternalLogin()"
+                [(userName)]="userName"
+                [(password)]="password"
+                [isLoginActive]="true"
+                [currentForm]="currentForm"
+                [companyLogo]="'assets/img/brand/werfen.png'"
+                [applicationLogo]="'assets/img/brand/logo.png'"
+                [background]="'assets/img/background/background.jpg'"
+                [copyright]="'Copyright 2000-2018 Werfen'"
+                [errorUserPwd]="errorUserPwd"
+                [pathTerms]="pathTerms"
+                [pathPrivacy]="pathPrivacy"
+                [txtUsername]="txtUsername"
+                [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'" [isLoading]="isLoading"
+                [noticeText]="'Notice Text'"
+                [isExternalLoginActive]="isExternalLoginActive">
                 </systelab-login>
 ```
 
@@ -85,8 +106,7 @@ This is an example with the three components enabled.
                 [pathPrivacy]="pathPrivacy"
                 [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'" [isLoading]="isLoading"
                 [noticeText]="'Notice Text'"
-                [pathExternalLogin]="pathExternalLogin"
-                [useAppUrl]="useAppUrl">
+                [isExternalLoginActive]="isExternalLoginActive">
                 </systelab-login>
 ```
 
@@ -107,8 +127,7 @@ This is an example with the three components enabled.
                 [txtRecoverProcessStarted]="txtRecoverProcessStarted"
                 [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'" [isLoading]="isLoading"
                 [noticeText]="'Notice Text'"
-                [pathExternalLogin]="pathExternalLogin"
-                [useAppUrl]="useAppUrl">
+                [isExternalLoginActive]="isExternalLoginActive">
                 </systelab-login>
 ```
 
@@ -117,13 +136,14 @@ Be careful and make sure that the images are loaded by Webpack.
 
 ### Properties
 
-#### Methods: Login, Sign Up and Password Recovery
+#### Methods: Login, External Login, Sign Up and Password Recovery
 
 There are three Outputs for the different actions.
 
 - (login)="doLogin()"
 - (signUp)="doSignUp()"
 - (recovery)="doRecovery()"
+- (externalLogin)="doExternalLogin()"
 
 
 #### Principal Form: currentForm
@@ -133,6 +153,7 @@ You can select which principal form to display.
 The possible values are:
 
 - login
+- externalLogin
 - signup
 - recovery
 
@@ -148,6 +169,8 @@ If you set isRecoveryActive to true, you will see a link to the password recover
 If you set isSignUpActive to true, you will see a link to the sign up form.
 
 If you set isLoginActive to true you will see in the Sign Up and Password Recovery pages the link to the login form.
+
+If you set isExternalLoginActive to true you will see in the Sign Up page the link to the external login.
 
 #### Errors messages: errorUserPwd, errorUserExist and errorUserDoesNotExist
 

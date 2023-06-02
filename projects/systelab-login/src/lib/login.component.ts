@@ -35,8 +35,7 @@ export class LoginComponent implements OnInit {
 
 	@Input() public pathTerms = undefined;
 	@Input() public pathPrivacy = undefined;
-	@Input() public pathExternalLogin = undefined;
-	@Input() public useAppUrl = false;
+	@Input() public isExternalLoginActive = false;
 	@Input() public maxUsernameLength = 20;
 
 	@Output() public userNameChange = new EventEmitter();
@@ -48,6 +47,7 @@ export class LoginComponent implements OnInit {
 
 	@Output() public onMoreInfo = new EventEmitter();
 	@Output() public login = new EventEmitter();
+	@Output() public externalLogin = new EventEmitter();
 	@Output() public signUp = new EventEmitter();
 	@Output() public recovery = new EventEmitter();
 	@Output() public logoClicked = new EventEmitter();
@@ -126,6 +126,10 @@ export class LoginComponent implements OnInit {
 
 	public doLogin(): void {
 		this.login.emit();
+	}
+
+	public doExternalLogin(): void {
+		this.externalLogin.emit();
 	}
 
 	public doSignUp(): void {
