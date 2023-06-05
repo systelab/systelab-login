@@ -83,5 +83,4 @@ export class FormLoginComponent implements OnInit {
 		this.currentForm = 'recovery';
 	}
 
-	protected readonly undefined = undefined;
 }
