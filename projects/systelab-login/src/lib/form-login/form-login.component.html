@@ -9,7 +9,7 @@
     <a href="#" class="slab-text slab-text--link" (click)="goRecovery()">{{ 'COMMON_FORGOT_PASSWORD' | translate | async }}</a>
 </div>
 
-<button type="button" class="w-100 btn btn-primary slab-form__submit mt-4" [disabled]="inputUserName.invalid ||  inputPassword.invalid"
+<button type="submit" class="w-100 btn btn-primary slab-form__submit mt-4" [disabled]="inputUserName.invalid ||  inputPassword.invalid"
         (click)="doLogin()">{{ 'COMMON_ENTER' | translate | async }}
 </button>
 
@@ -18,7 +18,7 @@
 </div>
 
 <div class="slab-form_input--marginTop15 text-center" *ngIf="isExternalLoginActive">
-    <button class="btn btn-link" (click)="doExternalLogin()">{{ 'COMMON_EXTERNAL_LOGIN' | translate | async }}</button>
+    <button type="button" class="btn btn-link" (click)="doExternalLogin()">{{ 'COMMON_EXTERNAL_LOGIN' | translate | async }}</button>
 </div>
 
 <div *ngIf="errorUserPwd" class="alert alert-danger text-center slab-form_input--marginTop25">
