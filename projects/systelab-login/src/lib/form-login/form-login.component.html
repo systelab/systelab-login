@@ -1,15 +1,17 @@
 <input type="text" class="w-100 slab-form__input slab-form__input--topradius" [(ngModel)]="userName" [class.slab-form_input--error]="inputUserName.invalid && inputUserName.touched"
-       id="inputUserName" placeholder="{{txtUsername}}" #inputUserName="ngModel" name="inputUserName" (keyup.enter)="doLogin()"
+       id="inputUserName" placeholder="{{txtUsername}}" #inputUserName="ngModel" name="inputUserName"
+       (keyup.enter)="doLogin()"
        required autocomplete="off" maxlength="{{maxUsernameLength}}" autofocus>
 <input type="password" class="w-100 slab-form__input slab-form__input--bottomradius" [(ngModel)]="password" [class.slab-form_input--error]="inputPassword.invalid && inputPassword.touched"
        id="inputPassword" placeholder="{{ 'COMMON_PASSWORD' | translate | async }}" #inputPassword="ngModel" name="inputPassword"
-       (keyup.enter)="doLogin()" required autocomplete="off">
+       (keyup.enter)="doLogin()"
+       required autocomplete="off">
 
 <div class="slab-form_input--marginTop15 text-right" *ngIf="isRecoveryActive">
     <a href="#" class="slab-text slab-text--link" (click)="goRecovery()">{{ 'COMMON_FORGOT_PASSWORD' | translate | async }}</a>
 </div>
 
-<button type="submit" class="w-100 btn btn-primary slab-form__submit mt-4" [disabled]="inputUserName.invalid ||  inputPassword.invalid"
+<button type="button" class="w-100 btn btn-primary slab-form__submit mt-4" [disabled]="inputUserName.invalid ||  inputPassword.invalid"
         (click)="doLogin()">{{ 'COMMON_ENTER' | translate | async }}
 </button>
 
