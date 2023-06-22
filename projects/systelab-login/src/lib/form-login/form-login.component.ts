@@ -14,7 +14,6 @@ export class FormLoginComponent implements OnInit {
 	@Input() public isLoading = false;
 	@Input() public maxUsernameLength = 20;
 	@Input() public isExternalLoginActive = false;
-	@Input() public isExternalLoginAvailable = true;
 
 	@Output() userNameChange = new EventEmitter();
 	@Output() public passwordChange = new EventEmitter();

@@ -18,10 +18,7 @@
 </div>
 
 <div class="slab-form_input--marginTop15 text-center" *ngIf="isExternalLoginActive">
-    <button *ngIf="isExternalLoginAvailable" type="button" class="btn btn-link" (click)="doExternalLogin()">{{ 'COMMON_EXTERNAL_LOGIN' | translate | async }}</button>
-    <div *ngIf="!isExternalLoginAvailable" class="alert alert-warning text-center slab-form_input--marginTop25">
-        <a>{{ 'WARNING_EXTERNAL_LOGIN_UNAVAILABLE' | translate | async }}</a>
-    </div>
+    <button type="button" class="btn btn-link" (click)="doExternalLogin()">{{ 'COMMON_EXTERNAL_LOGIN' | translate | async }}</button>
 </div>
 
 <div *ngIf="errorUserPwd" class="alert alert-danger text-center slab-form_input--marginTop25">

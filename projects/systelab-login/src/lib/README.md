@@ -37,8 +37,7 @@ This is an example with the three components enabled.
                 [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'"
                 [isLoading]="isLoading"
                 [noticeText]="'Notice Text'"
-                [isExternalLoginActive]="isExternalLoginActive"
-                [isExternalLoginAvailable]="isExternalLoginAvailable">
+                [isExternalLoginActive]="isExternalLoginActive">
                 </systelab-login>
 ```
 
@@ -60,8 +59,7 @@ This is an example with the three components enabled.
                 [txtUsername]="txtUsername"
                 [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'" [isLoading]="isLoading"
                 [noticeText]="'Notice Text'"
-                [isExternalLoginActive]="isExternalLoginActive"
-                [isExternalLoginAvailable]="isExternalLoginAvailable">
+                [isExternalLoginActive]="isExternalLoginActive">
                 </systelab-login>
 ```
 
@@ -83,8 +81,7 @@ This is an example with the three components enabled.
                 [txtUsername]="txtUsername"
                 [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'" [isLoading]="isLoading"
                 [noticeText]="'Notice Text'"
-                [isExternalLoginActive]="isExternalLoginActive"
-                [isExternalLoginAvailable]="isExternalLoginAvailable">
+                [isExternalLoginActive]="isExternalLoginActive">
                 </systelab-login>
 ```
 
@@ -109,8 +106,7 @@ This is an example with the three components enabled.
                 [pathPrivacy]="pathPrivacy"
                 [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'" [isLoading]="isLoading"
                 [noticeText]="'Notice Text'"
-                [isExternalLoginActive]="isExternalLoginActive"
-                [isExternalLoginAvailable]="isExternalLoginAvailable">
+                [isExternalLoginActive]="isExternalLoginActive">
                 </systelab-login>
 ```
 
@@ -131,8 +127,7 @@ This is an example with the three components enabled.
                 [txtRecoverProcessStarted]="txtRecoverProcessStarted"
                 [applicationName]="'App Name'" [moduleName]="'Module'" [version]="'1.4. (build 2012)'" [isLoading]="isLoading"
                 [noticeText]="'Notice Text'"
-                [isExternalLoginActive]="isExternalLoginActive"
-                [isExternalLoginAvailable]="isExternalLoginAvailable">
+                [isExternalLoginActive]="isExternalLoginActive">
                 </systelab-login>
 ```
 
@@ -175,9 +170,7 @@ If you set isSignUpActive to true, you will see a link to the sign up form.
 
 If you set isLoginActive to true you will see in the Sign Up and Password Recovery pages the link to the login form.
 
-If you set isExternalLoginActive and isExternalLoginAvailable to true you will see in the Sign Up page the link to the external login.
-
-If you set isExternalLoginActive to true and isExternalLoginAvailable to false you will see a warning message saying that the external login is not available. (ErrorBundle: WARNING_EXTERNAL_LOGIN_UNAVAILABLE)
+If you set isExternalLoginActive to true you will see in the Sign Up page the link to the external login.
 
 #### Errors messages: errorUserPwd, errorUserExist and errorUserDoesNotExist
 
