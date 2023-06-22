@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
 	@Input() public pathTerms = undefined;
 	@Input() public pathPrivacy = undefined;
 	@Input() public isExternalLoginActive = false;
+	@Input() public isExternalLoginAvailable = true;
 	@Input() public maxUsernameLength = 20;
 
 	@Output() public userNameChange = new EventEmitter();
