@@ -39,7 +39,7 @@ export class AppComponent {
 		console.log(this.userName + ' ' + this.password);
 		const parameters = new ChangePasswordDialogParameters();
 		parameters.hasNumpad = true;
-		//this.dialogService.showDialog(ChangePasswordDialog, parameters);
+		this.dialogService.showDialog(ChangePasswordDialog, parameters);
 		console.log('doLogin');
 		this.isLoading = true;
 	}
