@@ -23,6 +23,9 @@ install:
   - npm install -g makeshift && makeshift -s @systelab-technologies -r https://registry.npmjs.org
   - npm ci
 
+before_script:
+  - export NODE_OPTIONS="--max-old-space-size=8192"
+
 script:
   - npm run build-lib
   - npm run build-showcase
