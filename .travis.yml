@@ -2,7 +2,7 @@ sudo: required
 dist: jammy
 language: node_js
 node_js:
-  - '14.20.1'
+  - '18.12.1'
 addons:
   apt:
     update: true
@@ -22,6 +22,9 @@ before_install:
 install:
   - npm install -g makeshift && makeshift -s @systelab-technologies -r https://registry.npmjs.org
   - npm ci
+
+before_script:
+  - export NODE_OPTIONS="--max-old-space-size=8192"
 
 script:
   - npm run build-lib
