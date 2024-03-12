@@ -19,7 +19,6 @@
 	"COMMON_CREATE_NEW_ACCOUNT":"Create a new account",
 	"COMMON_FORGOT_PASSWORD":"Forgot you password?",
 	"COMMON_CHANGE_PASSWORD":"Change Password",
-	"LOGIN_ENTER_PASSWORD_USERNAME":"Username",
 	"LOGIN_ENTER_OLDPASSWORD":"Old Password",
 	"LOGIN_ENTER_NEWPASSWORD":"New Password",
 	"LOGIN_REPEAT_NEWPASSWORD":"Repeat New Password",

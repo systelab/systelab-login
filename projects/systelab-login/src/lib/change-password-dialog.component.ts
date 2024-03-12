@@ -11,6 +11,7 @@ export class ChangePasswordDialogParameters extends SystelabModalContext {
 	public showOldPasswordField = true;
 	public action: (oldPassword: string, newPassword: string) => Observable<boolean>;
 	public hasNumpad = false;
+	public showUsernameField = false;
 }
 
 @Component({
@@ -27,11 +28,13 @@ export class ChangePasswordDialog implements ModalComponent<ChangePasswordDialog
 	public repeatedPassword: string;
 	public oldPassword: string;
 	public showOldPasswordField = true;
+	public showUsernameField = false;
 
 	constructor(public dialog: DialogRef<ChangePasswordDialogParameters>,
 							protected i18nService: I18nService, protected messagePopupService: MessagePopupService) {
 		this.parameters = dialog.context;
 		this.showOldPasswordField = this.parameters.showOldPasswordField;
+		this.showUsernameField = this.parameters.showUsernameField;
 	}
 
 	public static getParameters(): ChangePasswordDialogParameters {
