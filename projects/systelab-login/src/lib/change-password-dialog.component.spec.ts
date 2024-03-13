@@ -7,6 +7,7 @@ export class ChangePasswordDialogParametersMock {
     public minPasswordStrengthValue = 1;
     public action: (oldPassword: string, newPassword: string) => Observable<boolean>;
     public hasNumpad = false;
+    public showUsernameField = true;
 }
 
 describe('ChangePasswordDialogParameter', () => {
@@ -16,9 +17,10 @@ describe('ChangePasswordDialogParameter', () => {
         expect(parameters.hasNumpad).toBeFalsy();
     });
 
-    it('should set userName by default in change password dialog', () => {
+    it('should set userName and display the info in change password dialog', () => {
         const parameters = new ChangePasswordDialogParametersMock();
 
+        expect(parameters.showUsernameField).toBeTrue();
         expect(parameters.userName.length).toBeGreaterThan(0);
     });
 });
