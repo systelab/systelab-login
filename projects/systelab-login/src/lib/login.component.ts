@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
 
 	@Input() public applicationLogo = undefined;
 	@Input() public companyLogo = undefined;
+	@Input() public clickableLogo = true;
 	@Input() public background = undefined;
 	@Input() public copyright = undefined;
 
@@ -159,4 +160,6 @@ export class LoginComponent implements OnInit {
 	public doClickLogo(): void {
 		this.logoClicked.emit();
 	}
+
+	protected readonly undefined = undefined;
 }
