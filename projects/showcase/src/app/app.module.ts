@@ -20,7 +20,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
 		ShowcaseModule,
 		OverlayModule,
 		SystelabLoginModule,
-		SystelabComponentsModule,
+		SystelabComponentsModule.forRoot(),
 		SystelabTranslateModule,
 		SystelabPreferencesModule
 	],
