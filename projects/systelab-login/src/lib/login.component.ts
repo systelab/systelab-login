@@ -160,6 +160,4 @@ export class LoginComponent implements OnInit {
 	public doClickLogo(): void {
 		this.logoClicked.emit();
 	}
-
-	protected readonly undefined = undefined;
 }
