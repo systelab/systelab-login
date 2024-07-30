@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
 import { SystelabTranslateModule } from 'systelab-translate';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { SystelabLoginModule } from 'systelab-login';
 import { SystelabComponentsModule } from 'systelab-components';
 import { SystelabPreferencesModule } from 'systelab-preferences';
@@ -15,23 +15,21 @@ import { APP_BASE_HREF } from '@angular/common';
 describe('AppComponent', () => {
 	beforeEach(async () => {
 		TestBed.configureTestingModule({
-			declarations: [
-				AppComponent
-			],
-			imports:      [
-				BrowserModule,
-				FormsModule,
-				HttpClientModule,
-				ShowcaseModule,
-				SystelabLoginModule,
-				SystelabComponentsModule,
-				SystelabTranslateModule,
-				SystelabPreferencesModule
-			],
-			providers:    [
-				{provide: APP_BASE_HREF, useValue: '/'}
-			],
-		})
+    declarations: [
+        AppComponent
+    ],
+    imports: [BrowserModule,
+        FormsModule,
+        ShowcaseModule,
+        SystelabLoginModule,
+        SystelabComponentsModule,
+        SystelabTranslateModule,
+        SystelabPreferencesModule],
+    providers: [
+        { provide: APP_BASE_HREF, useValue: '/' },
+        provideHttpClient(withInterceptorsFromDi())
+    ]
+})
 			.compileComponents();
 	});
 
