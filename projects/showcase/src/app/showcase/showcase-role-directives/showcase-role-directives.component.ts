@@ -5,8 +5,9 @@ import { map } from 'rxjs/operators';
 import { ShowcaseLoggedUserRolesService } from './showcase-logged-user-roles.service';
 
 @Component({
-	selector:    'app-showcase-role-directives',
-	templateUrl: './showcase-role-directives.component.html'
+    selector: 'app-showcase-role-directives',
+    templateUrl: './showcase-role-directives.component.html',
+    standalone: false
 })
 export class ShowcaseRoleDirectivesComponent implements OnInit {
 

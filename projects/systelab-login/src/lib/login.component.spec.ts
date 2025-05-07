@@ -149,7 +149,8 @@ const eventEmitterTest = (component: TestHostComponent, fixture: ComponentFixtur
         [moreInfo]="moreInfo"
         [version]="version"
         [applicationLogo]="applicationLogo"
-    ></systelab-login>`
+    ></systelab-login>`,
+    standalone: false
 })
 class TestHostComponent {
     @ViewChild('login') public loginComponent: LoginComponent;
@@ -182,7 +183,8 @@ class TestHostComponent {
 
 @Component({
     selector: 'systelab-password-indicator',
-    template: ''
+    template: '',
+    standalone: false
 })
 class SystelabPasswordIndicatorMockComponent {
     @Input() public minPasswordStrengthValue: number;

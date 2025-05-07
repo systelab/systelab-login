@@ -26,8 +26,8 @@ export class StubLoggedUserRolesService implements LoggedUserRolesService {
 
 // Test component used to check if sltForbiddenRoles directive is filtering correctly.
 @Component({
-	selector: 'app-forbidden-roles-test',
-	template: `
+    selector: 'app-forbidden-roles-test',
+    template: `
                 <div>
                     <h1 class="allLoggedUsers" *sltForbiddenRoles="[]">
                         Only for logged users
@@ -40,7 +40,8 @@ export class StubLoggedUserRolesService implements LoggedUserRolesService {
                     </h1>
                 </div>
 	          `,
-	styles:   []
+    styles: [],
+    standalone: false
 })
 export class ForbiddenRolesTestComponent {
 }

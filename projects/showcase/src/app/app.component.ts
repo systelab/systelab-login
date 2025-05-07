@@ -6,8 +6,9 @@ import {
 } from '../../../systelab-login/src/lib/change-password-dialog.component';
 
 @Component({
-	selector:    'app-root',
-	templateUrl: './app.component.html'
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    standalone: false
 })
 export class AppComponent {
 

@@ -15,8 +15,9 @@ export class ChangePasswordDialogParameters extends SystelabModalContext {
 }
 
 @Component({
-	templateUrl: 'change-password-dialog.component.html',
-	styleUrls:   ['change-password-dialog.component.scss'],
+    templateUrl: 'change-password-dialog.component.html',
+    styleUrls: ['change-password-dialog.component.scss'],
+    standalone: false
 })
 export class ChangePasswordDialog implements ModalComponent<ChangePasswordDialogParameters>, AfterViewInit {
 

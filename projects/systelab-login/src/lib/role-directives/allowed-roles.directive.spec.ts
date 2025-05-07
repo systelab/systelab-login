@@ -26,14 +26,15 @@ export class StubLoggedUserRolesService implements LoggedUserRolesService {
 
 // Test component used to check if sltAllowedRoles directive is filtering correctly.
 @Component({
-	selector: 'app-allowed-roles-test',
-	template: `
+    selector: 'app-allowed-roles-test',
+    template: `
                 <div>
                     <h1 class="onlyAdminUsers" *sltAllowedRoles="['admin']">Content to be shown or hidden</h1>
                     <h1 class="adminAndBasicUsers" *sltAllowedRoles="['admin','basic']">Content to be shown or hidden</h1>
                 </div>
 	          `,
-	styles:   []
+    styles: [],
+    standalone: false
 })
 export class AllowedRolesTestComponent {
 }
