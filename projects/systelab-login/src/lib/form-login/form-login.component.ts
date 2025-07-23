@@ -2,9 +2,10 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { I18nService } from 'systelab-translate';
 
 @Component({
-	selector:    'slt-form-login',
-	templateUrl: 'form-login.component.html',
-	styleUrls:   ['../login.component.scss']
+    selector: 'slt-form-login',
+    templateUrl: 'form-login.component.html',
+    styleUrls: ['../login.component.scss'],
+    standalone: false
 })
 export class FormLoginComponent implements OnInit {
 	@Input() public isRecoveryActive = false;

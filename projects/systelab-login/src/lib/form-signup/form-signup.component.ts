@@ -2,9 +2,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { I18nService } from 'systelab-translate';
 
 @Component({
-	selector:    'slt-form-signup',
-	templateUrl: 'form-signup.component.html',
-	styleUrls:   ['../login.component.scss']
+    selector: 'slt-form-signup',
+    templateUrl: 'form-signup.component.html',
+    styleUrls: ['../login.component.scss'],
+    standalone: false
 })
 export class FormSignupComponent {
 	@Input() public minPasswordStrengthValue = 1;

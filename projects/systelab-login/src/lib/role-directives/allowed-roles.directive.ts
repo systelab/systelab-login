@@ -4,7 +4,8 @@ import { LoggedUserRolesService } from './logged-user-roles.service';
 import { takeUntil } from 'rxjs/operators';
 
 @Directive({
-	selector: '[sltAllowedRoles]'
+    selector: '[sltAllowedRoles]',
+    standalone: false
 })
 export class AllowedRolesDirective implements OnInit, OnDestroy {
 	@Input() public sltAllowedRoles: string[];

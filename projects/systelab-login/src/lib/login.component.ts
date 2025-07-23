@@ -2,9 +2,10 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { I18nService } from 'systelab-translate';
 
 @Component({
-	selector:    'systelab-login',
-	templateUrl: 'login.component.html',
-	styleUrls:   ['login.component.scss']
+    selector: 'systelab-login',
+    templateUrl: 'login.component.html',
+    styleUrls: ['login.component.scss'],
+    standalone: false
 })
 export class LoginComponent implements OnInit {
 	@Input() public currentForm = undefined;

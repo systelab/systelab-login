@@ -3,9 +3,10 @@ import { I18nService } from 'systelab-translate';
 import { PasswordUtil } from './password-indicator.util';
 
 @Component({
-	selector:    'systelab-password-indicator',
-	templateUrl: 'password-indicator.component.html',
-	styleUrls:   ['password-indicator.component.scss']
+    selector: 'systelab-password-indicator',
+    templateUrl: 'password-indicator.component.html',
+    styleUrls: ['password-indicator.component.scss'],
+    standalone: false
 })
 export class PasswordIndicatorComponent {
 
