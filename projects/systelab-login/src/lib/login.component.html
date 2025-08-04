@@ -1,62 +1,88 @@
 <div class="d-flex h-100 slab-login">
-    <div class="slab-login__background slab-login__background--configuration" [style.background-image]="'url(' + background + ')'"></div>
-    <div class="slab-login__content d-flex flex-column">
-        <div class="d-flex slab-header align-content-center">
-            <img *ngIf="applicationLogo && clickableLogo" alt="header-logo" class="slab-header__logo mr-4" src="{{applicationLogo}}" (click)="doClickLogo()">
-            <img *ngIf="applicationLogo && !clickableLogo" alt="header-logo" class="slab-header__no-click-logo mr-4" src="{{applicationLogo}}">
-            <div>
-                <div id="application-name-id" class="slab-text" *ngIf="applicationName">{{applicationName}}</div>
-                <div class="slab-text slab-text--large" *ngIf="moduleName">{{moduleName}}</div>
-                <div class="slab-text slab-text--small slab-text--muted" *ngIf="version">{{ 'COMMON_VERSION' | translate | async }}: {{version}} <i *ngIf="moreInfo" class="fas fa-info-circle" style="cursor: pointer" (click)="doMoreInfo()"></i></div>
-            </div>
-        </div>
-        <div *ngIf="noticeText" class="d-flex align-self-center m-4 font-weight-bolder">{{noticeText}}</div>
-        <div class="d-flex slab-form align-content-center flex-wrap mt-4" *ngIf="currentForm === 'login'">
-            <div class="mb-4 slab-text slab-text--large slab-text--muted">{{ 'COMMON_SESSION_LOGIN' | translate | async }}</div>
-            <form novalidate class="w-100" autocomplete="off">
-                <slt-form-login (login)="doLogin()"
-                                (externalLogin)="doExternalLogin()"
-                                [(userName)]="userName"
-                                [(password)]="password"
-                                [isRecoveryActive]="isRecoveryActive"
-                                [isSignUpActive]="isSignUpActive"
-                                [errorUserPwd]="errorUserPwd"
-                                [txtUsername]="txtUsername"
-                                [(currentForm)]="currentForm"
-                                [isLoading]="isLoading"
-                                [maxUsernameLength]="maxUsernameLength"
-                                [isExternalLoginActive]="isExternalLoginActive">
-                </slt-form-login>
-            </form>
-        </div>
-        <div class="d-flex slab-form align-content-center flex-wrap mt-4" *ngIf="currentForm === 'signup'">
-            <div class="mb-4 slab-text slab-text--large slab-text--muted">{{ 'COMMON_SESSION_SIGNUP' | translate | async }}</div>
-            <form novalidate class="w-100" autocomplete="off">
-                <slt-form-signup (signUp)="doSignUp()" [(userName)]="userName" [(password)]="password" [(name)]="name" [(lastName)]="lastName"
-                                 [(email)]="email" [isLoginActive]="isLoginActive" [(currentForm)]="currentForm" [errorUserExist]="errorUserExist" [isLoading]="isLoading"
-                                 [minPasswordStrengthValue]="minPasswordStrengthValue" [maxUsernameLength]="maxUsernameLength">
-                </slt-form-signup>
-            </form>
-        </div>
-        <div class="d-flex slab-form align-content-center flex-wrap mt-4" *ngIf="currentForm === 'recovery'">
-            <div class="mb-4 slab-text slab-text--large slab-text--muted">{{ 'COMMON_SESSION_RECOVERY' | translate | async }}</div>
-            <form novalidate class="w-100" autocomplete="off">
-                <slt-form-recovery (recovery)="doRecovery()" [(userName)]="userName" [txtUsername]="txtUsername" [(currentForm)]="currentForm"
-                                   [errorUserDoesNotExist]="errorUserDoesNotExist" [isLoginActive]="isLoginActive" [txtRecoverProcessStarted]="txtRecoverProcessStarted"
-                                   [isLoading]="isLoading" [maxUsernameLength]="maxUsernameLength" [showBackButton]="showBackButton">
-                </slt-form-recovery>
-            </form>
-        </div>
-
-        <div class="d-flex slab-footer flex-column">
-            <img width="132" alt="company-logo" src="{{ companyLogo }}" class="mt-4 align-self-center">
-            <div class="d-none d-sm-block slab-text slab-text--small align-self-center mt-4 ">{{copyright}}</div>
-            <div class="mt-4 align-self-center">
-                <a class="slab-text slab-text--link slab-text--small mr-2 " target="_blank" *ngIf="pathTerms" href="pathTerms">{{ 'COMMON_TERMS_OF_USE' | translate | async }}</a>
-                <span *ngIf="pathTerms && pathPrivacy">·</span>
-                <a class="ml-2 slab-text slab-text--link slab-text--small"
-                   href="pathPrivacy" target="_blank" *ngIf="pathPrivacy">{{ 'COMMON_PRIVACY' | translate | async }}</a>
-            </div>
-        </div>
+  <div class="slab-login__background slab-login__background--configuration" [style.background-image]="'url(' + background + ')'"></div>
+  <div class="slab-login__content d-flex flex-column">
+    <div class="d-flex slab-header align-content-center">
+      @if (applicationLogo && clickableLogo) {
+        <img alt="header-logo" class="slab-header__logo mr-4" src="{{applicationLogo}}" (click)="doClickLogo()">
+      }
+      @if (applicationLogo && !clickableLogo) {
+        <img alt="header-logo" class="slab-header__no-click-logo mr-4" src="{{applicationLogo}}">
+      }
+      <div>
+        @if (applicationName) {
+          <div id="application-name-id" class="slab-text">{{applicationName}}</div>
+        }
+        @if (moduleName) {
+          <div class="slab-text slab-text--large">{{moduleName}}</div>
+        }
+        @if (version) {
+          <div class="slab-text slab-text--small slab-text--muted">{{ 'COMMON_VERSION' | translate | async }}: {{version}} @if (moreInfo) {
+            <i class="fas fa-info-circle" style="cursor: pointer" (click)="doMoreInfo()"></i>
+          }</div>
+        }
+      </div>
     </div>
+    @if (noticeText) {
+      <div class="d-flex align-self-center m-4 font-weight-bolder">{{noticeText}}</div>
+    }
+    @if (currentForm === 'login') {
+      <div class="d-flex slab-form align-content-center flex-wrap mt-4">
+        <div class="mb-4 slab-text slab-text--large slab-text--muted">{{ 'COMMON_SESSION_LOGIN' | translate | async }}</div>
+        <form novalidate class="w-100" autocomplete="off">
+          <slt-form-login (login)="doLogin()"
+            (externalLogin)="doExternalLogin()"
+            [(userName)]="userName"
+            [(password)]="password"
+            [isRecoveryActive]="isRecoveryActive"
+            [isSignUpActive]="isSignUpActive"
+            [errorUserPwd]="errorUserPwd"
+            [txtUsername]="txtUsername"
+            [(currentForm)]="currentForm"
+            [isLoading]="isLoading"
+            [maxUsernameLength]="maxUsernameLength"
+            [isExternalLoginActive]="isExternalLoginActive">
+          </slt-form-login>
+        </form>
+      </div>
+    }
+    @if (currentForm === 'signup') {
+      <div class="d-flex slab-form align-content-center flex-wrap mt-4">
+        <div class="mb-4 slab-text slab-text--large slab-text--muted">{{ 'COMMON_SESSION_SIGNUP' | translate | async }}</div>
+        <form novalidate class="w-100" autocomplete="off">
+          <slt-form-signup (signUp)="doSignUp()" [(userName)]="userName" [(password)]="password" [(name)]="name" [(lastName)]="lastName"
+            [(email)]="email" [isLoginActive]="isLoginActive" [(currentForm)]="currentForm" [errorUserExist]="errorUserExist" [isLoading]="isLoading"
+            [minPasswordStrengthValue]="minPasswordStrengthValue" [maxUsernameLength]="maxUsernameLength">
+          </slt-form-signup>
+        </form>
+      </div>
+    }
+    @if (currentForm === 'recovery') {
+      <div class="d-flex slab-form align-content-center flex-wrap mt-4">
+        <div class="mb-4 slab-text slab-text--large slab-text--muted">{{ 'COMMON_SESSION_RECOVERY' | translate | async }}</div>
+        <form novalidate class="w-100" autocomplete="off">
+          <slt-form-recovery (recovery)="doRecovery()" [(userName)]="userName" [txtUsername]="txtUsername" [(currentForm)]="currentForm"
+            [errorUserDoesNotExist]="errorUserDoesNotExist" [isLoginActive]="isLoginActive" [txtRecoverProcessStarted]="txtRecoverProcessStarted"
+            [isLoading]="isLoading" [maxUsernameLength]="maxUsernameLength" [showBackButton]="showBackButton">
+          </slt-form-recovery>
+        </form>
+      </div>
+    }
+
+    <div class="d-flex slab-footer flex-column">
+      <img width="132" alt="company-logo" src="{{ companyLogo }}" class="mt-4 align-self-center">
+      <div class="d-none d-sm-block slab-text slab-text--small align-self-center mt-4 ">{{copyright}}</div>
+      <div class="mt-4 align-self-center">
+        @if (pathTerms) {
+          <a class="slab-text slab-text--link slab-text--small mr-2 " target="_blank" href="pathTerms">{{ 'COMMON_TERMS_OF_USE' | translate | async }}</a>
+        }
+        @if (pathTerms && pathPrivacy) {
+          <span>·</span>
+        }
+        @if (pathPrivacy) {
+          <a class="ml-2 slab-text slab-text--link slab-text--small"
+          href="pathPrivacy" target="_blank">{{ 'COMMON_PRIVACY' | translate | async }}</a>
+        }
+      </div>
+    </div>
+  </div>
 </div>

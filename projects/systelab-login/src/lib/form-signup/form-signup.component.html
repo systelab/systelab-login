@@ -1,41 +1,47 @@
 <input #inputUserName="ngModel" type="text" class="w-100 slab-form__input slab-form__input--topradius"
-       [class.slab-form_input--error]="inputUserName.invalid && inputUserName.touched"
-       id="inputUserName" [(ngModel)]="userName" placeholder="{{ 'COMMON_USERNAME' | translate | async }}"
-       name="inputUserName" (keyup.enter)="doSignUp()" required autocomplete="off" maxlength="{{maxUsernameLength}}" autofocus>
+  [class.slab-form_input--error]="inputUserName.invalid && inputUserName.touched"
+  id="inputUserName" [(ngModel)]="userName" placeholder="{{ 'COMMON_USERNAME' | translate | async }}"
+  name="inputUserName" (keyup.enter)="doSignUp()" required autocomplete="off" maxlength="{{maxUsernameLength}}" autofocus>
 
-<input #inputPassword="ngModel" type="password" [class.slab-form_input--error]="!passwordIndicator.isOK() && inputPassword.touched" placeholder="{{ 'COMMON_PASSWORD' | translate | async }}"
-       autocomplete="off" class="w-100 slab-form__input slab-form__input--bottomradius" id="inputPassword"
-       name="inputPassword" (keyup.enter)="doSignUp()" [(ngModel)]="password"
-       required/>
+  <input #inputPassword="ngModel" type="password" [class.slab-form_input--error]="!passwordIndicator.isOK() && inputPassword.touched" placeholder="{{ 'COMMON_PASSWORD' | translate | async }}"
+    autocomplete="off" class="w-100 slab-form__input slab-form__input--bottomradius" id="inputPassword"
+    name="inputPassword" (keyup.enter)="doSignUp()" [(ngModel)]="password"
+    required/>
 
-<systelab-password-indicator #passwordIndicator [minPasswordStrengthValue]="minPasswordStrengthValue" [password]="password"></systelab-password-indicator>
-
-
-<input #inputEmail="ngModel" type="email" [class.slab-form_input--error]="inputEmail.invalid && inputEmail.touched" autocomplete="off"
-       placeholder=" {{ 'COMMON_EMAIL' | translate | async }}" class="w-100 slab-form_input--marginTop15 slab-form__input slab-form__input--topradius"
-       (keyup.enter)="doSignUp()" id="inputEmail"  name="inputEmail" [(ngModel)]="email" required email/>
-
-<input #inputName="ngModel" type="text" [class.slab-form_input--error]="inputName.invalid && inputName.touched" placeholder=" {{ 'COMMON_NAME' | translate | async }}"
-       class="w-100  slab-form__input " (keyup.enter)="doSignUp()" id="inputName" name="inputName"  [(ngModel)]="name"
-       required maxlength="50" minlength="2"/>
-
-<input #inputLastName="ngModel" type="text" [class.slab-form_input--error]="inputLastName.invalid && inputLastName.touched" placeholder=" {{ 'COMMON_LASTNAME' | translate | async }}"
-       class="w-100  slab-form__input " (keyup.enter)="doSignUp()" id="inputLastName" name="inputLastName" [(ngModel)]="lastName"
-       required maxlength="80" minlength="2"/>
-
-<button type="button" class="w-100 btn btn-primary slab-form__submit mt-4" (click)="doSignUp()"
-        [disabled]="inputUserName.invalid || inputEmail.invalid || inputPassword.invalid || inputName.invalid ||  inputLastName.invalid || !passwordIndicator.isOK()">{{ 'COMMON_SEND' | translate | async }}
-</button>
+    <systelab-password-indicator #passwordIndicator [minPasswordStrengthValue]="minPasswordStrengthValue" [password]="password"></systelab-password-indicator>
 
 
-<div class="slab-form_input--marginTop25 text-center" *ngIf="isLoginActive">
-    <a href="#" class="slab-text slab-text--link" (click)="goLogin()">{{ 'COMMON_I_HAVE_ACCOUNT' | translate | async }}</a>
-</div>
+    <input #inputEmail="ngModel" type="email" [class.slab-form_input--error]="inputEmail.invalid && inputEmail.touched" autocomplete="off"
+      placeholder=" {{ 'COMMON_EMAIL' | translate | async }}" class="w-100 slab-form_input--marginTop15 slab-form__input slab-form__input--topradius"
+      (keyup.enter)="doSignUp()" id="inputEmail"  name="inputEmail" [(ngModel)]="email" required email/>
 
-<div *ngIf="errorUserExist" class="alert alert-danger text-center slab-form_input--marginTop25">
-    <a>{{ 'ERROR_USER_ALREADY_EXIST' | translate | async }}</a>
-</div>
+      <input #inputName="ngModel" type="text" [class.slab-form_input--error]="inputName.invalid && inputName.touched" placeholder=" {{ 'COMMON_NAME' | translate | async }}"
+        class="w-100  slab-form__input " (keyup.enter)="doSignUp()" id="inputName" name="inputName"  [(ngModel)]="name"
+        required maxlength="50" minlength="2"/>
 
-<div *ngIf="isLoading" class="text-center pt-2">{{ 'COMMON_LOADING' | translate | async }}...<i class="icon-spinner spin"></i>
-</div>
+        <input #inputLastName="ngModel" type="text" [class.slab-form_input--error]="inputLastName.invalid && inputLastName.touched" placeholder=" {{ 'COMMON_LASTNAME' | translate | async }}"
+          class="w-100  slab-form__input " (keyup.enter)="doSignUp()" id="inputLastName" name="inputLastName" [(ngModel)]="lastName"
+          required maxlength="80" minlength="2"/>
+
+          <button type="button" class="w-100 btn btn-primary slab-form__submit mt-4" (click)="doSignUp()"
+            [disabled]="inputUserName.invalid || inputEmail.invalid || inputPassword.invalid || inputName.invalid ||  inputLastName.invalid || !passwordIndicator.isOK()">{{ 'COMMON_SEND' | translate | async }}
+          </button>
+
+
+          @if (isLoginActive) {
+            <div class="slab-form_input--marginTop25 text-center">
+              <a href="#" class="slab-text slab-text--link" (click)="goLogin()">{{ 'COMMON_I_HAVE_ACCOUNT' | translate | async }}</a>
+            </div>
+          }
+
+          @if (errorUserExist) {
+            <div class="alert alert-danger text-center slab-form_input--marginTop25">
+              <a>{{ 'ERROR_USER_ALREADY_EXIST' | translate | async }}</a>
+            </div>
+          }
+
+          @if (isLoading) {
+            <div class="text-center pt-2">{{ 'COMMON_LOADING' | translate | async }}...<i class="icon-spinner spin"></i>
+          </div>
+        }
 

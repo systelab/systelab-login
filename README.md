@@ -32,6 +32,16 @@ Library will be published at: https://www.npmjs.com/package/systelab-login
 
 Read the [provided documentation](https://github.com/systelab/systelab-login/blob/master/projects/systelab-login/README.md) to use the library
 
+## Version 20.x.x - Angular 20
+
+[Angular 20 news](https://blog.angular.dev/announcing-angular-v20-b5c9c06cf301)
+
+- Stabilizing APIs such as effect, linkedSignal, toSignal, incremental hydration, route-level render mode config and promoting zoneless to developer preview
+- Improved debugging with Angular DevTools and partnering with Chrome for custom Angular reporting directly in Chrome DevTools
+- Polishing developer experience with style guide updates.
+- Advancements in GenAI development with llms.txt and angular.dev guides and videos for building Generative AI applications
+- Launching a request for comments for an official mascot for Angular
+
 ## Version 19.x.x - Angular 19
 
 [Angular 19 news](https://blog.angular.dev/meet-angular-v19-7b29dfd05b84)
