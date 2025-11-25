@@ -12,6 +12,7 @@ import {FormRecoveryComponent} from './form-recovery/form-recovery.component';
 import {PasswordIndicatorComponent} from './password-indicator/password-indicator.component';
 import {AllowedRolesDirective} from './role-directives/allowed-roles.directive';
 import {ForbiddenRolesDirective} from './role-directives/forbidden-roles.directive';
+import { libConfig } from './lib.config';
 
 @NgModule({
     imports: [
@@ -36,7 +37,8 @@ import {ForbiddenRolesDirective} from './role-directives/forbidden-roles.directi
         AllowedRolesDirective,
         ForbiddenRolesDirective,
         ChangePasswordDialog
-    ]
+    ],
+    providers: [...libConfig.providers]
 })
 export class SystelabLoginModule {
 }
