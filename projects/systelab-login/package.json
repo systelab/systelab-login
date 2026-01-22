@@ -19,7 +19,7 @@
   "peerDependencies": {
     "@angular/common": "^21.0.0",
     "@angular/core": "^21.0.0",
-    "primeng": "~20.0.0",
+    "primeng": "~21.0.0",
     "systelab-components": "^21.0.0",
     "systelab-preferences": "^21.0.0",
     "systelab-translate": "^21.0.0"
