@@ -17,7 +17,7 @@
         }
         @if (version) {
           <div class="slab-text slab-text--small slab-text--muted">{{ 'COMMON_VERSION' | translate | async }}: {{version}} @if (moreInfo) {
-            <i class="fas fa-info-circle" style="cursor: pointer" (click)="doMoreInfo()"></i>
+            <i class="fas fa-info-circle slab-clickable" (click)="doMoreInfo()"></i>
           }</div>
         }
       </div>

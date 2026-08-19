@@ -186,15 +186,22 @@ small.badge-warning{
   transition: all .3s ease-out;
 }
 
-.slab-form_input--marginTop25{
-  margin-top:25px;
+.slab-form_input--marginTop25 {
+  margin-top: 25px;
 }
-.slab-form_input--marginTop15{
-  margin-top:15px;
+
+.slab-form_input--marginTop15 {
+  margin-top: 15px;
 }
-.slab-form_input--error{
+
+.slab-form_input--error {
   border-left: 3px solid #f45642 !important;
 }
-.slab-form_input:disabled,.btn:disabled{
-  cursor:no-drop;
+
+.slab-form_input:disabled, .btn:disabled {
+  cursor: no-drop;
+}
+
+.slab-clickable {
+  cursor: pointer;
 }
